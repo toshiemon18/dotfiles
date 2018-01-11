@@ -1,0 +1,171 @@
+# 基本はgithub.comのリポジトリを指定するだけ
+# NeoBundleと同じっすね
+
+# =================
+#   システム周り
+# =================
+# dein.vim
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+# vimproc.vim
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+build = 'make'
+hook_post_update = '''
+    if cmd = dein#util#is_windows()
+        let cmd = 'tools\\update-dll-mingw'
+    elseif dein#util#_is_cygwin()
+        let cmd = 'make -f make_cygwin.mak'
+    elseif executable('gmake')
+        let cmd = 'gmake'
+    else
+        let cmd = 'make'
+    endif
+    let g:dein#plugin.build = cmd
+'''
+
+# vimshell.vim
+[[plugins]]
+repo = 'Shougo/vimshell.vim'
+
+# denite.vim
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+on_cmd = 'Denite'
+if = 'has("nvim")'
+hook_source = 'source ~/.config/nvim/userautoload/plugin-denite.vim'
+
+# C-__でカーソル行をコメントアウト
+# tcomment.vim
+[[plugins]]
+repo = 'tomtom/tcomment_vim'
+
+# ファイルツリーを表示する
+# NERDTree
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+
+# ステータスラインを良い感じするやつ
+# lightline.vim
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+
+# 同時押しをサポートする
+# vim-arpeggio
+[[plugins]]
+repo = 'kana/vim-arpeggio'
+
+# quickrun.vim
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+
+# vim-ref.vim
+[[plugins]]
+repo = 'thinca/vim-ref'
+
+# text-objectを強化するやつ
+# vim-surround
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+# shabadou.vim
+[[plugins]]
+repo = 'osyo-manga/shabadou.vim'
+
+# 多機能な絞り込み検索
+[[plugins]]
+repo = 'ctrlpvim/ctrlp.vim'
+
+# neoterm
+# [[plugins]]
+# repo = 'kassio/neoterm'
+
+# ======================
+# プログラミングサポート
+# ======================
+# neosnippets
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+
+# neosnippets-snippets
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+# deoplete.vim
+# Dark powered asynchronous completion framework for NeoVim
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+if = 'has("nvim")'
+on_i = 1
+
+# 開いたファイルの構造を表示してくれる
+# クラス, メソッド, フィールド等
+# 新規ファイルタイプの設定を追加する時は下記参照
+# https://github.com/majutsushi/tagbar/wiki
+# majutsushi/tagbar
+# [[plugins]]
+# repo = 'majutsushi/tagbar'
+
+# [[plugins]]
+# repo = 'jsfaint/gen_tags.vim'
+#
+# 閉じ系を自動で補完してよしなにしてくれる
+# Townk/vim-autoclose
+[[plugins]]
+repo = 'Townk/vim-autoclose'
+
+# =================
+#   HTML
+#   CSS
+# =================
+# HTML5のシンタックスに対応
+# html5.vim
+[[plugins]]
+repo = 'othree/html5.vim'
+
+# 閉じタグを良い感じにアレするやつ
+# emmet-vim
+[[plugins]]
+repo = 'mattn/emmet-vim'
+
+# CSS3のシンタックスに対応
+# vim-css3-syntax
+[[plugins]]
+repo = 'hail2u/vim-css3-syntax'
+
+# =================
+#   Markdown
+# =================
+# Markdownのためのプラグイン
+# vim-markdown
+[[plugins]]
+repo = 'plasticboy/vim-markdown'
+
+# Vimで文書を書く
+# reedes/vim-pencil
+[[plugins]]
+repo = 'reedes/vim-pencil'
+
+# Git-Flavored-Markdownをサポートする
+[[plugins]]
+repo = 'jtratner/vim-flavored-markdown'
+
+# =================[
+#   Git
+# =================
+# VimとGitを連携する
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+
+# =================
+#   Others
+# =================
+# TOML対応
+# toml.vim
+[[plugins]]
+repo = 'cespare/vim-toml'
+

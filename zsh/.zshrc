@@ -51,9 +51,9 @@ case ${OSTYPE} in
 esac
 
 # Vim関係
-alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-alias vim='env_LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-alias v=vim
+alias v=nvim
+alias vi=nvim
+alias vim=nvim
 # ls
 alias sl=ls
 # Python

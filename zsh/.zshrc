@@ -69,12 +69,7 @@ function cd() {
 # Look and feel setting
 # ---------------------------
 ### ZSH_THEME ###
-ZSH_THEME="powerline"
 source $ZSH/oh-my-zsh.sh
-### PowerLine ###
-POWERLINE_HIDE_HOST_NAME="true"
-POWERLINE_HIDE_GIT_PROMPT_STATUS="true"
-POWERLINE_HIDE_GIT_ON_RIGHT="true"
 
 # 区切り文字を変更
 autoload -Uz select-word-style
@@ -100,16 +95,11 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 #### Prompt ####
 # プロンプトに色を設定
 autoload -U colors; colors
-source ~/.zsh_prompt_powerline
+source ~/.zsh_simple_prompt
 
 # ---------------------------
 # Other setting
 # ---------------------------
-if [ -f /Applications/MacVim.app/Contents/MacOS/Vim ]; then
-      alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-      alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-fi
-
 [[ -d ~/.rbenv  ]] && \
   export PATH=${HOME}/.rbenv/bin:${PATH} && \
   eval "$(rbenv init - zsh)"
@@ -125,6 +115,7 @@ fi
 # direnv
 eval "$(direnv hook zsh)"
 
+export XDG_CONFIG_HOME=$HOME/.config
 
 export PATH="/usr/local/bin:$PATH"
 export LD_LIBRARY_PATH="/usr/local/lib"

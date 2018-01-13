@@ -59,6 +59,9 @@ alias sl=ls
 # Python
 alias py=python
 
+# 学内プロキシ絶対許さねえ
+alias nswitch="source ~/.switch_proxy.zsh"
+nswitch
 
 # cdしたあとに絶対lsする
 function cd() {

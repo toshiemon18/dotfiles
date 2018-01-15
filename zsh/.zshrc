@@ -118,7 +118,12 @@ fi
 # direnv
 eval "$(direnv hook zsh)"
 
+# XSG_CONFIG_HOME
 export XDG_CONFIG_HOME=$HOME/.config
+
+# anyenv
+export PATH=$HOME/.anyenv/bin:$PATH
+eval "$(anyenv init -)"
 
 export PATH="/usr/local/bin:$PATH"
 export LD_LIBRARY_PATH="/usr/local/lib"

@@ -77,6 +77,11 @@ on_ft = ['javascript', 'coffee']
 repo = 'maksimr/vim-jsbeautify'
 on_ft = ['javascript']
 
+# deoplete source for javascript
+# [[plugins]]
+# rpeo = ''
+# on_ft = ['coffee', 'javascript']
+
 # ================
 #   Python
 # ================

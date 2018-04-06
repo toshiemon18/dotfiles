@@ -2,9 +2,14 @@
 " Vimのシステムに関係するキーマップだけ
 " 各プラグインのキーマップは各プラグインのファイルに書く
 
+
+" Configure <leader> to <Space>
+" map <leader> <Space>
+
+" For US keyboard
 nnoremap ; :
 
-"vEsc2つで検索結果のハイライトを消す
+" disable searching highlight
 nnoremap <ESC><ESC> :nohlsearch<CR>
 
 " 新規バッファを横に開く
@@ -18,12 +23,12 @@ inoremap <C-l> <Right>
 
 " Shift + hjklで行末へ
 noremap <S-h> ^
-noremap <S-j> }
-noremap <S-k> {
+noremap <S-j> 3j
+noremap <S-k> 3k
 noremap <S-l> $
 
 " Reload config
-nnoremap <Space>rv :source $HOME/.config/nvim/init.vim<CR>
+" nnoremap <Space>rr :source $HOME/.config/nvim/init.vim<CR>
 
 " :UpdateRemotePlugins
 nnoremap <Space>ur :UpdateRemotePlugins<CR>

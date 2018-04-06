@@ -21,6 +21,7 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 
 imap <C-x> <Plug>(neosnippet_expand_or_jump)
 smap <C-x> <Plug>(neosnippet_expand_or_jump)
+xmap <C-x> <Plug>(neosnippet_expand_target)
 
 " For snippet_complete marker.
 if has('conceal')

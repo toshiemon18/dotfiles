@@ -29,6 +29,7 @@ highlight Normal ctermbg=none
 set tabstop=2
 set noexpandtab
 set backspace=indent,eol,start
+set hidden
 set shiftwidth=2
 set textwidth=70
 set colorcolumn=80

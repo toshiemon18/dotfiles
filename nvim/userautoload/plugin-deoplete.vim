@@ -16,6 +16,7 @@ set completeopt-=preview
 
 let g:deoplete#sources#omni#input_patterns = {
     \ "ruby" : '[^. *\t]\.\w*\|\h\w*::',
+    \ "python" : '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
     \}
 
 " =======================

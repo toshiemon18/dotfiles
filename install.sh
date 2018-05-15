@@ -13,3 +13,6 @@ ln -fis $PWD/zsh/.switch_proxy.zsh $HOME/.switch_proxy.zsh
 
 # tmux
 ln -fis $PWD/tmux/tmux.conf $HOME/.tmux.conf
+
+# alacritty
+ln -fis $PWD/alacritty/alacritty.yml $XDG_CONFIG_HOME/alacritty/alacritty.yml

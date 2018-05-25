@@ -26,3 +26,7 @@ let g:deoplete#sources#omni#input_patterns = {
 " vim-monster
 let g:monster#completion#rcodetools#backend = "async_rct_complete"
 
+
+" Python
+" jedi-vim
+autocmd FileType python setlocal completeopt-=preview

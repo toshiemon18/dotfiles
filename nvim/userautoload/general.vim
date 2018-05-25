@@ -67,5 +67,5 @@ autocmd BufRead,BufNewFile,BufWritePre *.coffee set filetype=coffee
 " =======================
 "         環境系
 " =======================
-let g:python3_host_prog=expand($HOME.'/.pyenv/versions/3.5.1/bin/python')
+let g:python3_host_prog=expand($HOME.'/.pyenv/versions/3.6.5/bin/python')
 

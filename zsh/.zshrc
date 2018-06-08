@@ -2,7 +2,7 @@
 # General setting
 # ---------------------------
 plugins=(git ruby osx bundler brew rails emoji-clock)
-export EDITOR=vim           # エディタをVimに設定
+export EDITOR=nvim           # エディタをVimに設定
 export LANG=ja_JP.UTF-8     # 文字コードをUTF-8に設定
 export KCODE=u              # KCODEにUTF-8を設定
 export AUTOFEATURE=true     # autotestでfeatureを動かす
@@ -103,6 +103,13 @@ source ~/.zsh_simple_prompt
 # ---------------------------
 # Other setting
 # ---------------------------
+
+case ${OSTYPE} in
+    darwin*)
+        export PATH=$PATH:$HOME/myapp/bin
+        ;;
+esac
+
 [[ -d ~/.rbenv  ]] && \
   export PATH=${HOME}/.rbenv/bin:${PATH} && \
   eval "$(rbenv init - zsh)"

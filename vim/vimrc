@@ -3,8 +3,8 @@
 "  author: toshiemon18
 " ===========================
 
-source $PWD/rc/bundle_dein.vim
-source $PWD/rc/bundles.vim
-source $PWD/rc/filetypes.vim
-source $PWD/rc/general.vim
-source $PWD/rc/keybinds.vim
+source $HOME/dotfiles/vim/rc/bundle_dein.vim
+source $HOME/dotfiles/vim/rc/bundles.vim
+source $HOME/dotfiles/vim/rc/filetypes.vim
+source $HOME/dotfiles/vim/rc/general.vim
+source $HOME/dotfiles/vim/rc/keybinds.vim

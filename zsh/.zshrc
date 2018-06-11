@@ -63,6 +63,7 @@ alias py=python
 alias nswitch="source ~/.switch_proxy.zsh"
 nswitch
 
+
 # cdしたあとに絶対lsする
 function cd() {
   builtin cd $@ && ls;
@@ -131,6 +132,9 @@ export XDG_CONFIG_HOME=$HOME/.config
 # anyenv
 export PATH=$HOME/.anyenv/bin:$PATH
 eval "$(anyenv init -)"
+
+# Elixir interactive shell
+export ERL_AFLAGS="-kernel shell_history enable"
 
 export PATH="/usr/local/bin:$PATH"
 export LD_LIBRARY_PATH="/usr/local/lib"

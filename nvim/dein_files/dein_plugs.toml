@@ -8,6 +8,10 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
+# dein-ui
+[[plugins]]
+repo = 'wsdjeg/dein-ui.vim'
+
 # vimproc.vim
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
@@ -34,7 +38,7 @@ repo = 'Shougo/vimshell.vim'
 repo = 'Shougo/denite.nvim'
 on_cmd = 'Denite'
 if = 'has("nvim")'
-hook_source = 'source ~/.config/nvim/userautoload/plugin-denite.vim'
+# hook_source = 'source ~/.config/nvim/userautoload/plugin-denite.vim'
 
 # C-__でカーソル行をコメントアウト
 # tcomment.vim

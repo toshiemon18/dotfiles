@@ -98,14 +98,9 @@ on_i = 1
 # majutsushi/tagbar
 # [[plugins]]
 # repo = 'majutsushi/tagbar'
-#
+
 # [[plugins]]
 # repo = 'jsfaint/gen_tags.vim'
-#
-# 閉じ系を自動で補完してよしなにしてくれる
-# Townk/vim-autoclose
-# [[plugins]]
-# repo = 'Townk/vim-autoclose'
 
 # gtags.vim
 # [[plugins]]
@@ -114,7 +109,12 @@ on_i = 1
 # denite-gtags
 # [[plugins]]
 # repo = 'ozelentok/denite-gtags'
-#
+
+# 閉じ系を自動で補完してよしなにしてくれる
+# Townk/vim-autoclose
+# [[plugins]]
+# repo = 'Townk/vim-autoclose'
+
 # =================
 #   HTML
 #   CSS

@@ -38,7 +38,7 @@ repo = 'Shougo/vimshell.vim'
 repo = 'Shougo/denite.nvim'
 on_cmd = 'Denite'
 if = 'has("nvim")'
-# hook_source = 'source ~/.config/nvim/userautoload/plugin-denite.vim'
+hook_source = 'source ~/.config/nvim/userautoload/plugin-denite.vim'
 
 # C-__でカーソル行をコメントアウト
 # tcomment.vim
@@ -77,13 +77,9 @@ repo = 'tpope/vim-surround'
 [[plugins]]
 repo = 'osyo-manga/shabadou.vim'
 
-# 多機能な絞り込み検索
-[[plugins]]
-repo = 'ctrlpvim/ctrlp.vim'
-
 # neoterm
-# [[plugins]]
-# repo = 'kassio/neoterm'
+[[plugins]]
+repo = 'kassio/neoterm'
 
 # ======================
 # プログラミングサポート

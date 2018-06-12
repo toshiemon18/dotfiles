@@ -49,6 +49,8 @@ case ${OSTYPE} in
         ;;
 esac
 
+# git
+alias g=git
 # Vim関係
 alias v=nvim
 alias vi=nvim

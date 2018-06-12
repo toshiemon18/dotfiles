@@ -43,6 +43,7 @@ bindkey "^N" history-beginning-search-forward-end
 case ${OSTYPE} in
     darwin*)
         alias ls="ls -GF"
+        alias ctags='/usr/local/Cellar/ctags/5.8_1/bin/ctags'
         ;;
     linux*)
         alias ls="ls -F --color"
@@ -74,7 +75,7 @@ function cd() {
 # Look and feel setting
 # ---------------------------
 ### ZSH_THEME ###
-# source $ZSH/oh-my-zsh.sh
+source $ZSH/oh-my-zsh.sh
 
 # 区切り文字を変更
 autoload -Uz select-word-style

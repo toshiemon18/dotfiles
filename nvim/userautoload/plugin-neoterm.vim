@@ -5,8 +5,8 @@
 " settings
 " Auto return
 let g:neoterm_autoscroll=1
-" Open terminal mode buffer on horizontal position
-let g:neoterm_position='vertical'
+" Open terminal mode buffer on vertical position
+let g:neoterm_default_mod="vertical"
 
 " keymapping
 " Exit terminal mode with ESC

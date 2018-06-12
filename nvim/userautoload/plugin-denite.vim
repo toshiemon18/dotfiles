@@ -12,8 +12,8 @@ call denite#custom#map('normal', '<esc>', '<denite:quit>', 'noremap')
 call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>', 'noremap')
 call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>', 'noremap')
 "C-J,C-Kでsplitで開く
-call denite#custom#map('insert', '<C-j>', '<denite:do_action:split>', 'noremap')
-call denite#custom#map('insert', '<C-k>', '<denite:do_action:vsplit>', 'noremap')
+call denite#custom#map('insert', '<C-h>', '<denite:do_action:split>', 'noremap')
+call denite#custom#map('insert', '<C-v>', '<denite:do_action:vsplit>', 'noremap')
 
 " プロンプトの左端に表示される文字を指定
 call denite#custom#option('default', 'prompt', '\(・0・)/ >>>')

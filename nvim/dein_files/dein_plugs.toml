@@ -29,10 +29,6 @@ hook_post_update = '''
     let g:dein#plugin.build = cmd
 '''
 
-# vimshell.vim
-[[plugins]]
-repo = 'Shougo/vimshell.vim'
-
 # denite.vim
 [[plugins]]
 repo = 'Shougo/denite.nvim'
@@ -59,10 +55,6 @@ repo = 'itchyny/lightline.vim'
 # vim-arpeggio
 [[plugins]]
 repo = 'kana/vim-arpeggio'
-
-# quickrun.vim
-[[plugins]]
-repo = 'thinca/vim-quickrun'
 
 # vim-ref.vim
 [[plugins]]

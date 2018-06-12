@@ -1,1 +1,0 @@
-noremap vs :VimShell<CR>

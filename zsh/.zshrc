@@ -150,5 +150,5 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 #     zprof | less
 # fi
 
-# autoload -U compinit
+autoload -U compinit
 compinit -C

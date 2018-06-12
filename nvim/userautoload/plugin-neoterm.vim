@@ -5,8 +5,10 @@
 " settings
 " Auto return
 let g:neoterm_autoscroll=1
-" Open terminal mode buffer on vertical position
-let g:neoterm_default_mod="vertical"
+" Open terminal mode buffer on horizontal position
+let g:neoterm_default_mod="belowright"
+" Terminal split size
+let g:neoterm_size=15
 
 " keymapping
 " Exit terminal mode with ESC
@@ -19,4 +21,4 @@ nnoremap <silent> <Leader>rl :TREPLSendLine<CR>
 vnoremap <silent> <Leader>rs :TREPLSendSelection<CR>
 
 " Toggle vertical terminal
-nnoremap <silent> <Leader>tt :Ttoggle<CR><C-w><C-w>
+nnoremap <silent> <Leader>tt :Ttoggle<CR><C-w><C-w>i

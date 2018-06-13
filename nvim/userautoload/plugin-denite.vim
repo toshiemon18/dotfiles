@@ -3,10 +3,10 @@
 " =======================
 " Reference : http://replicity.hateblo.jp/entry/2017/06/03/140731
 
-
+" Denite buffer内でのkeymap
 "ESCキーでdeniteを終了
 call denite#custom#map('insert', '<esc>', '<denite:enter_mode:normal>', 'noremap')
-call denite#custom#map('insert', 'jk'   , '<denite:enter_mode:normal>', 'noremap')
+" call denite#custom#map('insert', 'jk'   , '<denite:enter_mode:normal>', 'noremap')
 call denite#custom#map('normal', '<esc>', '<denite:quit>', 'noremap')
 "C-N,C-Pで上下移動
 call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>', 'noremap')
@@ -21,19 +21,24 @@ call denite#custom#option('default', 'prompt', '\(・0・)/ >>>')
 call denite#custom#option('default', 'direction', 'top')
 
 " Denite用キーマップ
+nnoremap [denite] <Nop>
+nmap <Space>d [denite]
+
 " バッファ一覧
-noremap <C-P> :Denite buffer<CR>
+noremap [denite]p :Denite buffer<CR>
 " ファイル一覧
-noremap <C-N> :Denite -buffer-name=file file<CR>
+noremap [denite]n :Denite -buffer-name=file file<CR>
 " 最近使ったファイルの一覧
-noremap <C-Z> :Denite file_old<CR>
+noremap [denite]z :Denite file_old<CR>
 " カレントディレクトリ
-noremap <C-A> :Denite file_rec<CR>
+noremap [denite]a :Denite file_rec<CR>
 "バッファ一覧
-nnoremap sB :<C-u>Denite buffer -buffer-name=file<CR>
-"Denite でバッファ内検索
-nnoremap <silent> <Leader><C-f> :<C-u>Denite line<CR>
-nnoremap <silent> <expr><Space>l ":<C-u>DeniteWithCursorWord line<CR>"
+noremap [denite]b :<C-u>Denite buffer -buffer-name=file<CR>:
+" 開いているファイルのディレクトリ以下のファイル一覧
+nnoremap [denite]f :<C-u>DeniteBufferDir
+            \ -direction=topleft -cursor-wrap=true file file:new<CR>
+" /をDeniteに任せる
+nnoremap <silent> / :<C-u>Denite -buffer-name=search -auto-resize line<CR>
 
 " Sources
 " rails
@@ -47,8 +52,3 @@ nnoremap <silent> [rails]v :<C-u>Denite<Space>rails:view<Return>
 nnoremap <silent> [rails]h :<C-u>Denite<Space>rails:helper<Return>
 nnoremap <silent> [rails]r :<C-u>Denite<Space>rails:test<Return>
 nnoremap <silent> [rails]s :<C-u>Denite<Space>rails:spec<Return>
-
-" gtags
-nmap [denite] <Nop>
-map <C-j> [denite]
-nmap <silent> [denite]<C-D> :Denite -buffer-name=gtags_completion gtags_completion<CR>

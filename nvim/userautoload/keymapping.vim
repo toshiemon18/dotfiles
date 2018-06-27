@@ -32,3 +32,6 @@ noremap <S-l> $
 
 " :UpdateRemotePlugins
 nnoremap <Space>ur :UpdateRemotePlugins<CR>
+
+" :DeinUpdate
+nnoremap <Space>du :DeinUpdate<CR>

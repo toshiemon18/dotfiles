@@ -12,7 +12,7 @@ let g:deoplete#enable_refresh_always = 0
 let g:deoplete#enable_smart_case = 1
 let g:deoplete#file#enable_buffer_path = 1
 let g:deoplete#max_list = 10000
-set completeopt-=preview
+" set completeopt-=preview
 
 let g:deoplete#sources#omni#input_patterns = {
     \ "ruby" : '[^. *\t]\.\w*\|\h\w*::',
@@ -24,9 +24,14 @@ let g:deoplete#sources#omni#input_patterns = {
 " =======================
 " ruby
 " vim-monster
-let g:monster#completion#rcodetools#backend = "async_rct_complete"
+" let g:monster#completion#solargraph#backend = "async_solargraph_suggest"
+" let g:monster#completion#backend = "solargraph"
 
 
 " Python
 " jedi-vim
 autocmd FileType python setlocal completeopt-=preview
+
+let g:LangurageClient_serverCommands={
+    \ 'ruby': ['tcp://localhost:7658']
+    \}

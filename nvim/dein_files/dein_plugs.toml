@@ -94,30 +94,6 @@ repo = 'Shougo/deoplete.nvim'
 if = 'has("nvim")'
 on_i = 1
 
-# 開いたファイルの構造を表示してくれる
-# クラス, メソッド, フィールド等
-# 新規ファイルタイプの設定を追加する時は下記参照
-# https://github.com/majutsushi/tagbar/wiki
-# majutsushi/tagbar
-# [[plugins]]
-# repo = 'majutsushi/tagbar'
-
-# [[plugins]]
-# repo = 'jsfaint/gen_tags.vim'
-
-# gtags.vim
-# [[plugins]]
-# repo = 'lighttiger2505/gtags.vim'
-
-# denite-gtags
-# [[plugins]]
-# repo = 'ozelentok/denite-gtags'
-
-# 閉じ系を自動で補完してよしなにしてくれる
-# Townk/vim-autoclose
-# [[plugins]]
-# repo = 'Townk/vim-autoclose'
-
 # =================
 #   HTML
 #   CSS

@@ -31,7 +31,8 @@ let g:deoplete#sources#omni#input_patterns = {
 " Python
 " jedi-vim
 autocmd FileType python setlocal completeopt-=preview
-
-let g:LangurageClient_serverCommands={
-    \ 'ruby': ['tcp://localhost:7658']
-    \}
+let g:deoplete#sources#jedi#enable_cache=1
+let g:jedi#completions_enabled=0
+let g:jedi#documentation_command = "<F9><F10>"
+let g:jedi#auto_vim_configuration = 0
+set completeopt=menuone,longest

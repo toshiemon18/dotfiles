@@ -44,6 +44,9 @@ set wildmenu
 set wildmode=full
 autocmd BufWritePre * :%s/\s\+$//ge
 
+" ctontabのtempファイル作成先を変更
+set backupskip=/tmp/*,/private/tmp/*
+
 set mouse=h
 set mousehide
 
@@ -60,7 +63,7 @@ autocmd CursorHoldI * wall
 set guifont=Ricty\ 14
 set guifontwide=Ricty\ 14
 
-set autoindent smartindent expandtab tabstop=4 softtabstop=4 shiftwidth=4
+" set autoindent smartindent expandtab tabstop=4 softtabstop=4 shiftwidth=4
 " *.coffeeはcoffeescriptとして扱う
 autocmd BufRead,BufNewFile,BufWritePre *.coffee set filetype=coffee
 

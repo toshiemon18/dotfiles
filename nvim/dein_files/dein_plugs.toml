@@ -150,3 +150,7 @@ repo = 'cespare/vim-toml'
 
 [[plugins]]
 repo = 'tyru/open-browser.vim'
+
+# wakatime
+[[plugins]]
+repo = 'wakatime/vim-wakatime'

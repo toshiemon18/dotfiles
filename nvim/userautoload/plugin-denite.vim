@@ -6,11 +6,10 @@
 " Denite buffer内でのkeymap
 "ESCキーでdeniteを終了
 call denite#custom#map('insert', '<esc>', '<denite:enter_mode:normal>', 'noremap')
-" call denite#custom#map('insert', 'jk'   , '<denite:enter_mode:normal>', 'noremap')
 call denite#custom#map('normal', '<esc>', '<denite:quit>', 'noremap')
 "C-N,C-Pで上下移動
-call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>', 'noremap')
-call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>', 'noremap')
+call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>', 'noremap')
+call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
 "C-J,C-Kでsplitで開く
 call denite#custom#map('insert', '<C-h>', '<denite:do_action:split>', 'noremap')
 call denite#custom#map('insert', '<C-v>', '<denite:do_action:vsplit>', 'noremap')
@@ -52,3 +51,10 @@ nnoremap <silent> [rails]v :<C-u>Denite<Space>rails:view<Return>
 nnoremap <silent> [rails]h :<C-u>Denite<Space>rails:helper<Return>
 nnoremap <silent> [rails]r :<C-u>Denite<Space>rails:test<Return>
 nnoremap <silent> [rails]s :<C-u>Denite<Space>rails:spec<Return>
+
+" denite-git
+noremap [denite-git] <Nop>
+nmap 		<Space>g [denite-git]
+nnoremap [denite-git]s :<C-u>Denite<Space>gitstatus<CR>
+nnoremap [denite-git]c :<C-u>Denite<Space>gitchanged<CR>
+nnoremap [denite-git]b :<C-u>Denite<Space>gitbranch<CR>

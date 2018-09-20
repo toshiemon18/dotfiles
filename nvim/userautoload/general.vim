@@ -71,4 +71,4 @@ autocmd BufRead,BufNewFile,BufWritePre *.coffee set filetype=coffee
 "         環境系
 " =======================
 let g:ruby_host_prog = expand($HOME.'/.rbenv/shims/ruby')
-let g:python3_host_prog=expand('~/.pyenv/versions/neovim/bin/python')
+let g:python3_host_prog=expand('~/.pyenv/shims/python')

@@ -1,13 +1,6 @@
-" File:       monokai.vim
-" Maintainer: Crusoe Xia (crusoexia)
-" URL:        https://github.com/crusoexia/vim-monokai
+" File:       modikai.vim
+" Maintainer: Toshiaki Seino (toshiemon18)
 " License:    MIT
-"
-" The colour palette is from http://www.colourlovers.com/
-" The original code is from https://github.com/w0ng/vim-hybrid
-
-" Initialisation
-" --------------
 
 if !has("gui_running") && &t_Co < 256
   finish

@@ -26,9 +26,10 @@ function! s:MoveToBufferAsStart()
     call feedkeys("\<C-w>")
     call feedkeys("\<C-w>")
 endfunction
+call s:MoveToBufferAsStart()
 
 " Vim起動時にNERDTreeを開き, Bufferにカーソルを移動する
-" autocmd vimenter * NERDTree
+autocmd vimenter * NERDTree
 " if argc() != 0
 "     call s:MoveToBufferAsStart()
 " endif

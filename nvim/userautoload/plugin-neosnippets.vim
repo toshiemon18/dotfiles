@@ -3,7 +3,7 @@
 " =======================
 
 " Enable snipMate compatibility feature.
-let g:neosnippet#enable_snipmate_compatibility = 0
+let g:neosnippet#enable_snipmate_compatibility = 1
 let g:neosnippet#snippets_directory='~/.config/nvim/dein/repos/github.com/Shougo/neosnippet-snippets/neosnippets'
 
 " 自分用 snippet ファイルの場所

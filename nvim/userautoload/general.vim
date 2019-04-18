@@ -40,6 +40,7 @@ set modifiable
 set write
 set undodir=$XDG_CONFIG_HOME/nvim/undodir
 set tw=0
+set conceallevel=0
 set wildmenu
 set wildmode=full
 autocmd BufWritePre * :%s/\s\+$//ge
@@ -71,4 +72,4 @@ autocmd BufRead,BufNewFile,BufWritePre *.coffee set filetype=coffee
 "         環境系
 " =======================
 let g:ruby_host_prog = expand($HOME.'/.rbenv/shims/ruby')
-let g:python3_host_prog=expand('~/.pyenv/shims/python')
+let g:python3_host_prog=expand('/Users/SeinoToshiaki/.pyenv/shims/python')

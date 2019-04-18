@@ -15,14 +15,20 @@ let g:neoterm_autojump=1
 let neoterm_autoinsert=1
 
 " keymapping
+noremap [neoterm] <Nop>
+nmap <Space>n [neoterm]
+
 " Exit terminal mode with ESC
 tnoremap <silent> <ESC> <C-\><C-n>
 " Running current file
-nnoremap <silent> <Leader>rf :TREPLSendFile<CR>
+nnoremap <silent> [neoterm]rf :TREPLSendFile<CR>
 " Running current line on normal mode
-nnoremap <silent> <Leader>rl :TREPLSendLine<CR>
+nnoremap <silent> [neoterm]rl :TREPLSendLine<CR>
 " Running selected lines on visual mode
-vnoremap <silent> <Leader>rs :TREPLSendSelection<CR>
+vnoremap <silent> [neoterm]rs :TREPLSendSelection<CR>
+
+" Send make command
+nnoremap <silent> [neoterm]m :T make<CR>:echo("Execute command: make")<CR>
 
 " Toggle vertical terminal
-nnoremap <silent> <Leader>tt :Ttoggle<CR>
+nnoremap <silent> [neoterm]tt :Ttoggle<CR>

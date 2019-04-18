@@ -187,6 +187,10 @@ repo = 'kannokanno/previm'
 on_ft = ['gmarkdown', 'markdown', 'md']
 
 # =================
+#   TeX
+# =================
+
+# =================
 # 	VimScript
 # =================
 # neco-vim

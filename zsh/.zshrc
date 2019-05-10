@@ -65,11 +65,40 @@ alias py=python
 alias nswitch="source ~/.switch_proxy.zsh"
 # nswitch
 
+# ---------------------------
+# Own functions
+# ---------------------------
+
+# Enterだけ入力したらlsとgit statusを叩く
+function do_enter() {
+    if [ -n "$BUFFER" ]; then
+        zle accept-line
+        return 0
+    fi
+    echo
+    ls
+    # ↓おすすめ
+    # ls_abbrev
+    if [ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" = 'true' ]; then
+        echo
+        echo -e "\e[0;33m--- git status ---\e[0m"
+        git status -sb
+    fi
+    zle reset-prompt
+    return 0
+}
 
 # cdしたあとに絶対lsする
 function cd() {
   builtin cd $@ && ls;
 }
+
+# ---------------------------
+# Key binding
+# ---------------------------
+# Enterだけ入力するとdo_enter関数を走らせる
+zle -N do_enter
+bindkey '^m' do_enter
 
 # ---------------------------
 # Look and feel setting
@@ -102,48 +131,6 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 # プロンプトに色を設定
 autoload -U colors; colors
 source ~/.zsh_simple_prompt
-
-# ---------------------------
-# Other setting
-# ---------------------------
-
-case ${OSTYPE} in
-    darwin*)
-        export PATH=$PATH:$HOME/myapp/bin
-        ;;
-esac
-
-[[ -d ~/.rbenv  ]] && \
-  export PATH=${HOME}/.rbenv/bin:${PATH} && \
-  eval "$(rbenv init - zsh --no-rehash)"
-
-# pyenv-virtualenv
-export PYENV_ROOT=${HOME}/.pyenv
-if [ -d "${PYENV_ROOT}" ]; then
-    export PATH=${PYENV_ROOT}/bin:$PATH
-    eval "$(pyenv init - --no-rehash)"
-    eval "$(pyenv virtualenv-init -)"
-fi
-
-# direnv
-eval "$(direnv hook zsh)"
-
-# XSG_CONFIG_HOME
-export XDG_CONFIG_HOME=$HOME/.config
-
-# anyenv
-export PATH=$HOME/.anyenv/bin:$PATH
-eval "$(anyenv init - --no-rehash)"
-
-# Elixir interactive shell
-export ERL_AFLAGS="-kernel shell_history enable"
-
-export PATH="/usr/local/bin:$PATH"
-export LD_LIBRARY_PATH="/usr/local/lib"
-export PATH="/usr/local/sbin:$PATH"
-
-# PostgresSQL
-export PGDATA=/usr/local/var/postgres
 
 fpath=(/usr/local/share/zsh-completions $fpath)
 

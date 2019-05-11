@@ -39,27 +39,34 @@ bindkey "^N" history-beginning-search-forward-end
 # ---------------------------
 # Alias setting
 # ---------------------------
-#### Aliases ####
+
+# git
+alias g=git
+
+# Vim関係
+alias v=nvim
+alias vi=nvim
+alias vim=nvim
+
+# ls
+alias sl=ls
 case ${OSTYPE} in
     darwin*)
         alias ls="ls -GF"
-        alias ctags='/usr/local/Cellar/ctags/5.8_1/bin/ctags'
         ;;
     linux*)
         alias ls="ls -F --color"
         ;;
 esac
+alias la="ls -al"
+# usage : $ lag hogehoge
+alias lag="ls -la | grep"
 
-# git
-alias g=git
-# Vim関係
-alias v=nvim
-alias vi=nvim
-alias vim=nvim
-# ls
-alias sl=ls
 # Python
 alias py=python
+
+# fzf
+alias fzf="fzf --reverse"
 
 # 学内プロキシ絶対許さねえ
 alias nswitch="source ~/.switch_proxy.zsh"
@@ -71,21 +78,36 @@ alias nswitch="source ~/.switch_proxy.zsh"
 
 # Enterだけ入力したらlsとgit statusを叩く
 function do_enter() {
-    if [ -n "$BUFFER" ]; then
-        zle accept-line
-        return 0
-    fi
-    echo
-    ls
-    # ↓おすすめ
-    # ls_abbrev
-    if [ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" = 'true' ]; then
-        echo
-        echo -e "\e[0;33m--- git status ---\e[0m"
-        git status -sb
-    fi
-    zle reset-prompt
-    return 0
+	if [ -n "$BUFFER" ]; then
+		zle accept-line
+		return 0
+	fi
+
+	echo
+	ls
+	# ls_abbrev
+
+	if [ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" = 'true' ]; then
+		echo
+		echo -e "\e[0;33m--- git status ---\e[0m"
+		git status -sb
+	fi
+	zle reset-prompt
+	return 0
+}
+
+# fbr - checkout git branch (powered fzf)
+function fbr() {
+	if [ -z "$(which fzf)" ]; then
+		echo "Please install fzf -- fzf does not exist"
+		return -1
+	fi
+
+	local branches branch
+	branches=$(git branch --all | grep -v HEAD) &&
+	branch=$(echo "$branches" |
+	fzf -d $(( 2 + $(wc -l <<<"$branches") )) +m) &&
+	git checkout $(echo "$branch" | awk '{print $1}' | sed "s#remotes/[^/]*/##")
 }
 
 # cdしたあとに絶対lsする
@@ -99,6 +121,9 @@ function cd() {
 # Enterだけ入力するとdo_enter関数を走らせる
 zle -N do_enter
 bindkey '^m' do_enter
+
+# fzf keybindinf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # ---------------------------
 # Look and feel setting
@@ -140,3 +165,4 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 
 autoload -U compinit
 compinit -C
+

@@ -110,6 +110,14 @@ function fbr() {
 	git checkout $(echo "$branch" | awk '{print $1}' | sed "s#remotes/[^/]*/##")
 }
 
+# fcd - cd to selected directory in fzf interface
+function fcd() {
+	local dir
+	dir=$(find ${1:-.} -path '*/\.*' -prune \
+                  -o -type d -print 2> /dev/null | fzf +m) &&
+	cd "$dir"
+}
+
 # cdしたあとに絶対lsする
 function cd() {
   builtin cd $@ && ls;

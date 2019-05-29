@@ -160,3 +160,7 @@ repo = 'tyru/open-browser.vim'
 # wakatime
 [[plugins]]
 repo = 'wakatime/vim-wakatime'
+
+[[plugins]]
+repo = 'iyuuya/denite-rails'
+

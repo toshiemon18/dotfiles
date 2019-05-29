@@ -19,12 +19,6 @@ on_ft = ['ruby', 'slim']
 repo = 'tpope/vim-rails'
 on_ft = ['ruby', 'slim', 'coffee', 'javascript']
 
-# denite-rails
-# deniteのrails source
-[[plugins]]
-repo = '5t111111/denite-rails'
-on_ft = ['ruby', 'slim']
-
 # rspec関係
 [[plugins]]
 repo = 'Keithbsmiley/rspec.vim'

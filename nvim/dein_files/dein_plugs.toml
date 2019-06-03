@@ -17,7 +17,7 @@ repo = 'wsdjeg/dein-ui.vim'
 repo = 'Shougo/vimproc.vim'
 build = 'make'
 hook_post_update = '''
-    if cmd = dein#util#is_windows()
+    if dein#util#is_windows()
         let cmd = 'tools\\update-dll-mingw'
     elseif dein#util#_is_cygwin()
         let cmd = 'make -f make_cygwin.mak'
@@ -96,6 +96,11 @@ repo = 'Shougo/neosnippet-snippets'
 repo = 'Shougo/deoplete.nvim'
 if = 'has("nvim")'
 on_i = 1
+
+[[plugins]]
+repo = 'autozimu/LanguageClient-neovim'
+rev = 'next'
+build = 'sh install.sh'
 
 # =================
 #   HTML

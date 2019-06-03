@@ -101,6 +101,7 @@ on_i = 1
 repo = 'autozimu/LanguageClient-neovim'
 rev = 'next'
 build = 'sh install.sh'
+depends = ['deoplete.nvim']
 
 # =================
 #   HTML

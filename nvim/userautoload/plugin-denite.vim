@@ -3,28 +3,43 @@
 " =======================
 " Reference : http://replicity.hateblo.jp/entry/2017/06/03/140731
 
-" Denite buffer内でのkeymap
-"ESCキーでdeniteを終了
-call denite#custom#map('insert', '<esc>', '<denite:enter_mode:normal>', 'noremap')
-call denite#custom#map('normal', '<esc>', '<denite:quit>', 'noremap')
-"C-N,C-Pで上下移動
-call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>', 'noremap')
-call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
-"C-J,C-Kでsplitで開く
-call denite#custom#map('insert', '<C-h>', '<denite:do_action:split>', 'noremap')
-call denite#custom#map('insert', '<C-v>', '<denite:do_action:vsplit>', 'noremap')
+autocmd FileType denite call s:denite_my_settings()
 
-" プロンプトの左端に表示される文字を指定
-call denite#custom#option('default', 'prompt', '\(・0・)/ >>>')
-" deniteの起動位置をtopに変更
-call denite#custom#option('default', 'direction', 'top')
+function! s:denite_my_settings() abort
+	nnoremap <silent><buffer><expr> <CR>  denite#do_map('do_action')
+	nnoremap <silent><buffer><expr> d denite#do_map('do_action', 'delete')
+	nnoremap <silent><buffer><expr> p denite#do_map('do_action', 'preview')
+	nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
+	nnoremap <silent><buffer><expr> <Tab>   denite#do_map('choose_action')
 
-" Denite用キーマップ
+	" ESCでdeniteからquit
+	nnoremap <silent><buffer><expr> <ESC> denite#do_map('quit')
+
+	" C-j, C-kでbuffer内を移動
+	nnoremap <silent><buffer> <C-j> j
+	nnoremap <silent><buffer> <C-k> k
+	nnoremap <silent><buffer> <C-h> denite#do_map('do_action', 'split')
+	nnoremap <silent><buffer> <C-v> denite#do_map('do_action', 'vsplit')
+endfunction
+
+autocmd FileType denite-filter call s:denite_filter_my_settings()
+function! s:denite_filter_my_settings() abort
+	" ESCでdeniteからquit
+	nnoremap <silent><buffer><expr> <ESC> denite#do_map('quit')
+	inoremap <silent><buffer><expr> <ESC> denite#do_map('quit')
+	" nnoremap <silent><buffer><expr> q denite#do_map('quit')
+	inoremap <silent><buffer> <C-j>   <Esc><C-w>p:call cursor(line('.')+1,0)<CR><C-w>pA
+	inoremap <silent><buffer> <C-k>   <Esc><C-w>p:call cursor(line('.')-1,0)<CR><C-w>pA
+endfunction
+
+
+" " Denite用キーマップ
 nnoremap [denite] <Nop>
 nmap <Space>d [denite]
 
 " バッファ一覧
 noremap [denite]p :Denite buffer<CR>
+
 " ファイル一覧
 noremap [denite]n :Denite -buffer-name=file file<CR>
 " 最近使ったファイルの一覧
@@ -35,7 +50,7 @@ noremap [denite]a :Denite file_rec<CR>
 noremap [denite]b :<C-u>Denite buffer -buffer-name=file<CR>:
 " 開いているファイルのディレクトリ以下のファイル一覧
 nnoremap [denite]f :<C-u>DeniteBufferDir
-            \ -direction=topleft -cursor-wrap=true file file:new<CR>
+            \ -direction=topleft file file:new<CR>
 " /をDeniteに任せる
 nnoremap <silent> / :<C-u>Denite -buffer-name=search -auto-resize line<CR>
 

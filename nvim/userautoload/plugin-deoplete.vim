@@ -19,6 +19,8 @@ let g:deoplete#sources#omni#input_patterns = {
     \ "python" : '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
     \}
 
+call deoplete#custom#source('languageClient', 'min_pattern_length', '2')
+
 " =======================
 "        sources
 " =======================

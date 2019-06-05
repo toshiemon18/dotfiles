@@ -14,6 +14,7 @@ function! s:denite_my_settings() abort
 
 	" ESCでdeniteからquit
 	nnoremap <silent><buffer><expr> <ESC> denite#do_map('quit')
+	nnoremap <silent><buffer><expr> q denite#do_map('quit')
 
 	" C-j, C-kでbuffer内を移動
 	nnoremap <silent><buffer> <C-j> j
@@ -32,14 +33,20 @@ function! s:denite_filter_my_settings() abort
 	inoremap <silent><buffer> <C-k>   <Esc><C-w>p:call cursor(line('.')-1,0)<CR><C-w>pA
 endfunction
 
+let s:denite_win_width_per = 0.85
+let s:denite_win_height_per = 0.7
+
+call denite#custom#option('default', {
+			\ 'split': 'floating',
+			\ 'winwidth': float2nr(&columns * s:denite_win_width_per),
+			\ 'wincol': float2nr((&columns - (&columns * s:denite_win_width_per)) / 2),
+			\ 'winheight': float2nr(&lines * s:denite_win_height_per),
+			\ 'winrow': float2nr((&lines - (&lines* s:denite_win_height_per)) / 2),
+			\})
 
 " " Denite用キーマップ
 nnoremap [denite] <Nop>
 nmap <Space>d [denite]
-
-" バッファ一覧
-noremap [denite]p :Denite buffer<CR>
-
 " ファイル一覧
 noremap [denite]n :Denite -buffer-name=file file<CR>
 " 最近使ったファイルの一覧
@@ -47,7 +54,7 @@ noremap [denite]z :Denite file_old<CR>
 " カレントディレクトリ
 noremap [denite]a :Denite file_rec<CR>
 "バッファ一覧
-noremap [denite]b :<C-u>Denite buffer -buffer-name=file<CR>:
+noremap [denite]b :<C-u>Denite buffer -buffer-name=buffer<CR>
 " 開いているファイルのディレクトリ以下のファイル一覧
 nnoremap [denite]f :<C-u>DeniteBufferDir
             \ -direction=topleft file file:new<CR>
@@ -73,3 +80,4 @@ nmap 		<Space>g [denite-git]
 nnoremap [denite-git]s :<C-u>Denite<Space>gitstatus<CR>
 nnoremap [denite-git]c :<C-u>Denite<Space>gitchanged<CR>
 nnoremap [denite-git]b :<C-u>Denite<Space>gitbranch<CR>
+nnoremap [denite-git]l  :<C-u>Denite<Space>gitlog<CR>

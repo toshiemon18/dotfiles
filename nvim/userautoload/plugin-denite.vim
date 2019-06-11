@@ -6,31 +6,36 @@
 autocmd FileType denite call s:denite_my_settings()
 
 function! s:denite_my_settings() abort
-	nnoremap <silent><buffer><expr> <CR>  denite#do_map('do_action')
+	" inoremap <silent><buffer><expr> <BS> denite#do_map('move_up_path')
+	nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
 	nnoremap <silent><buffer><expr> d denite#do_map('do_action', 'delete')
 	nnoremap <silent><buffer><expr> p denite#do_map('do_action', 'preview')
 	nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
-	nnoremap <silent><buffer><expr> <Tab>   denite#do_map('choose_action')
+	nnoremap <silent><buffer><expr> a denite#do_map('open_filter_buffer')
+	nnoremap <silent><buffer><expr> <Tab> denite#do_map('choose_action')
+	nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
 
 	" ESCでdeniteからquit
-	nnoremap <silent><buffer><expr> <ESC> denite#do_map('quit')
 	nnoremap <silent><buffer><expr> q denite#do_map('quit')
+	nnoremap <silent><buffer><expr> <ESC> denite#do_map('quit')
 
 	" C-j, C-kでbuffer内を移動
 	nnoremap <silent><buffer> <C-j> j
 	nnoremap <silent><buffer> <C-k> k
-	nnoremap <silent><buffer> <C-h> denite#do_map('do_action', 'split')
-	nnoremap <silent><buffer> <C-v> denite#do_map('do_action', 'vsplit')
+	nnoremap <silent><buffer><expr> <C-h> denite#do_map('do_action', 'split')
+	nnoremap <silent><buffer><expr> <C-v> denite#do_map('do_action', 'vsplit')
 endfunction
 
 autocmd FileType denite-filter call s:denite_filter_my_settings()
 function! s:denite_filter_my_settings() abort
+	" inoremap <silent><buffer><expr> <BS> denite#do_map('move_up_path')
+
 	" ESCでdeniteからquit
-	nnoremap <silent><buffer><expr> <ESC> denite#do_map('quit')
-	inoremap <silent><buffer><expr> <ESC> denite#do_map('quit')
-	" nnoremap <silent><buffer><expr> q denite#do_map('quit')
-	inoremap <silent><buffer> <C-j>   <Esc><C-w>p:call cursor(line('.')+1,0)<CR><C-w>pA
-	inoremap <silent><buffer> <C-k>   <Esc><C-w>p:call cursor(line('.')-1,0)<CR><C-w>pA
+	nnoremap <silent><buffer><expr> <ESC> denite#do_map('move_up_path')
+	inoremap <silent><buffer><expr> <ESC> denite#do_map('move_up_path')
+
+	inoremap <silent><buffer> <C-j> <Esc><C-w>p:call cursor(line('.')+1,0)<CR><C-w>pA
+	inoremap <silent><buffer> <C-k> <Esc><C-w>p:call cursor(line('.')-1,0)<CR><C-w>pA
 endfunction
 
 let s:denite_win_width_per = 0.85
@@ -44,22 +49,34 @@ call denite#custom#option('default', {
 			\ 'winrow': float2nr((&lines - (&lines* s:denite_win_height_per)) / 2),
 			\})
 
+call denite#custom#option('_', {
+			\ 'prompt': '( ˘ω˘) >>> ',
+			\ 'cursor_shape': v:true,
+			\ 'cursor_wrap': v:true,
+			\ 'highlight_filter_background': 'DeniteFilter',
+			\ 'highlight_matched_char': 'Underlined',
+			\ 'start_filter': v:true,
+			\ 'statusline': v:false,
+			\ 'split': 'floating'
+			\})
+
 " " Denite用キーマップ
 nnoremap [denite] <Nop>
 nmap <Space>d [denite]
 " ファイル一覧
-noremap [denite]n :Denite -buffer-name=file file<CR>
+noremap [denite]n :Denite file<CR>
 " 最近使ったファイルの一覧
-noremap [denite]z :Denite file_old<CR>
+noremap [denite]z :Denite file/old<CR>
 " カレントディレクトリ
-noremap [denite]a :Denite file_rec<CR>
+noremap [denite]a :Denite file/rec<CR>
+" カレントディレクトリ以下+buffer内から探す
+noremap [denite]x :Denite file/rec buffer<CR>
 "バッファ一覧
 noremap [denite]b :<C-u>Denite buffer -buffer-name=buffer<CR>
 " 開いているファイルのディレクトリ以下のファイル一覧
-nnoremap [denite]f :<C-u>DeniteBufferDir
-            \ -direction=topleft file file:new<CR>
+nnoremap [denite]f :<C-u>DeniteBufferDir -direction=topleft file file:new<CR>
 " /をDeniteに任せる
-nnoremap <silent> / :<C-u>Denite -buffer-name=search -auto-resize line<CR>
+" nnoremap <silent> / :<C-u>Denite -buffer-name=search -auto-resize line<CR>
 
 " Sources
 " rails

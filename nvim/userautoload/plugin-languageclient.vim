@@ -22,4 +22,5 @@ nnoremap <silent> <Space>lf :call LanguageClient_textDocument_formatting()<CR>
 " ===============
 " Filetype Confs
 " ===============
-autocmd FileType ruby setlcoal omnifunc=LanguageClient#complete
+" autocmd FileType ruby setlcoal omnifunc=LanguageClient#complete
+" autocmd FileType slim setlocal omnifunc=LanguageClient#complete

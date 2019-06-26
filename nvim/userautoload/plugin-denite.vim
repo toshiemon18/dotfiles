@@ -34,6 +34,9 @@ function! s:denite_filter_my_settings() abort
 	nnoremap <silent><buffer><expr> <ESC> denite#do_map('move_up_path')
 	inoremap <silent><buffer><expr> <ESC> denite#do_map('move_up_path')
 
+	inoremap <silent><buffer> <C-j> <Down>
+	inoremap <silent><buffer> <C-k> <Up>
+
 	inoremap <silent><buffer> <C-j> <Esc><C-w>p:call cursor(line('.')+1,0)<CR><C-w>pA
 	inoremap <silent><buffer> <C-k> <Esc><C-w>p:call cursor(line('.')-1,0)<CR><C-w>pA
 endfunction
@@ -76,7 +79,7 @@ noremap [denite]b :<C-u>Denite buffer -buffer-name=buffer<CR>
 " 開いているファイルのディレクトリ以下のファイル一覧
 nnoremap [denite]f :<C-u>DeniteBufferDir -direction=topleft file file:new<CR>
 " /をDeniteに任せる
-" nnoremap <silent> / :<C-u>Denite -buffer-name=search -auto-resize line<CR>
+nnoremap <silent> / :<C-u>Denite -buffer-name=search -auto-resize line<CR>
 
 " Sources
 " rails

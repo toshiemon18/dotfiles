@@ -41,8 +41,8 @@ function! s:denite_filter_my_settings() abort
 	inoremap <silent><buffer> <C-k> <Esc><C-w>p:call cursor(line('.')-1,0)<CR><C-w>pA
 endfunction
 
-let s:denite_win_width_per = 0.85
-let s:denite_win_height_per = 0.7
+let s:denite_win_width_per = 0.4
+let s:denite_win_height_per = 0.35
 
 call denite#custom#option('default', {
 			\ 'split': 'floating',

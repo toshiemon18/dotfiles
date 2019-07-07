@@ -8,7 +8,7 @@ let g:neoterm_autoscroll=1
 " Open terminal mode buffer on horizontal position
 let g:neoterm_default_mod="belowright"
 " Terminal split size
-let g:neoterm_size=15
+let g:neoterm_size=25
 " Auto-jump
 let g:neoterm_autojump=1
 " Auto-insert
@@ -16,7 +16,7 @@ let neoterm_autoinsert=1
 
 " keymapping
 noremap [neoterm] <Nop>
-nmap <Space>n [neoterm]
+nmap <C-t> [neoterm]
 
 " Exit terminal mode with ESC
 tnoremap <silent> <ESC> <C-\><C-n>
@@ -31,4 +31,4 @@ vnoremap <silent> [neoterm]rs :TREPLSendSelection<CR>
 nnoremap <silent> [neoterm]m :T make<CR>:echo("Execute command: make")<CR>
 
 " Toggle vertical terminal
-nnoremap <silent> [neoterm]tt :Ttoggle<CR>
+nnoremap <silent> [neoterm]<C-T> :Ttoggle<CR>

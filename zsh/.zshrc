@@ -170,6 +170,66 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 # if (which zprof > /dev/null) ;then
 #     zprof | less
 # fi
+# ---------------------------
+# 環境設定
+# ---------------------------
+if [ -e "$HOME/app/nvim/bin/nvim" ]; then
+	export PATH="$PATH:$HOME/app/nvim/bin/nvim"
+	alias nvim="$HOME/app/nvim/bin/nvim"
+fi
+
+case ${OSTYPE} in
+    darwin*)
+        export PATH="$PATH":"$HOME/myapp/bin"
+				# for MySQL@5.7
+				export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+				export LDFLAGS="-L/usr/local/opt/mysql@5.7/lib:$LDFLAGS"
+				export CPPFLAGS="-I/usr/loca/opt/mysql@5.7/include:$CPPFLAGS"
+
+				# for Homebrew Python3
+				alias supython="sudo -H /usr/local/bin/python3"
+				alias supip="sudo -H /usr/local/bin/pip3"
+        ;;
+esac
+
+[[ -d ~/.rbenv  ]] && \
+  export PATH=${HOME}/.rbenv/bin:${PATH} && \
+  eval "$(rbenv init - zsh)"
+
+# pyenv-virtualenv
+export PYENV_ROOT=${HOME}/.pyenv
+if [ -d "${PYENV_ROOT}" ]; then
+    export PATH=${PYENV_ROOT}/bin:$PATH
+    eval "$(pyenv init - --no-rehash)"
+    eval "$(pyenv virtualenv-init -)"
+fi
+
+# direnv
+eval "$(direnv hook zsh)"
+
+# XSG_CONFIG_HOME
+export XDG_CONFIG_HOME=$HOME/.config
+
+# anyenv
+export PATH=$HOME/.anyenv/bin:$PATH
+eval "$(anyenv init - --no-rehash)"
+
+# Elixir interactive shell
+export ERL_AFLAGS="-kernel shell_history enable"
+
+export PATH="/usr/local/bin:$PATH"
+export LD_LIBRARY_PATH="/usr/local/lib"
+export PATH="/usr/local/sbin:$PATH"
+
+# PostgresSQL
+export PGDATA=/usr/local/var/postgres
+
+# fzf
+export FZF_CTRL_T_COMMAND="/usr/locl/bin/fzf"
+
+export PATH="$PATH:/usr/local/opt/node@10/bin"
+
+export PATH="/usr/local/opt/avr-gcc@8/bin:$PATH"
 
 autoload -U compinit
 compinit -C

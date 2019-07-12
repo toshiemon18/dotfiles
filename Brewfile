@@ -9,7 +9,7 @@ brew avr-gcc@8
 brew avrdude
 brew bchunk
 brew boost
-brew boost@1.55
+brew boost@2.56
 brew brew-file
 brew cairo
 brew carthage
@@ -174,6 +174,7 @@ cask chromedriver
 cask visual-studio-code
 cask java
 cask xquartz
+cask google-chrome
 
 # App Store applications
 appstore 405399194  (1.26.1)

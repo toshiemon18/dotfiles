@@ -121,6 +121,9 @@ rev = 'next'
 build = 'sh install.sh'
 depends = ['deoplete.nvim']
 
+[[plugins]]
+repo = 'w0rp/ale'
+
 # =================
 #   HTML
 #   CSS

@@ -167,6 +167,7 @@ brew xz
 brew zlib
 brew zsh
 brew zstd
+brew the_silver_searcher
 
 # Other Cask applications
 cask basictex

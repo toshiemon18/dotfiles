@@ -36,6 +36,10 @@ on_cmd = 'Denite'
 if = 'has("nvim")'
 hook_source = 'source ~/.config/nvim/userautoload/plugin-denite.vim'
 
+# ag.vim
+[[plugins]]
+repo = 'rking/ag.vim'
+
 [[plugins]]
 repo = 'Shougo/defx.nvim'
 

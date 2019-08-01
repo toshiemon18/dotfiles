@@ -63,6 +63,31 @@ call denite#custom#option('_', {
 			\ 'split': 'floating'
 			\})
 
+call denite#custom#var('grep', 'command', ['ag'])
+call denite#custom#var('grep', 'default_opts', ['-i', '--vimgrep'])
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'pattern_opt', [])
+call denite#custom#var('grep', 'separator', ['--'])
+call denite#custom#var('grep', 'final_opts', [])
+
+let s:ignore_globs = ['.git', 'node_modules']
+call denite#custom#var(
+			\ 'file/rec',
+			\ 'command',
+			\ ['ag',
+			\  '--follow',
+			\ ] + map(deepcopy(s:ignore_globs), {k, v -> '--ignore=' . v}) + [
+			\	 '--nocolor',
+			\	 '--no-group',
+			\  '-g',
+			\	 ''])
+" file/recで検索から除外するディレクトリ名
+call denite#custom#filter(
+			\ 'matcher/ignore_globs',
+			\ 'ignore_globs',
+			\ s:ignore_globs
+			\)
+
 " " Denite用キーマップ
 nnoremap [denite] <Nop>
 nmap <Space>d [denite]

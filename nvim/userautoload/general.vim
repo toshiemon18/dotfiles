@@ -73,3 +73,6 @@ autocmd BufRead,BufNewFile,BufWritePre *.coffee set filetype=coffee
 " =======================
 let g:ruby_host_prog = expand($HOME.'/.rbenv/shims/ruby')
 let g:python3_host_prog=expand($HOME.'/.pyenv/shims/python')
+
+" functions
+command! ParseXML %s/></>\r</g | filetype indent on | setf xml | normal gg=G

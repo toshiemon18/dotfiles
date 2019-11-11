@@ -23,8 +23,8 @@ inoremap <C-l> <Right>
 
 " Shift + hjklで行末へ
 noremap <S-h> ^
-noremap <S-j> 3j
-noremap <S-k> 3k
+" noremap <S-j> 3j
+" noremap <S-k> 3k
 noremap <S-l> $
 
 " Reload config

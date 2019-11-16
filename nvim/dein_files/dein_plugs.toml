@@ -29,13 +29,6 @@ hook_post_update = '''
     let g:dein#plugin.build = cmd
 '''
 
-# denite.vim
-[[plugins]]
-repo = 'Shougo/denite.nvim'
-on_cmd = 'Denite'
-if = 'has("nvim")'
-hook_source = 'source ~/.config/nvim/userautoload/plugin-denite.vim'
-
 # ag.vim
 [[plugins]]
 repo = 'rking/ag.vim'
@@ -53,6 +46,10 @@ repo = 'tomtom/tcomment_vim'
 # NERDTree
 [[plugins]]
 repo = 'scrooloose/nerdtree'
+hook_source="""
+noremap nt :NERDTreeToggle<CR>
+source ~/.config/nvim/userautoload/plugin-nerdtree.vim
+"""
 
 [[plugins]]
 repo = 'ryanoasis/vim-devicons'
@@ -79,6 +76,7 @@ repo = 'osyo-manga/shabadou.vim'
 # neoterm
 [[plugins]]
 repo = 'kassio/neoterm'
+hook_source='source ~/.config/nvim/userautoload/plugin-neoterm.vim'
 
 # fzf.vim
 [[plugins]]
@@ -89,6 +87,7 @@ merged = "0"
 [[plugins]]
 repo = "junegunn/fzf.vim"
 depends = "fzf"
+hook_source = 'source ~/.config/nvim/userautoload/plugin-fzf.vim'
 
 # =================
 #   Git
@@ -96,12 +95,10 @@ depends = "fzf"
 # VimとGitを連携する
 [[plugins]]
 repo = 'tpope/vim-fugitive'
+hook_source='source ~/.config/nvim/userautoload/plugin-fugitive.vim'
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
-
-[[plugins]]
-repo = 'neoclide/denite-git'
 
 # =================
 #   Others
@@ -117,7 +114,3 @@ repo = 'tyru/open-browser.vim'
 # wakatime
 [[plugins]]
 repo = 'wakatime/vim-wakatime'
-
-[[plugins]]
-repo = 'iyuuya/denite-rails'
-

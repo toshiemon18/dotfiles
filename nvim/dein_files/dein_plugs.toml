@@ -40,9 +40,6 @@ hook_source = 'source ~/.config/nvim/userautoload/plugin-denite.vim'
 [[plugins]]
 repo = 'rking/ag.vim'
 
-[[plugins]]
-repo = 'Shougo/defx.nvim'
-
 # async.vim
 [[plugins]]
 repo = 'prabirshrestha/async.vim'
@@ -56,6 +53,10 @@ repo = 'tomtom/tcomment_vim'
 # NERDTree
 [[plugins]]
 repo = 'scrooloose/nerdtree'
+
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
+
 
 # ステータスラインを良い感じするやつ
 # lightline.vim

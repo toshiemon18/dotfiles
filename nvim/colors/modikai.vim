@@ -292,3 +292,14 @@ call s:h("cStructure",                  { "fg": s:pink })
 call s:h("cStorageClass",               { "fg": s:pink })
 call s:h("cInclude",                    { "fg": s:green })
 call s:h("cDefine",                     { "fg": s:green })
+
+
+" Defx git-icons
+hi Defx_git_Untracked guibg=NONE guifg=NONE ctermbg=NONE ctermfg=NONE
+hi Defx_git_Ignored guibg=NONE guifg=NONE ctermbg=NONE ctermfg=NONE
+hi Defx_git_Unknown guibg=NONE guifg=NONE ctermbg=NONE ctermfg=NONE
+hi Defx_git_Renamed ctermfg=214 guifg=#fabd2f
+hi Defx_git_Modified ctermfg=214 guifg=#fabd2f
+hi Defx_git_Unmerged ctermfg=167 guifg=#fb4934
+hi Defx_git_Deleted ctermfg=167 guifg=#fb4934
+hi Defx_git_Staged ctermfg=142 guifg=#b8bb26

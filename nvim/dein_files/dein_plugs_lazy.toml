@@ -27,6 +27,18 @@ depends = ['async.vim']
 if = 'has("nvim")'
 on_i = 1
 
+# defx.nvim
+[[plugins]]
+repo = 'Shougo/defx.nvim'
+on_cmd = 'Defx'
+depends = ['defx-icons', 'defx-git']
+
+[[plugins]]
+repo = 'ress997/defx-icons'
+
+[[plugins]]
+repo = 'kristijanhusak/defx-git'
+
 # =================
 #   Ruby関連
 # =================

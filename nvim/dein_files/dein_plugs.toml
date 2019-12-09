@@ -47,8 +47,8 @@ repo = 'tomtom/tcomment_vim'
 [[plugins]]
 repo = 'scrooloose/nerdtree'
 hook_source="""
-noremap nt :NERDTreeToggle<CR>
 source ~/.config/nvim/userautoload/plugin-nerdtree.vim
+noremap nt :NERDTreeToggle<CR>
 """
 
 [[plugins]]

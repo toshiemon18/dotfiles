@@ -114,3 +114,8 @@ repo = 'tyru/open-browser.vim'
 # wakatime
 [[plugins]]
 repo = 'wakatime/vim-wakatime'
+
+
+# Colors
+[[plugins]]
+repo = 'morhetz/gruvbox'

@@ -26,7 +26,6 @@ let g:deoplete#sources#omni#input_patterns = {
 " =======================
 " ruby
 
-
 " Python
 " jedi-vim
 autocmd FileType python setlocal completeopt-=preview

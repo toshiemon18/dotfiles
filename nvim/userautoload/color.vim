@@ -2,7 +2,8 @@
 
 set t_Co=256
 syntax enable
-colorscheme modikai
+" colorscheme modikai
+colorscheme gruvbox
 set cmdheight=2
 set title
 set wildmenu

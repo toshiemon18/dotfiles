@@ -29,6 +29,31 @@ hook_post_update = '''
     let g:dein#plugin.build = cmd
 '''
 
+# deoplete.vim
+# Dark powered asynchronous completion framework for NeoVim
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+hook_add = 'source ~/.config/nvim/userautoload/plugin-deoplete.vim'
+
+# defx.nvim
+[[plugins]]
+repo = 'ress997/defx-icons'
+
+[[plugins]]
+repo = 'kristijanhusak/defx-git'
+
+[[plugins]]
+repo = 'Shougo/defx.nvim'
+hook_add = "source ~/.config/nvim/userautoload/plugin-defx.vim"
+
+# denite.vim
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+hook_add = 'source ~/.config/nvim/userautoload/plugin-denite.vim'
+
+[[plugins]]
+repo = 'neoclide/denite-git'
+
 # ag.vim
 [[plugins]]
 repo = 'rking/ag.vim'
@@ -46,10 +71,7 @@ repo = 'tomtom/tcomment_vim'
 # NERDTree
 [[plugins]]
 repo = 'scrooloose/nerdtree'
-hook_source="""
-source ~/.config/nvim/userautoload/plugin-nerdtree.vim
-noremap nt :NERDTreeToggle<CR>
-"""
+hook_add="source ~/.config/nvim/userautoload/plugin-nerdtree.vim"
 
 [[plugins]]
 repo = 'ryanoasis/vim-devicons'
@@ -76,7 +98,7 @@ repo = 'osyo-manga/shabadou.vim'
 # neoterm
 [[plugins]]
 repo = 'kassio/neoterm'
-hook_source='source ~/.config/nvim/userautoload/plugin-neoterm.vim'
+hook_add='source ~/.config/nvim/userautoload/plugin-neoterm.vim'
 
 # fzf.vim
 [[plugins]]
@@ -87,7 +109,7 @@ merged = "0"
 [[plugins]]
 repo = "junegunn/fzf.vim"
 depends = "fzf"
-hook_source = 'source ~/.config/nvim/userautoload/plugin-fzf.vim'
+hook_add = 'source ~/.config/nvim/userautoload/plugin-fzf.vim'
 
 # =================
 #   Git
@@ -95,7 +117,7 @@ hook_source = 'source ~/.config/nvim/userautoload/plugin-fzf.vim'
 # VimとGitを連携する
 [[plugins]]
 repo = 'tpope/vim-fugitive'
-hook_source='source ~/.config/nvim/userautoload/plugin-fugitive.vim'
+hook_add = "source ~/.config/nvim/userautoload/plugin-fugitive.vim"
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
@@ -114,7 +136,6 @@ repo = 'tyru/open-browser.vim'
 # wakatime
 [[plugins]]
 repo = 'wakatime/vim-wakatime'
-
 
 # Colors
 [[plugins]]

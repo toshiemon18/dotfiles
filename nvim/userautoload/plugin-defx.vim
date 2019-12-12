@@ -1,5 +1,6 @@
 " defx.nvim
 
+nnoremap <silent> <Space>f :<C-u>Defx -listed -resume -buffer-name=tab`tabpagenr()` <CR>
 
 set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete\ 12
 
@@ -104,3 +105,4 @@ function! s:defx_my_settings() abort
 	" Discards all changes to file/directory under cursor
 	nnoremap <buffer><silent> ]d <Plug>(defx-git-discard)
 endfunction
+

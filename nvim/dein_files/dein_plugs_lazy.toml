@@ -7,43 +7,11 @@ repo = 'Shougo/neosnippet.vim'
 on_i  = 1
 on_ft = ['snippet']
 depends = ['neosnippet-snippets']
-hook_add = """
-imap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-                \ "\<Plug>(neosnippet_expand_or_jump)"
-                \: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-                \ "\<Plug>(neosnippet_expand_or_jump)"
-                \: "\<TAB>"
-
-imap <C-x> <Plug>(neosnippet_expand_or_jump)
-smap <C-x> <Plug>(neosnippet_expand_or_jump)
-xmap <C-x> <Plug>(neosnippet_expand_target)
-"""
-hook_source='source ~/.config/nvim/userautoload/plugin-neosnippes.vim'
+hook_add = "source ~/.config/nvim/userautoload/plugin-neosnippets.vim"
 
 # neosnippets-snippets
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
-
-# deoplete.vim
-# Dark powered asynchronous completion framework for NeoVim
-[[plugins]]
-repo = 'Shougo/deoplete.nvim'
-if = 'has("nvim")'
-on_i = 1
-hook_add = """
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#auto_complete_delay = 0
-let g:deoplete#auto_complete_start_length = 1
-let g:deoplete#enable_camel_case = 0
-let g:deoplete#enable_ignore_case = 0
-let g:deoplete#enable_refresh_always = 0
-let g:deoplete#enable_smart_case = 1
-let g:deoplete#file#enable_buffer_path = 1
-let g:deoplete#max_list = 10000
-"""
-hook_source='source ~/.config/nvim/userautoload/plugin-deoplete.vim'
 
 # vim-lsp
 # Language Server Protocol client
@@ -52,101 +20,13 @@ repo = 'prabirshrestha/vim-lsp'
 depends = ['async.vim']
 if = 'has("nvim")'
 on_i = 1
-hook_source='source ~/.config/nvim/userautoload/plugin-vim-lsp.vim'
-
-# defx.nvim
-[[plugins]]
-repo = 'Shougo/defx.nvim'
-on_cmd = 'Defx'
-depends = ['defx-icons', 'defx-git']
-hook_add = """
-nnoremap <silent> <Space>f :<C-u>Defx -listed -resume -buffer-name=tab`tabpagenr()` <CR>
-"""
-hook_source="""
-source ~/.config/nvim/userautoload/plugin-defx.vim
-"""
+hook_add = 'source ~/.config/nvim/userautoload/plugin-vim-lsp.vim'
 
 [[plugins]]
 repo = 'ress997/defx-icons'
 
 [[plugins]]
 repo = 'kristijanhusak/defx-git'
-
-# denite.vim
-[[plugins]]
-repo = 'Shougo/denite.nvim'
-on_cmd = 'Denite'
-if = 'has("nvim")'
-hook_add = """
-autocmd FileType denite call s:denite_my_settings()
-
-function! s:denite_my_settings() abort
-	" inoremap <silent><buffer><expr> <BS> denite#do_map('move_up_path')
-	nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
-	nnoremap <silent><buffer><expr> d denite#do_map('do_action', 'delete')
-	nnoremap <silent><buffer><expr> p denite#do_map('do_action', 'preview')
-	nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
-	nnoremap <silent><buffer><expr> a denite#do_map('open_filter_buffer')
-	nnoremap <silent><buffer><expr> <Tab> denite#do_map('choose_action')
-	nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
-
-	" ESCでdeniteからquit
-	nnoremap <silent><buffer><expr> q denite#do_map('quit')
-	nnoremap <silent><buffer><expr> <ESC> denite#do_map('quit')
-
-	" C-j, C-kでbuffer内を移動
-	nnoremap <silent><buffer> <C-j> j
-	nnoremap <silent><buffer> <C-k> k
-	nnoremap <silent><buffer><expr> <C-h> denite#do_map('do_action', 'split')
-	nnoremap <silent><buffer><expr> <C-v> denite#do_map('do_action', 'vsplit')
-endfunction
-
-autocmd FileType denite-filter call s:denite_filter_my_settings()
-function! s:denite_filter_my_settings() abort
-	" inoremap <silent><buffer><expr> <BS> denite#do_map('move_up_path')
-
-	" ESCでdeniteからquit
-	nnoremap <silent><buffer><expr> <ESC> denite#do_map('move_up_path')
-	inoremap <silent><buffer><expr> <ESC> denite#do_map('move_up_path')
-
-	inoremap <silent><buffer> <C-j> <Down>
-	inoremap <silent><buffer> <C-k> <Up>
-
-	inoremap <silent><buffer> <C-j> <Esc><C-w>p:call cursor(line('.')+1,0)<CR><C-w>pA
-	inoremap <silent><buffer> <C-k> <Esc><C-w>p:call cursor(line('.')-1,0)<CR><C-w>pA
-endfunction
-
-" " Denite用キーマップ
-nnoremap [denite] <Nop>
-nmap <Space>d [denite]
-" ファイル一覧
-noremap [denite]n :Denite file<CR>
-" 最近使ったファイルの一覧
-noremap [denite]z :Denite file/old<CR>
-" カレントディレクトリ
-noremap [denite]a :Denite file/rec<CR>
-" カレントディレクトリ以下+buffer内から探す
-noremap [denite]x :Denite file/rec buffer<CR>
-"バッファ一覧
-noremap [denite]b :<C-u>Denite buffer -buffer-name=buffer<CR>
-" 開いているファイルのディレクトリ以下のファイル一覧
-nnoremap [denite]f :<C-u>DeniteBufferDir -direction=topleft file file:new<CR>
-" /をDeniteに任せる
-nnoremap <silent> / :<C-u>Denite -buffer-name=search -auto-resize line<CR>
-"""
-hook_source = 'source ~/.config/nvim/userautoload/plugin-denite.vim'
-depends=['denite-git']
-
-[[plugins]]
-repo = 'neoclide/denite-git'
-hook_add = """
-noremap [denite-git] <Nop>
-nmap 		<Space>g [denite-git]
-nnoremap [denite-git]s :<C-u>Denite<Space>gitstatus<CR>
-nnoremap [denite-git]c :<C-u>Denite<Space>gitchanged<CR>
-nnoremap [denite-git]b :<C-u>Denite<Space>gitbranch<CR>
-nnoremap [denite-git]l  :<C-u>Denite<Space>gitlog<CR>
-"""
 
 # =================
 #   Ruby関連
@@ -184,23 +64,6 @@ on_ft = ['ruby']
 repo = 'slim-template/vim-slim'
 on_ft = ['slim']
 
-[[plugins]]
-repo = 'iyuuya/denite-rails'
-depends=['denite.nvim']
-on_ft = ['ruby', 'slim']
-hook_add = """
-noremap [rails] <Nop>
-nmap     <Space>r [rails]
-nnoremap [rails]r :Denite<Space>rails:
-nnoremap <silent> [rails]r :<C-u>Denite<Space>rails:dwim<Return>
-nnoremap <silent> [rails]m :<C-u>Denite<Space>rails:model<Return>
-nnoremap <silent> [rails]c :<C-u>Denite<Space>rails:controller<Return>
-nnoremap <silent> [rails]v :<C-u>Denite<Space>rails:view<Return>
-nnoremap <silent> [rails]h :<C-u>Denite<Space>rails:helper<Return>
-nnoremap <silent> [rails]r :<C-u>Denite<Space>rails:test<Return>
-nnoremap <silent> [rails]s :<C-u>Denite<Space>rails:spec<Return>
-"""
-
 # =================
 #   JavaScript
 #   CoffeeScript
@@ -210,7 +73,7 @@ nnoremap <silent> [rails]s :<C-u>Denite<Space>rails:spec<Return>
 [[plugins]]
 repo = 'pangloss/vim-javascript'
 on_ft = ['javascript', 'coffee']
-hook_source='source ~/.config/nvim/userautoload/plugin-vim-javascript.vim'
+hook_add='source ~/.config/nvim/userautoload/plugin-vim-javascript.vim'
 
 [[plugins]]
 repo = 'jelera/vim-javascript-syntax'
@@ -322,7 +185,7 @@ on_ft= ['html', 'css', 'gmarkdown', 'markdown', 'md']
 
 [[plugins]]
 repo = "alexlafroscia/postcss-syntax.vim"
-hook_source='~/.config/nvim/userautoload/plugin-postcss-syntax.vim'
+hook_add='source ~/.config/nvim/userautoload/plugin-postcss-syntax.vim'
 
 # =================
 #   Markdown
@@ -332,7 +195,7 @@ hook_source='~/.config/nvim/userautoload/plugin-postcss-syntax.vim'
 [[plugins]]
 repo = 'plasticboy/vim-markdown'
 on_ft= ['gmarkdown', 'markdown', 'md']
-hook_source='~/.config/nvim/userautoload/plugin-vim-markdown.vim'
+hook_add='source ~/.config/nvim/userautoload/plugin-vim-markdown.vim'
 
 # Vimで文書を書く
 # reedes/vim-pencil

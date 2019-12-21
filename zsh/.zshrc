@@ -1,7 +1,7 @@
 # ---------------------------
 # General setting
 # ---------------------------
-plugins=(git ruby osx bundler brew rails emoji-clock)
+plugins=(git ruby osx bundler brew emoji-clock)
 export EDITOR=nvim           # エディタをVimに設定
 export LANG=ja_JP.UTF-8     # 文字コードをUTF-8に設定
 export KCODE=u              # KCODEにUTF-8を設定

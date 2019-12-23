@@ -4,6 +4,9 @@
 
 " デバッグ設定
 let g:lsp_log_verbose=1 " デバッグログを出力する
+if !isdirectory(expand('~/.cache/tmp'))
+	call mkdir(expand('~/.cache/tmp', 'p'))
+end
 let g:lsp_log_file=expand('~/.cache/tmp/vim-lsp.log') " vim-lspのデバッグ用ログファイル
 
 " 言語毎の設定
@@ -28,7 +31,7 @@ augroup MyLSP
 	" endif
 
 	" for Ruby LSP using solargraph
-	if executable('solargraph')
+	if (executable('solargraph'))
 		autocmd User lsp_setup call lsp#register_server({
 					\ 'name': 'solargraph',
 					\	'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},

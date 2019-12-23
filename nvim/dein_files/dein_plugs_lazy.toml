@@ -13,14 +13,6 @@ hook_add = "source ~/.config/nvim/userautoload/plugin-neosnippets.vim"
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
 
-# vim-lsp
-# Language Server Protocol client
-[[plugins]]
-repo = 'prabirshrestha/vim-lsp'
-depends = ['async.vim']
-if = 'has("nvim")'
-on_i = 1
-hook_add = 'source ~/.config/nvim/userautoload/plugin-vim-lsp.vim'
 
 # =================
 #   Ruby関連

@@ -39,6 +39,16 @@ augroup MyLSP
 					\ 'whitelist': ['ruby', 'slim', 'rspec']
 					\})
 	endif
+
+	" terraform-lsp
+	" terraform用のLSPを使うよ
+	if executable('terraform-lsp')
+		autocmd User lsp_setup call lsp#register_server({
+			\ 'name': 'terraform-lsp',
+			\ 'cmd': {server_info->[&shell, &shellcmdflag, 'terraform-lsp']},
+			\ 'whitelist': ['terraform','tf'],
+			\ })
+	endif
 augroup END
 
 function! s:configure_lsp() abort

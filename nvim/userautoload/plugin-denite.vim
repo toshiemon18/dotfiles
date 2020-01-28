@@ -107,12 +107,12 @@ nnoremap [denite]f :<C-u>DeniteBufferDir -direction=topleft file file:new<CR>
 nnoremap <silent> / :<C-u>Denite -buffer-name=search -auto-resize line<CR>
 
 " denite-git
-noremap [denite-git] <Nop>
-nmap 		<Space>g [denite-git]
-nnoremap [denite-git]s :<C-u>Denite<Space>gitstatus<CR>
-nnoremap [denite-git]c :<C-u>Denite<Space>gitchanged<CR>
-nnoremap [denite-git]b :<C-u>Denite<Space>gitbranch<CR>
-nnoremap [denite-git]l  :<C-u>Denite<Space>gitlog<CR>
+" noremap [denite-git] <Nop>
+" nmap 		<Space>g [denite-git]
+" nnoremap [denite-git]s :<C-u>Denite<Space>gitstatus<CR>
+" nnoremap [denite-git]c :<C-u>Denite<Space>gitchanged<CR>
+" nnoremap [denite-git]b :<C-u>Denite<Space>gitbranch<CR>
+" nnoremap [denite-git]l  :<C-u>Denite<Space>gitlog<CR>
 
 " denite-rails
 noremap [rails] <Nop>

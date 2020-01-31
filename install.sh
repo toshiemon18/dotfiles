@@ -7,6 +7,7 @@ ln -fis $PWD/vim/vimrc $HOME/.vimrc
 ln -fis $PWD/vim/gvimrc $HOME/.gvimrc
 
 # Zsh
+ln -fis $PWD/zsh/.zshenv $HOME/.zshenv
 ln -fis $PWD/zsh/.zshrc $HOME/.zshrc
 ln -fis $PWD/zsh/.zsh_simple_prompt $HOME/.zsh_simple_prompt
 ln -fis $PWD/zsh/.switch_proxy.zsh $HOME/.switch_proxy.zsh

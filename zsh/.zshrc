@@ -2,9 +2,6 @@
 # General setting
 # ---------------------------
 plugins=(git ruby osx bundler brew emoji-clock)
-export EDITOR=nvim           # エディタをVimに設定
-export LANG=ja_JP.UTF-8     # 文字コードをUTF-8に設定
-export KCODE=u              # KCODEにUTF-8を設定
 export AUTOFEATURE=true     # autotestでfeatureを動かす
 export ZSH=~/.oh-my-zsh
 
@@ -62,15 +59,8 @@ alias la="ls -al"
 # usage : $ lag hogehoge
 alias lag="ls -la | grep"
 
-# Python
-alias py=python
-
 # fzf
 alias fzf="fzf --reverse"
-
-# 学内プロキシ絶対許さねえ
-alias nswitch="source ~/.switch_proxy.zsh"
-# nswitch
 
 # ---------------------------
 # Own functions
@@ -173,63 +163,13 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 # ---------------------------
 # 環境設定
 # ---------------------------
-if [ -e "$HOME/app/nvim/bin/nvim" ]; then
-	export PATH="$PATH:$HOME/app/nvim/bin/nvim"
-	alias nvim="$HOME/app/nvim/bin/nvim"
+if [ -e ~/.zsh_vars ]; then
+	source ~/.zsh_vars
+else
+	echo "Create ~/.zsh_vars ."
+	echo "Set your environment variables to ~/.zsh_vars ."
+	touch $HOME/.zsh_vars
 fi
-
-case ${OSTYPE} in
-    darwin*)
-        export PATH="$PATH":"$HOME/myapp/bin"
-				# for MySQL@5.7
-				export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
-				export LDFLAGS="-L/usr/local/opt/mysql@5.7/lib:$LDFLAGS"
-				export CPPFLAGS="-I/usr/loca/opt/mysql@5.7/include:$CPPFLAGS"
-
-				# for Homebrew Python3
-				alias supython="sudo -H /usr/local/bin/python3"
-				alias supip="sudo -H /usr/local/bin/pip3"
-        ;;
-esac
-
-[[ -d ~/.rbenv  ]] && \
-  export PATH=${HOME}/.rbenv/bin:${PATH} && \
-  eval "$(rbenv init - zsh)"
-
-# pyenv-virtualenv
-export PYENV_ROOT=${HOME}/.pyenv
-if [ -d "${PYENV_ROOT}" ]; then
-    export PATH=${PYENV_ROOT}/bin:$PATH
-    eval "$(pyenv init - --no-rehash)"
-    eval "$(pyenv virtualenv-init -)"
-fi
-
-# direnv
-eval "$(direnv hook zsh)"
-
-# XSG_CONFIG_HOME
-export XDG_CONFIG_HOME=$HOME/.config
-
-# anyenv
-export PATH=$HOME/.anyenv/bin:$PATH
-eval "$(anyenv init - --no-rehash)"
-
-# Elixir interactive shell
-export ERL_AFLAGS="-kernel shell_history enable"
-
-export PATH="/usr/local/bin:$PATH"
-export LD_LIBRARY_PATH="/usr/local/lib"
-export PATH="/usr/local/sbin:$PATH"
-
-# PostgresSQL
-export PGDATA=/usr/local/var/postgres
-
-# fzf
-export FZF_CTRL_T_COMMAND="/usr/locl/bin/fzf"
-
-export PATH="$PATH:/usr/local/opt/node@10/bin"
-
-export PATH="/usr/local/opt/avr-gcc@8/bin:$PATH"
 
 autoload -U compinit
 compinit -C

@@ -50,11 +50,6 @@ on_ft = ['ruby']
 repo = 'slim-template/vim-slim'
 on_ft = ['slim']
 
-# denite-rails
-# deniteのrails source
-[[plugins]]
-repo = '5t111111/denite-rails'
-on_ft = ['ruby', 'slim']
 
 # =================
 #   JavaScript

@@ -53,5 +53,10 @@ augroup END
 
 function! s:configure_lsp() abort
 	setlocal omnifunc=lsp#complete " オムニ保管の有効化
+	setlocal signcolumn=yes
+
+	" keybinds
+	nmap <buffer> gd <plug>(lsp-definition)
+	nmap <buffer> RN <plug>(lsp-rename)
 endfunction
 

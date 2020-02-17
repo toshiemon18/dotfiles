@@ -16,10 +16,10 @@ nnoremap <ESC><ESC> :nohlsearch<CR>
 noremap vn :vnew<CR>
 
 " インサートモードでもhjkl
-inoremap <C-j> <Down>
-inoremap <C-k> <Up>
-inoremap <C-h> <Left>
-inoremap <C-l> <Right>
+" inoremap <C-j> <Down>
+" inoremap <C-k> <Up>
+" inoremap <C-h> <Left>
+" inoremap <C-l> <Right>
 
 " Shift + hjklで行末へ
 noremap <S-h> ^

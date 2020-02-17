@@ -210,3 +210,9 @@ on_ft = ['gmarkdown', 'markdown', 'md']
 [[plugins]]
 repo = 'Shougo/neco-vim'
 on_ft = ['vim']
+
+# =================
+#       SQL
+# =================
+[[plugins]]
+repo = 'mattn/vim-sqlfmt'

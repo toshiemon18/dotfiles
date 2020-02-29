@@ -7,10 +7,10 @@ export KCODE=u              # KCODEにUTF-8を設定
 export XDG_CONFIG_HOME=$HOME/.config
 
 # 自分で導入したアプリケーションのパス設定
-if [ -e "$HOME/app/nvim/bin/nvim" ]; then
-	export PATH="$PATH:$HOME/app/nvim/bin/nvim"
-	alias nvim="$HOME/app/nvim/bin/nvim"
-fi
+# if [ -e "$HOME/app/nvim/bin/nvim" ]; then
+# 	export PATH="$PATH:$HOME/app/nvim/bin/nvim"
+# 	alias nvim="$HOME/app/nvim/bin/nvim"
+# fi
 
 # PATH
 export PATH="/usr/local/bin:$PATH"

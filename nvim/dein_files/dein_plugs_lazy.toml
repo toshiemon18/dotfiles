@@ -216,3 +216,4 @@ on_ft = ['vim']
 # =================
 [[plugins]]
 repo = 'mattn/vim-sqlfmt'
+on_ft = ['sql', 'SQL']

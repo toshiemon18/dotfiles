@@ -4,6 +4,7 @@
 plugins=(git ruby osx bundler brew emoji-clock)
 export AUTOFEATURE=true     # autotestでfeatureを動かす
 export ZSH=~/.oh-my-zsh
+export EDITOR=nvim
 
 setopt auto_cd              # コマンド無くてディレクトリ名があればcd
 setopt no_beep              # beep音を鳴らさない

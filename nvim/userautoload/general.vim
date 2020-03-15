@@ -43,7 +43,23 @@ set tw=0
 set conceallevel=0
 set wildmenu
 set wildmode=full
-autocmd BufWritePre * :%s/\s\+$//ge
+
+" 行末の空文字を削除する関数
+function! Rstrip()
+  let s:tmppos = getpos(".")
+  if &filetype == "markdown"
+    " 行末に2Space以上ある場合は、2spaceまで切り詰める。1spaceなら消去。
+    %s/\v(\s{2})?(\s+)?$/\1/e
+    match Underlined /\s\{2}$/
+  else
+    " 行末のspaceを消去
+		%s/\s\+$//ge
+  endif
+  call setpos(".", s:tmppos)
+endfunction
+
+" 保存時に行末スペースを取り除く
+autocmd BufWritePre * :call Rstrip()
 
 " ctontabのtempファイル作成先を変更
 set backupskip=/tmp/*,/private/tmp/*

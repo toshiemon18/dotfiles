@@ -13,3 +13,5 @@ let g:vim_markdown_conceal_code_blocks = 0
 
 let g:vim_markdown_math = 1
 
+" Table of Contents
+let g:vim_markdown_toc_autofit = 1

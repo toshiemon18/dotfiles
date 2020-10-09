@@ -4,20 +4,21 @@
 
 " deopleteを使う
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#auto_complete_delay = 0
-let g:deoplete#auto_complete_start_length = 1
-let g:deoplete#enable_camel_case = 0
-let g:deoplete#enable_ignore_case = 0
-let g:deoplete#enable_refresh_always = 0
-let g:deoplete#enable_smart_case = 1
-let g:deoplete#file#enable_buffer_path = 1
-let g:deoplete#max_list = 10000
 set completeopt-=preview " vim-lspとかでPreview bufferで結果を表示したくない
 
 let g:deoplete#sources#omni#input_patterns = {
     \ "ruby" : '[^. *\t]\.\w*\|\h\w*::',
     \ "python" : '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
     \}
+
+call deoplete#custom#var('enable_buffer_path', 1)
+call deoplete#custom#option('enable_smart_case', 1)
+call deoplete#custom#option('enable_refresh_always', 0)
+call deoplete#custom#option('enable_ignore_case', 0)
+call deoplete#custom#option('enable_camel_case', 0)
+call deoplete#custom#option('auto_complete_start_length', 1)
+call deoplete#custom#option('auto_complete_delay', 0)
+call deoplete#custom#option('max_list', 10000)
 
 " call deoplete#custom#source('languageClient', 'min_pattern_length', '2')
 

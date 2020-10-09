@@ -104,7 +104,7 @@ noremap [denite]b :<C-u>Denite buffer -buffer-name=buffer<CR>
 " 開いているファイルのディレクトリ以下のファイル一覧
 nnoremap [denite]f :<C-u>DeniteBufferDir -direction=topleft file file:new<CR>
 " /をDeniteに任せる
-nnoremap <silent> / :<C-u>Denite -buffer-name=search -auto-resize line<CR>
+" nnoremap <silent> / :<C-u>Denite -buffer-name=search -auto-resize line<CR>
 
 " denite-git
 " noremap [denite-git] <Nop>

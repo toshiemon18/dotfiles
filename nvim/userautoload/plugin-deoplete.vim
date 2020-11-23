@@ -11,7 +11,7 @@ let g:deoplete#sources#omni#input_patterns = {
     \ "python" : '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
     \}
 
-call deoplete#custom#var('enable_buffer_path', 1)
+call deoplete#custom#var('file', 'enable_buffer_path', 1)
 call deoplete#custom#option('enable_smart_case', 1)
 call deoplete#custom#option('enable_refresh_always', 0)
 call deoplete#custom#option('enable_ignore_case', 0)

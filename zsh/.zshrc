@@ -125,6 +125,8 @@ function fzf_ghq_look() {
 	local dir
 	dir=$(ghq list -p | fzf +m) &&
 	cd $dir
+
+	zle clear-screen
 }
 zle -N fzf_ghq_look
 bindkey "^]" fzf_ghq_look

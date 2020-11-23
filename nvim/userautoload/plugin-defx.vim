@@ -12,7 +12,7 @@ if exists('g:loaded_webdevicons')
 endif
 
 call defx#custom#column('git', 'indicators', {
-	\ 'Modified'  : '✹',
+	\ 'Modified'  : '●',
 	\ 'Staged'    : '✚',
 	\ 'Untracked' : '✭',
 	\ 'Renamed'   : '➜',
@@ -24,7 +24,8 @@ call defx#custom#column('git', 'indicators', {
 
 call defx#custom#option('_', {
 	\ 'columns': 'indent:git:icons:filename',
-	\})
+	\ 'show_ignored_files': 1,
+	\ })
 let g:defx_icons_column_length = 1
 
 autocmd FileType defx call s:defx_my_settings()

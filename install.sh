@@ -1,6 +1,11 @@
+if [ -z $HOME/.config ] then;
+	mkdir -p $HOME/.config
+fi
+
+export XDG_CONFIG_HOME=$HOME/.config
+
 # NeoVim
-# mkdir $XDG_CONFIG_HOME/nvim
-ln -fis $PWD/nvim $XDG_CONFIG_HOME/
+ln -fis $PWD/nvim $XDG_CONFIG_HOME
 
 # Vim8
 ln -fis $PWD/vim/vimrc $HOME/.vimrc

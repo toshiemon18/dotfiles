@@ -1,194 +1,130 @@
-
-# Other Homebrew packages
-brew aom
-brew autoconf
-brew automake
-brew avr-binutils
-brew avr-gcc
-brew avr-gcc@8
-brew avrdude
-brew bchunk
-brew boost
-brew boost@2.56
-brew brew-file
-brew cairo
-brew carthage
-brew cfitsio
-brew cgal
-brew cmake
-brew ctags
-brew curl
-brew dfu-programmer
-brew dfu-util
-brew direnv
-brew eigen
-brew epsilon
-brew expat
-brew ffmpeg
-brew flac
-brew fontconfig
-brew fontforge
-brew fop
-brew freetype
-brew freexl
-brew frei0r
-brew fribidi
-brew fzf
-brew gcc
-brew gcc-arm-none-eabi
-brew gdal
-brew gdbm
-brew geos
-brew gettext
-brew ghostscript
-brew giflib
-brew glib
-brew gmp
-brew gnutls
-brew graphite2
-brew harfbuzz
-brew hdf5
-brew heroku
-brew heroku-node
-brew icu4c
-brew imagemagick@6
-brew isl
-brew jasper
-brew jemalloc
-brew jpeg
-brew json-c
-brew lame
-brew leptonica
-brew libass
-brew libbluray
-brew libdap
-brew libelf
-brew libevent
-brew libffi
-brew libftdi0
-brew libgeotiff
-brew libhid
-brew libidn2
-brew libmpc
-brew libogg
-brew libpng
-brew libpq
-brew libsamplerate
-brew libsndfile
-brew libsoxr
-brew libspatialite
-brew libspiro
-brew libtasn1
-brew libtermkey
-brew libtiff
-brew libtool
-brew libuninameslist
-brew libunistring
-brew libusb
-brew libusb-compat
-brew libuv
-brew libvorbis
-brew libvpx
-brew libvterm
-brew libxml2
-brew little-cms2
-brew luajit
-brew mas
-brew md5sha1sum
-brew mpfr
-brew msgpack
-brew mysql@5.7
-brew ncurses
-brew neovim
-brew netcdf
-brew nettle
-brew ninja
-brew nkf
-brew node@10
-brew nodebrew
-brew noti
-brew nspr
-brew nss
-brew numpy
-brew openblas
-brew opencore-amr
-brew openjpeg
-brew openssl
-brew opus
-brew p11-kit
-brew p7zip
-brew pandoc
-brew pango
-brew pcre
-brew peco
-brew pixman
-brew pkg-config
-brew poppler
-brew popt
-brew postgis
-brew postgresql
-brew proj
-brew protobuf
-brew protobuf-c
-brew python
-brew qt
-brew rbenv
-brew rbenv-gemset
-brew readline
-brew reattach-to-user-namespace
-brew redis
-brew ricty
-brew rtmpdump
-brew rubberband
-brew ruby-build
-brew sdl2
-brew sfcgal
-brew snappy
-brew speex
-brew sqlite
-brew szip
-brew telnet
-brew tesseract
-brew theora
-brew tmux
-brew unbound
-brew unibilium
-brew unixodbc
-brew v8@3.15
-brew watch
-brew webp
-brew wget
-brew wxmac
-brew x264
-brew x265
-brew xerces-c
-brew xvid
-brew xz
-brew zlib
-brew zsh
-brew zstd
-brew the_silver_searcher
-
-# Other Cask applications
-cask basictex
-cask chromedriver
-cask visual-studio-code
-cask java
-cask xquartz
-cask google-chrome
-
-# App Store applications
-appstore 405399194  (1.26.1)
-appstore 1091189122  (1.6.15)
-appstore 961975824  (1.9.0)
-appstore 1070506898  (2.36.1)
-appstore 803453959  (3.4.2)
-appstore 425424353  (4.1.0)
-appstore 585829637  (7.1.3)
-appstore 406056744  (7.11)
-appstore 682658836 GarageBand (10.3.2)
-appstore 409183694 Keynote (8.3)
-appstore 539883307 LINE (5.17.2)
-appstore 409203825 Numbers (5.3)
-appstore 409201541 Pages (7.3)
-appstore 497799835 Xcode (10.2.1)
+tap "argon/mas"
+tap "heroku/brew"
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
+tap "homebrew/cask-versions"
+tap "homebrew/core"
+tap "homebrew/services"
+tap "mscharley/homebrew"
+tap "neovim/neovim"
+tap "osx-cross/avr"
+tap "px4/px4"
+tap "rcmdnk/file"
+tap "sanemat/font"
+tap "typelead/eta"
+brew "aom"
+brew "autoconf"
+brew "automake"
+brew "avrdude"
+brew "bchunk"
+brew "freetype"
+brew "fontconfig"
+brew "openssl@1.1"
+brew "python@3.9"
+brew "cairo"
+brew "carthage"
+brew "cask"
+brew "cfitsio"
+brew "eigen"
+brew "cgal"
+brew "cmake"
+brew "ctags"
+brew "curl"
+brew "dfu-programmer"
+brew "dfu-util"
+brew "direnv"
+brew "epsilon"
+brew "expat"
+brew "flac"
+brew "frei0r"
+brew "fribidi"
+brew "ffmpeg"
+brew "fontforge"
+brew "fop"
+brew "freexl"
+brew "fzf"
+brew "gcc"
+brew "geos"
+brew "szip"
+brew "hdf5"
+brew "json-c"
+brew "libxml2"
+brew "libdap"
+brew "proj"
+brew "libgeotiff"
+brew "libpq"
+brew "libspatialite"
+brew "netcdf"
+brew "nspr"
+brew "nss"
+brew "openblas"
+brew "numpy"
+brew "qt"
+brew "poppler"
+brew "unixodbc"
+brew "xerces-c"
+brew "zstd"
+brew "gdal"
+brew "ghostscript"
+brew "ghq"
+brew "hub"
+brew "imagemagick@6"
+brew "jasper"
+brew "jemalloc"
+brew "md5sha1sum"
+brew "mysql@5.7", restart_service: true
+brew "neovim"
+brew "ninja"
+brew "nkf"
+brew "node@10"
+brew "nodebrew"
+brew "noti"
+brew "p7zip"
+brew "pandoc"
+brew "peco"
+brew "postgresql", restart_service: true
+brew "protobuf"
+brew "protobuf-c"
+brew "sfcgal"
+brew "postgis"
+brew "pyenv"
+brew "ruby-build"
+brew "rbenv"
+brew "rbenv-gemset"
+brew "reattach-to-user-namespace"
+brew "redis", restart_service: true
+brew "telnet"
+brew "the_silver_searcher"
+brew "tmux"
+brew "v8@3.15"
+brew "watch"
+brew "wget"
+brew "wxmac"
+brew "zlib"
+brew "zsh"
+brew "argon/mas/mas"
+brew "heroku/brew/heroku-node"
+brew "heroku/brew/heroku"
+brew "osx-cross/avr/avr-binutils"
+brew "osx-cross/avr/avr-gcc"
+brew "osx-cross/avr/avr-gcc@8"
+brew "px4/px4/gcc-arm-none-eabi"
+brew "rcmdnk/file/brew-file"
+brew "sanemat/font/ricty"
+cask "basictex"
+cask "chromedriver"
+cask "google-chrome"
+cask "visual-studio-code"
+cask "xquartz"
+mas "Bear", id: 1091189122
+mas "Evernote", id: 406056744
+mas "Kindle", id: 405399194
+mas "LINE", id: 539883307
+mas "RunCat", id: 1429033973
+mas "Slack", id: 803453959
+mas "The Unarchiver", id: 425424353
+mas "Todoist", id: 585829637
+mas "Tot", id: 1491071483
+mas "Tweetbot", id: 1384080005
+mas "Xcode", id: 497799835

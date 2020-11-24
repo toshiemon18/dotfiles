@@ -11,25 +11,16 @@ echo "==============================="
 
 # install fomulas from Brewfile
 echo "================================"
-echo "Installing fomulas from Brewfile"
+echo "Install formulas from Brewfile"
 echo "================================"
-mkdir -p $HOME/.config/brewfile
-ln -fis $PWD/Brewfile $HOME/.config/brewfile/Brewfile
-brew file install
+brew bundle --file $PWD/Brewfile
 
 # ========================
-#  Setup Zsh Environments
+#  dotfiles setup
 # ========================
-ln -fis $PWD/zsh/.zshrc $HOME/.zshrc
-ln -fis $PWD/zsh/.zsh_simple_prompt $HOME/.zsh_simple_prompt
+sh ./install.sh
 
+# ========================
+#  Setup shell
+# ========================
 chsh -s "$(which zsh)"
-
-# ========================
-#  Setup Ruby environment
-# ========================
-echo "================================"
-echo "Installing fomulas from Brewfile"
-echo "================================"
-git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-cd ~/.rbenv && src/configure && make -C src

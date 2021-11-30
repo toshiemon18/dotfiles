@@ -14,6 +14,7 @@ let g:lsp_async_completion=1
 let g:lsp_preview_keep_focus=0
 let g:lsp_preview_float=1
 let g:lsp_preview_autoclose=1
+let g:lsp_signature_help_enabled=0
 
 " 言語毎の設定
 augroup MyLSP
@@ -24,7 +25,7 @@ augroup MyLSP
 					\ 'name': 'solargraph',
 					\	'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
 					\ 'initialization_options': { "diagnostics": v:true },
-					\ 'whitelist': ['ruby', 'slim', 'rspec']
+					\ 'whitelist': ['ruby', 'rspec']
 					\})
 	endif
 

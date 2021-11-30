@@ -1,4 +1,4 @@
-if [ -z $HOME/.config ] then;
+if [ -z $HOME/.config ] ; then
 	mkdir -p $HOME/.config
 fi
 

@@ -71,6 +71,9 @@ hook_add = 'source ~/.config/nvim/userautoload/plugin-vim-lsp.vim'
 [[plugins]]
 repo = 'prabirshrestha/async.vim'
 
+[[plugins]]
+repo = 'mattn/vim-lsp-settings'
+
 # deoplete-vim-lsp
 [[plugins]]
 repo = 'lighttiger2505/deoplete-vim-lsp'
@@ -123,6 +126,10 @@ merged = "0"
 repo = "junegunn/fzf.vim"
 depends = "fzf"
 hook_add = 'source ~/.config/nvim/userautoload/plugin-fzf.vim'
+
+[[plugins]]
+repo = 'scrooloose/syntastic'
+hook_add = 'source ~/.config/nvim/userautoload/plugin-syntastic.vim'
 
 # =================
 #   Git

@@ -1,6 +1,11 @@
 # /usr/bin/env sh
 
 # ========================
+#  dotfiles setup
+# ========================
+sh ./install.sh
+
+# ========================
 #  HomeBrew setup
 # ========================
 # install homebrew
@@ -23,4 +28,6 @@ sh ./install.sh
 # ========================
 #  Setup shell
 # ========================
+ln -fis $PWD/zsh/.zshrc $HOME/.zshrc
+ln -fis $PWD/zsh/.zsh_simple_prompt $HOME/.zsh_simple_prompt
 chsh -s "$(which zsh)"

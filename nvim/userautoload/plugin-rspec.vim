@@ -1,7 +1,9 @@
 " =================
 "   RSpec.vim
 " =================
-" map <Leader>t :call RunCurrentSpecFile()<CR>
-" map <Leader>s :call RunNearestSpec()<CR>
-" map <Leader>l :call RunLastSpec()<CR>
-" map <Leader>a :call RunAllSpecs()<CR>
+nnoremap [rspec] <Nop>
+nmap <Space>0 [rspec]
+nmap [rspec]t :call RunCurrentSpecFile()<CR>
+nmap [rspec]s :call RunNearestSpec()<CR>
+nmap [rspec]l :call RunLastSpec()<CR>
+nmap [rspec]a :call RunAllSpecs()<CR>

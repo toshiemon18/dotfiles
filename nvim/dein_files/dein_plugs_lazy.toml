@@ -51,6 +51,12 @@ repo = 'slim-template/vim-slim'
 on_ft = ['slim']
 
 
+# denite-rails
+# deniteのrails source
+[[plugins]]
+repo = '5t111111/denite-rails'
+on_ft = ['ruby', 'slim']
+
 # =================
 #   JavaScript
 #   CoffeeScript
@@ -217,3 +223,13 @@ on_ft = ['vim']
 [[plugins]]
 repo = 'mattn/vim-sqlfmt'
 on_ft = ['sql', 'SQL']
+
+
+# =================
+# toml
+# =================
+# TOML対応
+# toml.vim
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = ['toml']

@@ -64,12 +64,6 @@ hook_add = "source ~/.config/nvim/userautoload/plugin-defx.vim"
 repo = 'Shougo/denite.nvim'
 hook_add = 'source ~/.config/nvim/userautoload/plugin-denite.vim'
 
-# denite-rails
-# deniteのrails source
-[[plugins]]
-repo = '5t111111/denite-rails'
-on_ft = ['ruby', 'slim']
-
 # ag.vim
 [[plugins]]
 repo = 'rking/ag.vim'
@@ -82,20 +76,8 @@ repo = 'prabirshrestha/async.vim'
 [[plugins]]
 repo = 'tomtom/tcomment_vim'
 
-# ファイルツリーを表示する
-# NERDTree
-[[plugins]]
-repo = 'scrooloose/nerdtree'
-hook_add="source ~/.config/nvim/userautoload/plugin-nerdtree.vim"
-
 [[plugins]]
 repo = 'ryanoasis/vim-devicons'
-
-
-# ステータスラインを良い感じするやつ
-# lightline.vim
-# [[plugins]]
-# repo = 'itchyny/lightline.vim'
 
 # airline
 [[plugins]]
@@ -140,10 +122,6 @@ repo = 'airblade/vim-gitgutter'
 # =================
 #   Others
 # =================
-# TOML対応
-# toml.vim
-[[plugins]]
-repo = 'cespare/vim-toml'
 
 [[plugins]]
 repo = 'tyru/open-browser.vim'

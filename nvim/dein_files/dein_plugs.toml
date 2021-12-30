@@ -34,6 +34,15 @@ hook_post_update = '''
 repo = 'neoclide/coc.nvim'
 rev = 'release'
 hook_add = "source ~/.config/nvim/userautoload/plugin-coc.vim"
+build = '''
+mkdir -p ~/.config/coc/extensions
+cd ~/.config/coc/extensions
+if [ ! -f package.json ]
+then
+	cp ~/.config/nvim/dein_files/coc_package.json ./package.json
+fi
+npm install --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
+'''
 
 # ale
 [[plugins]]

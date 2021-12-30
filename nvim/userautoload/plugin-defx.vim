@@ -23,17 +23,23 @@ call defx#custom#column('git', 'indicators', {
 	\ })
 
 call defx#custom#option('_', {
+	\ 'winwidth': 40,
+	\ 'split': 'vertical',
+	\ 'direction': 'topleft',
+	\ 'buffer_name': 'explorer',
 	\ 'columns': 'indent:git:icons:filename',
 	\ 'show_ignored_files': 1,
 	\ })
 let g:defx_icons_column_length = 1
 
 autocmd FileType defx call s:defx_my_settings()
+autocmd BufWritePost * call defx#redraw()
+autocmd BufEnter * call defx#redraw()
 
 function! s:defx_my_settings() abort
 	" Define mappings
 	nnoremap <silent><buffer><expr> <CR>
-	\ defx#do_action('open')
+	\ defx#do_action('drop')
 	noremap <silent><buffer><expr> c
 	\ defx#do_action('copy')
 	nnoremap <silent><buffer><expr> m
@@ -41,13 +47,15 @@ function! s:defx_my_settings() abort
 	nnoremap <silent><buffer><expr> p
 	\ defx#do_action('paste')
 	nnoremap <silent><buffer><expr> l
-	\ defx#do_action('open')
+	\ defx#do_action('drop')
+	nnoremap <silent><buffer><expr> t
+				\ defx#do_action('open', 'tabnew')
 	nnoremap <silent><buffer><expr> E
-	\ defx#do_action('open', 'vsplit')
+	\ defx#do_action('drop', 'vsplit')
 	nnoremap <silent><buffer><expr> H
-	\ defx#do_action('open', 'split')
+	\ defx#do_action('drop', 'split')
 	nnoremap <silent><buffer><expr> P
-	\ defx#do_action('open', 'pedit')
+	\ defx#do_action('drop', 'pedit')
 	nnoremap <silent><buffer><expr> o
 	\ defx#do_action('open_or_close_tree')
 	nnoremap <silent><buffer><expr> K

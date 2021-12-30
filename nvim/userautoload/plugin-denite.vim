@@ -17,7 +17,7 @@ function! s:denite_my_settings() abort
 
 	" ESCでdeniteからquit
 	nnoremap <silent><buffer><expr> q denite#do_map('quit')
-	nnoremap <silent><buffer><expr> <ESC> denite#do_map('quit')
+	nnoremap <silent><buffer><expr> <ESC><ESC> denite#do_map('quit')
 
 	" C-j, C-kでbuffer内を移動
 	nnoremap <silent><buffer> <C-j> j

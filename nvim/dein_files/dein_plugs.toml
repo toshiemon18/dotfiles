@@ -126,10 +126,6 @@ repo = "junegunn/fzf.vim"
 depends = "fzf"
 hook_add = 'source ~/.config/nvim/userautoload/plugin-fzf.vim'
 
-[[plugins]]
-repo = 'scrooloose/syntastic'
-hook_add = 'source ~/.config/nvim/userautoload/plugin-syntastic.vim'
-
 # =================
 #   Git
 # =================

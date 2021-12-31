@@ -64,6 +64,10 @@ hook_add = "source ~/.config/nvim/userautoload/plugin-defx.vim"
 repo = 'Shougo/denite.nvim'
 hook_add = 'source ~/.config/nvim/userautoload/plugin-denite.vim'
 
+# denite git
+[[plugins]]
+repo = 'neoclide/denite-git'
+
 # ag.vim
 [[plugins]]
 repo = 'rking/ag.vim'

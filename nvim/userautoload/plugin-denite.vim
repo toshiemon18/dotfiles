@@ -9,7 +9,7 @@ function! s:denite_my_settings() abort
 	" inoremap <silent><buffer><expr> <BS> denite#do_map('move_up_path')
 	nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
 	nnoremap <silent><buffer><expr> d denite#do_map('do_action', 'delete')
-	nnoremap <silent><buffer><expr> p denite#do_map('do_action', 'preview')
+	nnoremap <silent><buffer><expr> p denite#do_map('toggle_auto_action', 'preview')
 	nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
 	nnoremap <silent><buffer><expr> a denite#do_map('open_filter_buffer')
 	nnoremap <silent><buffer><expr> <Tab> denite#do_map('choose_action')
@@ -44,13 +44,41 @@ endfunction
 let s:denite_win_width_per = 0.4
 let s:denite_win_height_per = 0.35
 
+" call denite#custom#option('default', {
+" 			\ 'split': 'floating',
+" 			\ 'winwidth': float2nr(&columns * s:denite_win_width_per),
+" 			\ 'winheight': float2nr(&lines * s:denite_win_height_per),
+" 			\ 'wincol': float2nr((&columns - (&columns * s:denite_win_width_per)) / 2),
+" 			\ 'winrow': float2nr((&lines - (&lines* s:denite_win_height_per)) / 2),
+" 			\ 'prompt': '( ˘ω˘) >>> ',
+" 			\ 'auto_action': 'preview',
+" 			\ 'auto_preview': v:true,
+" 			\ 'vertical_preview': v:true,
+" 			\ 'floating_preview': v:true,
+" 			\ 'preview_width': float2nr(&columns * s:denite_win_width_per),
+" 			\ 'preview_height': float2nr(&lines * s:denite_win_height_per),
+" 			\ 'preview_col': float2nr((&columns - (&columns * s:denite_win_width_per)) / 2),
+" 			\ 'preview_row': float2nr((&lines - (&lines* s:denite_win_height_per)) / 2),
+" 			\})
+
+let s:floating_window_width_ratio = 1.0
+let s:floating_window_height_ratio = 0.7
+
 call denite#custom#option('default', {
-			\ 'split': 'floating',
-			\ 'winwidth': float2nr(&columns * s:denite_win_width_per),
-			\ 'wincol': float2nr((&columns - (&columns * s:denite_win_width_per)) / 2),
-			\ 'winheight': float2nr(&lines * s:denite_win_height_per),
-			\ 'winrow': float2nr((&lines - (&lines* s:denite_win_height_per)) / 2),
-			\})
+	\ 'split': 'floating',
+	\ 'prompt': '% ',
+	\ 'auto_action': 'preview',
+	\ 'floating_preview': v:true,
+	\ 'match_highlight': v:true,
+	\ 'vertical_preview': v:true,
+	\ 'preview_height': float2nr(&lines * s:floating_window_height_ratio),
+	\ 'preview_width': float2nr(&columns * s:floating_window_width_ratio / 2),
+	\ 'wincol': float2nr((&columns - (&columns * s:floating_window_width_ratio)) / 2),
+	\ 'winheight': float2nr(&lines * s:floating_window_height_ratio),
+	\ 'winrow': float2nr((&lines - (&lines * s:floating_window_height_ratio)) / 2),
+	\ 'winwidth': float2nr(&columns * s:floating_window_width_ratio / 2),
+	\ })
+
 
 call denite#custom#option('_', {
 			\ 'prompt': '( ˘ω˘) >>> ',
@@ -92,27 +120,27 @@ call denite#custom#filter(
 nnoremap [denite] <Nop>
 nmap <Space>d [denite]
 " ファイル一覧
-noremap [denite]n :Denite file<CR>
+noremap [denite]n :Denite file -floating-preview<CR>
 " 最近使ったファイルの一覧
-noremap [denite]z :Denite file/old<CR>
+noremap [denite]z :Denite file/old -floating-preview<CR>
 " カレントディレクトリ
-noremap [denite]a :Denite file/rec<CR>
+noremap [denite]a :Denite file/rec -floating-preview<CR>
 " カレントディレクトリ以下+buffer内から探す
-noremap [denite]x :Denite file/rec buffer<CR>
+noremap [denite]x :Denite file/rec buffer -floating-preview<CR>
 "バッファ一覧
 noremap [denite]b :<C-u>Denite buffer -buffer-name=buffer<CR>
 " 開いているファイルのディレクトリ以下のファイル一覧
-nnoremap [denite]f :<C-u>DeniteBufferDir -direction=topleft file file:new<CR>
+nnoremap [denite]f :<C-u>DeniteBufferDir -direction=topleft file file:new -floating-preview<CR>
 " /をDeniteに任せる
 " nnoremap <silent> / :<C-u>Denite -buffer-name=search -auto-resize line<CR>
 
 " denite-git
-" noremap [denite-git] <Nop>
-" nmap 		<Space>g [denite-git]
-" nnoremap [denite-git]s :<C-u>Denite<Space>gitstatus<CR>
-" nnoremap [denite-git]c :<C-u>Denite<Space>gitchanged<CR>
-" nnoremap [denite-git]b :<C-u>Denite<Space>gitbranch<CR>
-" nnoremap [denite-git]l  :<C-u>Denite<Space>gitlog<CR>
+noremap [denite-git] <Nop>
+nmap 		<Space>G [denite-git]
+nnoremap [denite-git]s :<C-u>Denite<Space>gitstatus<CR>
+nnoremap [denite-git]c :<C-u>Denite<Space>gitchanged<CR>
+nnoremap [denite-git]b :<C-u>Denite<Space>gitbranch<CR>
+nnoremap [denite-git]l  :<C-u>Denite<Space>gitlog<CR>
 
 " denite-rails
 noremap [rails] <Nop>

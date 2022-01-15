@@ -68,6 +68,11 @@ hook_add = 'source ~/.config/nvim/userautoload/plugin-denite.vim'
 [[plugins]]
 repo = 'neoclide/denite-git'
 
+# denite-rails
+# deniteのrails source
+[[plugins]]
+repo = '5t111111/denite-rails'
+
 # ag.vim
 [[plugins]]
 repo = 'rking/ag.vim'

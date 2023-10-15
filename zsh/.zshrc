@@ -2,9 +2,11 @@
 # General setting
 # ---------------------------
 plugins=(git ruby osx bundler brew emoji-clock)
+export XDG_CONFIG_HOME=$HOME/.config
 export AUTOFEATURE=true     # autotestでfeatureを動かす
-export ZSH=~/.oh-my-zsh
-export EDITOR=nvim
+export EDITOR=vim
+export ZDOTDIR=$HOME
+source $HOME/.zprofile
 
 setopt auto_cd              # コマンド無くてディレクトリ名があればcd
 setopt no_beep              # beep音を鳴らさない
@@ -12,9 +14,9 @@ setopt no_beep              # beep音を鳴らさない
 #### 補完系 ####
 setopt auto_list            # 補完候補を一覧表示
 setopt auto_menu            # Tab連打で候補を順に表示
+setopt auto_pushd
 setopt list_packed          # 補完候補を詰めて表示
 setopt list_types           # 補完候補のファイル種類を表示
-setopt CORRECT_ALL          # コマンドを間違えたら訂正
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' # 補完時に大文字小文字を区別しない
 
 #### History ####
@@ -43,11 +45,6 @@ bindkey "^N" history-beginning-search-forward-end
 # git
 alias g=git
 
-# Vim関係
-alias v=nvim
-alias vi=nvim
-alias vim=nvim
-
 # ls
 alias sl=ls
 case ${OSTYPE} in
@@ -68,26 +65,6 @@ alias fzf="fzf --reverse"
 # ---------------------------
 # Own functions
 # ---------------------------
-
-# Enterだけ入力したらlsとgit statusを叩く
-function do_enter() {
-	if [ -n "$BUFFER" ]; then
-		zle accept-line
-		return 0
-	fi
-
-	echo
-	ls
-	# ls_abbrev
-
-	if [ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" = 'true' ]; then
-		echo
-		echo -e "\e[0;33m--- git status ---\e[0m"
-		git status -sb
-	fi
-	zle reset-prompt
-	return 0
-}
 
 # fbr - checkout git branch (powered fzf)
 function fbr() {
@@ -111,14 +88,13 @@ function fcd() {
 	cd "$dir"
 }
 
-# cdしたあとに絶対lsする
-function cd() {
-  builtin cd $@ && ls;
-}
-
 function fzf_ghq_look() {
 	if [ -z "$(which fzf)" ]; then
 		echo "Please install fzf -- fzf does not exist"
+		return -1
+	fi
+	if [ -z "$(which ghq)" ]; then
+		echo "Please install ghq -- ghq does not exist"
 		return -1
 	fi
 
@@ -131,13 +107,18 @@ function fzf_ghq_look() {
 zle -N fzf_ghq_look
 bindkey "^]" fzf_ghq_look
 
+function fzf_select_history() {
+	BUFFER=$(history -n -r 1 | fzf --query "$LBUFFER")
+	CURSOR=$#BUFFER
+
+	zle reset-prompt
+}
+zle -N fzf_select_history
+bindkey '^r' fzf_select_history
+
 # ---------------------------
 # Key binding
 # ---------------------------
-# Enterだけ入力するとdo_enter関数を走らせる
-zle -N do_enter
-bindkey '^m' do_enter
-
 # fzf keybindinf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -175,20 +156,5 @@ source ~/.zsh_simple_prompt
 
 fpath=(/usr/local/share/zsh-completions $fpath)
 
-# if (which zprof > /dev/null) ;then
-#     zprof | less
-# fi
-# ---------------------------
-# 環境設定
-# ---------------------------
-if [ -e ~/.zsh_vars ]; then
-	source ~/.zsh_vars
-else
-	echo "Create ~/.zsh_vars ."
-	echo "Set your environment variables to ~/.zsh_vars ."
-	touch $HOME/.zsh_vars
-fi
-
 autoload -U compinit
 compinit -C
-

@@ -1,7 +1,6 @@
 # ---------------------------
 # General setting
 # ---------------------------
-plugins=(git ruby osx bundler brew emoji-clock)
 export XDG_CONFIG_HOME=$HOME/.config
 export AUTOFEATURE=true     # autotestでfeatureを動かす
 export EDITOR=vim
@@ -125,9 +124,6 @@ bindkey '^r' fzf_select_history
 # ---------------------------
 # Look and feel setting
 # ---------------------------
-### ZSH_THEME ###
-source $ZSH/oh-my-zsh.sh
-
 # 区切り文字を変更
 autoload -Uz select-word-style
 select-word-style default

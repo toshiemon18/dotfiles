@@ -1,7 +1,6 @@
 # ---------------------------
 # General setting
 # ---------------------------
-export XDG_CONFIG_HOME=$HOME/.config
 export AUTOFEATURE=true     # autotestでfeatureを動かす
 export EDITOR=vim
 export ZDOTDIR=$HOME
@@ -106,20 +105,29 @@ function fzf_ghq_look() {
 zle -N fzf_ghq_look
 bindkey "^]" fzf_ghq_look
 
-function fzf_select_history() {
-	BUFFER=$(history -n -r 1 | fzf --query "$LBUFFER")
-	CURSOR=$#BUFFER
-
-	zle reset-prompt
-}
-zle -N fzf_select_history
-bindkey '^r' fzf_select_history
-
 # ---------------------------
 # Key binding
 # ---------------------------
 # fzf keybindinf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# zsh-autocomplete
+zstyle '*:compinit' arguments -D -i -u -C -w
+## Tabキーのバインドを再設定する
+### タブで保管を開く, 末尾から最初に戻る
+bindkey '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
+bindkey '\t' menu-select "$terminfo[kcbt]" menu-select
+bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
+## 補完候補の表示制限
+# Autocompletion
+zstyle -e ':autocomplete:list-choices:*' list-lines 'reply=( $(( LINES / 3 )) )'
+# Override history search.
+zstyle ':autocomplete:history-incremental-search-backward:*' list-lines 8
+# History menu.
+zstyle ':autocomplete:history-search-backward:*' list-lines 30
+## 履歴のキーバインドを上書きしない
+# bindkey '^R' .history-incremental-search-backward
+# bindkey '^S' .history-incremental-search-forward
 
 # ---------------------------
 # Look and feel setting

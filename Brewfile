@@ -46,7 +46,6 @@ brew "freexl"
 brew "fzf"
 brew "gcc"
 brew "geos"
-brew "szip"
 brew "hdf5"
 brew "json-c"
 brew "libxml2"
@@ -72,12 +71,10 @@ brew "hub"
 brew "imagemagick@6"
 brew "jasper"
 brew "jemalloc"
-brew "md5sha1sum"
 brew "mysql@5.7", restart_service: true
 brew "neovim"
 brew "ninja"
 brew "nkf"
-brew "node@10"
 brew "nodebrew"
 brew "noti"
 brew "p7zip"
@@ -103,7 +100,6 @@ brew "wget"
 brew "wxmac"
 brew "zlib"
 brew "zsh"
-brew "argon/mas/mas"
 brew "heroku/brew/heroku-node"
 brew "heroku/brew/heroku"
 brew "osx-cross/avr/avr-binutils"
@@ -111,20 +107,7 @@ brew "osx-cross/avr/avr-gcc"
 brew "osx-cross/avr/avr-gcc@8"
 brew "px4/px4/gcc-arm-none-eabi"
 brew "rcmdnk/file/brew-file"
-brew "sanemat/font/ricty"
 cask "basictex"
 cask "chromedriver"
-cask "google-chrome"
 cask "visual-studio-code"
 cask "xquartz"
-mas "Bear", id: 1091189122
-mas "Evernote", id: 406056744
-mas "Kindle", id: 405399194
-mas "LINE", id: 539883307
-mas "RunCat", id: 1429033973
-mas "Slack", id: 803453959
-mas "The Unarchiver", id: 425424353
-mas "Todoist", id: 585829637
-mas "Tot", id: 1491071483
-mas "Tweetbot", id: 1384080005
-mas "Xcode", id: 497799835

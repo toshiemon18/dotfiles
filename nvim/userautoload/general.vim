@@ -43,6 +43,7 @@ set tw=0
 set conceallevel=0
 set wildmenu
 set wildmode=full
+let mapleader = "\<space>"
 
 " 行末の空文字を削除する関数
 function! Rstrip()
@@ -89,6 +90,7 @@ autocmd BufRead,BufNewFile,BufWritePre *.coffee set filetype=coffee
 " =======================
 let g:ruby_host_prog = expand($HOME.'/.rbenv/shims/ruby')
 let g:python3_host_prog=expand($HOME.'/.pyenv/shims/python')
+let g:node_host_prog=expand($HOME.'/.nodenv/bin/node')
 
 " functions
 command! ParseXML %s/></>\r</g | filetype indent on | setf xml | normal gg=G

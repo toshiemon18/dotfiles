@@ -57,7 +57,7 @@ endif
 " DeopleteでESCをmappingする
 let g:AutoClosePumvisible = {"ENTER": "<C-Y>", "ESC": "<ESC>"}
 
-" runtime! userautoload/*.vim
+runtime! userautoload/*.vim
 runtime! userautoload/general.vim
 runtime! userautoload/color.vim
 runtime! userautoload/keymapping.vim

@@ -23,6 +23,7 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
   require('configs.plugins.gruvbox.lazyspec'),
+  require('configs.plugins.gitsigns.lazyspec'),
 }
 
 require("lazy").setup(plugins, {

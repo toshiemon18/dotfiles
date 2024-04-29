@@ -1,0 +1,9 @@
+require:
+  - standard
+
+AllCops:
+  Exclude:
+    - "Brewfile"
+
+Style/AsciiComments:
+  Enabled: false

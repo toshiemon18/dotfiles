@@ -13,10 +13,10 @@ return {
     })
 
     local opts = { noremap = true }
-    vim.keymap.set('n', ']g', '<Cmd>Gitsigns next_hunk<Cr>', opts)
-    vim.keymap.set('n', '[g', '<Cmd>Gitsigns prev_hunk<Cr>', opts)
-    vim.keymap.set('n', '<C-g><C-p>', '<Cmd>Gitsigns preview_hunk<Cr>', opts)
-    vim.keymap.set('n', '<C-g><C-v>', '<Cmd>Gitsigns blame_line<Cr>', opts)
-    vim.keymap.set('n', '<C-g>a', '<Cmd>Gitsigns stage_buffer<Cr>', opts)
+    vim.keymap.set('n', ']g', ':Gitsigns next_hunk<CR>', opts)
+    vim.keymap.set('n', '[g', ':Gitsigns prev_hunk<CR>', opts)
+    vim.keymap.set('n', '<C-g><C-p>', ':Gitsigns preview_hunk<CR>', opts)
+    vim.keymap.set('n', '<C-g><C-v>', ':Gitsigns blame_line<CR>', opts)
+    vim.keymap.set('n', '<C-g>a', ':Gitsigns stage_buffer<CR>', opts)
   end,
 }

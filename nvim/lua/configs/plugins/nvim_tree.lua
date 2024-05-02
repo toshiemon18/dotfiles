@@ -28,7 +28,7 @@ return {
         group_empty = true,
       },
       filters = {
-        dotfiles = true,
+        dotfiles = false,
         git_ignored = true,
         custom = {
           "node_modules",
@@ -38,7 +38,7 @@ return {
       },
     })
   end,
-  -- dependencies = { "nvim-tree/nvim-web-devicons" },
+  dependencies = { "nvim-tree/nvim-web-devicons" },
   keys = {
     { "<Leader>f", ":NvimTreeToggle<CR>", { silent = true, desc = "NvimTreeToggle" } },
   },

@@ -116,3 +116,4 @@ end
 def xdg_config_home
   ENV.fetch('XDG_CONFIG_HOME') { "#{home_directory}/.config" }
 end
+

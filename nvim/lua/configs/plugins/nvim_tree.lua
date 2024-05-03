@@ -43,3 +43,4 @@ return {
     { "<Leader>f", ":NvimTreeToggle<CR>", { silent = true, desc = "NvimTreeToggle" } },
   },
 }
+

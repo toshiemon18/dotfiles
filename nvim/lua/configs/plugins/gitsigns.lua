@@ -20,3 +20,4 @@ return {
     vim.keymap.set('n', '<C-g>a', ':Gitsigns stage_buffer<CR>', opts)
   end,
 }
+

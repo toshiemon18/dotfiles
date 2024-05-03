@@ -22,16 +22,22 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-  require('configs.plugins.gruvbox'),
+  require('configs.plugins.emmet'),
   require('configs.plugins.gitsigns'),
-  require('configs.plugins.nvim_tree')
+  require('configs.plugins.gruvbox'),
+  require('configs.plugins.neogit'),
+  require('configs.plugins.nvim_tree'),
+  require('configs.plugins.tcomment_vim'),
+  require('configs.plugins.telescope'),
 }
 
 require("lazy").setup(plugins, {
   performance = {
     rtp = {
       disabled_plugins = {
+        "netrw",
       },
     },
   },
 })
+

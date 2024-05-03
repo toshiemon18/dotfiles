@@ -16,3 +16,4 @@ keymap.set('', '<S-l>', '$', { noremap = true })
 -- visual で <> のインデント後に  visual が解除されないようにする
 keymap.set('v', ">", ">gv", { noremap = true })
 keymap.set('v', "<", "<gv", { noremap = true })
+

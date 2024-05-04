@@ -29,6 +29,8 @@ local plugins = {
   require('configs.plugins.nvim_tree'),
   require('configs.plugins.tcomment_vim'),
   require('configs.plugins.telescope'),
+	require('configs.plugins.completion'),
+	require('configs.plugins.lsp'),
 }
 
 require("lazy").setup(plugins, {

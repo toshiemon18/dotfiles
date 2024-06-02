@@ -31,6 +31,7 @@ local plugins = {
   require('configs.plugins.telescope'),
 	require('configs.plugins.completion'),
 	require('configs.plugins.lsp'),
+	require('configs.plugins.treesitter'),
 }
 
 require("lazy").setup(plugins, {

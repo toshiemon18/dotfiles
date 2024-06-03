@@ -113,6 +113,4 @@
   enabled = true
 [include]
   path = .gitconfig.user
-[user]
-	name = toshiemon18
-	email = st12318@gmail.com
+

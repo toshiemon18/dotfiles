@@ -7,3 +7,4 @@ AllCops:
 
 Style/AsciiComments:
   Enabled: false
+

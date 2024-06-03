@@ -32,6 +32,8 @@ local plugins = {
 	require('configs.plugins.completion'),
 	require('configs.plugins.lsp'),
 	require('configs.plugins.treesitter'),
+	require('configs.plugins.render_markdown'),
+	require('configs.plugins.barbar'),
 }
 
 require("lazy").setup(plugins, {

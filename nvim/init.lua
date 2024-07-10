@@ -7,6 +7,9 @@ require("configs.options")
 -- keybinds
 require("configs.keymaps")
 
+-- obsidian settings
+require('configs.plugins.obsidian')
+
 -- bootstrap for lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -31,10 +34,10 @@ local plugins = {
   require('configs.plugins.telescope'),
 	require('configs.plugins.completion'),
 	require('configs.plugins.lsp'),
-	-- require('configs.plugins.snippets'),
+	require('configs.plugins.snippets'),
 	require('configs.plugins.treesitter'),
 	require('configs.plugins.render_markdown'),
-	require('configs.plugins.surround')
+	require('configs.plugins.surround'),
 }
 
 require("lazy").setup(plugins, {

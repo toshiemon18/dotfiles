@@ -34,6 +34,14 @@ GEM
       language_server-protocol (~> 3.17.0)
       prism (>= 0.23.0, < 0.28)
       sorbet-runtime (>= 0.5.10782)
+    ruby-lsp-rails (0.3.6)
+      ruby-lsp (>= 0.16.5, < 0.17.0)
+      sorbet-runtime (>= 0.5.9897)
+    ruby-lsp-rspec (0.1.11)
+      ruby-lsp (~> 0.16.0)
+    ruby-lsp-rubyfmt (0.1.0)
+      ruby-lsp (>= 0.12.0)
+      sorbet-runtime (>= 0.5.5685)
     ruby-progressbar (1.13.0)
     sorbet-runtime (0.5.11361)
     standard (1.35.0.1)
@@ -57,6 +65,9 @@ PLATFORMS
 DEPENDENCIES
   rubocop
   ruby-lsp
+  ruby-lsp-rails
+  ruby-lsp-rspec
+  ruby-lsp-rubyfmt
   standard
 
 BUNDLED WITH

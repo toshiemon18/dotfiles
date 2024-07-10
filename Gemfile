@@ -4,5 +4,8 @@ source 'https://rubygems.org'
 
 gem 'rubocop'
 gem 'ruby-lsp'
+gem 'ruby-lsp-rails'
+gem 'ruby-lsp-rspec'
+gem 'ruby-lsp-rubyfmt'
 gem 'standard', group: %i[development test]
 

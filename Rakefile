@@ -32,7 +32,8 @@ namespace :dotfiles do
     desc 'setup git files'
     task :git, %i[backup] do |_task, args|
       logger.info('==== start dotfiles:setup:git')
-      install_component('git', distination_directory: home_directory, backup: !args[:backup].nil?)
+      # NOTE: 社用PCでの authorr user が個人アドレスになってほしくないので、file copyで設定を書き込む
+      install_component('git', distination_directory: home_directory, backup: !args[:backup].nil?, method: :copy)
     end
   end
 end

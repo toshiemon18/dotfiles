@@ -40,3 +40,9 @@ opts.number = true
 opts.cursorline = true
 opts.cursorcolumn = true
 
+-- note:
+-- lspsaga.nvim の code actions feature が絵文字の幅を取るときUI全体がガクつく
+-- 絵文字の幅確保を action があるか判定したあとに実行しているっぽい挙動だったので、
+-- 事前に signcolumn を有効にして number 左側のスペースを確保しておく
+vim.wo.signcolumn = "yes"
+

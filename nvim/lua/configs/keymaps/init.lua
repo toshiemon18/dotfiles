@@ -6,7 +6,8 @@ local keymap = vim.keymap
 
 keymap.set('n', ';', ':',  { noremap = true })
 
-keymap.set('n', '<ECS><ECS>', ':nohlsearch<CR>', { noremap = true })
+keymap.set('n', '<ECS><ECS>', '<cmd>nohlsearch<CR>', { noremap = true, silent = true })
+keymap.set("n", "<C-h><C-l>", "<cmd>nohlsearch<CR>", { noremap = true, silent = true })
 
 keymap.set('', 'vn', ':vnew<CR>', { noremap = true })
 

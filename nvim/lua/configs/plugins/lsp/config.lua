@@ -59,23 +59,25 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.cmd([[command! OR lua lsp_organize_imports()]])
 
     local opts = { noremap = true, silent = true }
+    -- lsp diagnoticses
     vim.keymap.set("n", "<leader>aa", lsp_show_diagnostics, opts)
     vim.keymap.set("n", "gl", lsp_show_diagnostics, opts)
-    vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-    vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+    vim.keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
+    vim.keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
     vim.keymap.set("n", "<leader>aq", vim.diagnostic.setloclist, opts)
 
     local bufopts = { noremap = true, silent = true, buffer = ev.buf }
     vim.keymap.set("n", "gO", lsp_organize_imports, bufopts)
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+    -- vim.keymap.set("n", "gD", "<cmd>Lspsaga peek_definition<CR>", bufopts)
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
     vim.keymap.set("n", "go", vim.lsp.buf.type_definition, bufopts)
-    vim.keymap.set("n", "gr", vim.lsp.buf.rename, bufopts)
+    vim.keymap.set("n", "gr", "<cmd>Lspsaga rename<CR>", bufopts)
     vim.keymap.set("n", "gR", vim.lsp.buf.references, bufopts)
     vim.keymap.set("n", "gy", vim.lsp.buf.type_definition, bufopts)
-    vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+    vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", bufopts)
     vim.keymap.set("n", "S", vim.lsp.buf.signature_help, bufopts)
-    vim.keymap.set("n", "ga", vim.lsp.buf.code_action, bufopts)
+    vim.keymap.set("n", "ga", "<cmd>Lspsaga code_action<CR>", bufopts)
 
     -- FIXME the following keymaps are not working when using a autocmd to set up
     -- vim.keymap.set("x", "gA", vim.lsp.buf.range_code_action, bufopts)

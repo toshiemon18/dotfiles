@@ -34,10 +34,12 @@ local plugins = {
   require('configs.plugins.telescope'),
 	require('configs.plugins.completion'),
 	require('configs.plugins.lsp'),
+	require('configs.plugins.lspsaga'),
 	require('configs.plugins.snippets'),
 	require('configs.plugins.treesitter'),
 	require('configs.plugins.render_markdown'),
 	require('configs.plugins.surround'),
+  require('configs.plugins.schamastore'),
 }
 
 require("lazy").setup(plugins, {

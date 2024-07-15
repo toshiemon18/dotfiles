@@ -118,9 +118,10 @@ function M.setup()
   })
 
   mason_lspconfig.setup_handlers({
-    function(server_name)
-      lspconfig[server_name].setup(make_conf({}))
-    end,
+		-- NOTE: 他のlsp設定が下のコードで実行されているか確認する
+    -- function(server_name)
+    --   lspconfig[server_name].setup(make_conf({}))
+    -- end,
 
     lua_ls = function()
       lspconfig.lua_ls.setup(make_conf({
@@ -144,6 +145,27 @@ function M.setup()
         },
       }))
     end,
+
+		-- NOTE: ruby_lsp の formatter, liter には standardrb を指定してルールを統一する
+		ruby_lsp = function()
+			lspconfig.ruby_lsp.setup(make_conf({
+				settings = {
+					formatter = "standardrb",
+					linter = "standardrb",
+				}
+			}))
+		end,
+		standardrb = function()
+			lspconfig.standardrb.setup(make_conf({
+				settings = {
+					filetypes = {
+						"ruby",
+					},
+					cmd = { "$HOME/.rbenv/shims/standardrb", "--lsp" },
+					root_dir = require('lspconfig.util').root_pattern('Gemfile', '.git'),
+				},
+			}))
+		end,
 
     diagnosticls = function()
       lspconfig.diagnosticls.setup(make_conf({

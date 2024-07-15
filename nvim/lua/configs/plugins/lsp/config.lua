@@ -69,7 +69,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     local bufopts = { noremap = true, silent = true, buffer = ev.buf }
     vim.keymap.set("n", "gO", lsp_organize_imports, bufopts)
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
-    -- vim.keymap.set("n", "gD", "<cmd>Lspsaga peek_definition<CR>", bufopts)
+    vim.keymap.set("n", "gp", "<cmd>Lspsaga peek_definition<CR>", bufopts)
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
     vim.keymap.set("n", "go", vim.lsp.buf.type_definition, bufopts)
     vim.keymap.set("n", "gr", "<cmd>Lspsaga rename<CR>", bufopts)
@@ -96,7 +96,23 @@ function M.setup()
   mason.setup({ ui = { border = border } })
 
   mason_lspconfig.setup({
-    ensure_installed = { "eslint", "tsserver", "lua_ls", "denols", "vimls", "astro", "tailwindcss", "jsonls" },
+    ensure_installed = {
+      -- javascript/typescript
+      "eslint",
+      "tsserver",
+      "astro",
+      -- lua
+      "lua_ls",
+      -- css/tailwindcss
+      "tailwindcss",
+      -- json
+      "jsonls",
+      -- vimscript
+      "vimls",
+      -- Ruby
+      "ruby_lsp",    -- LSP
+      "standardrb",  -- Formatter
+    },
     automatic_installation = true,
     ui = { check_outdated_servers_on_open = true },
   })

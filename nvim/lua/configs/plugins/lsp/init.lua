@@ -10,7 +10,7 @@ return {
         require('lspsaga').setup({
           lightbulb = {
             enable = true,
-          }
+          },
         })
       end,
       dependencies = {

@@ -9,8 +9,8 @@ local function tree_keys(bufnr)
   vim.keymap.set("n", "l", api.node.open.edit, opts("Open"))
   vim.keymap.set("n", "h", api.node.navigate.parent_close, opts("Close Directory"))
   vim.keymap.set("n", "?", api.tree.toggle_help, opts("Help"))
-	vim.keymap.set("n", "<S-e>", api.node.open.vertical, opts("Open horizontal"))
-	vim.keymap.set("n", "i", api.node.open.horizontal, opts("Open vertical"))
+  vim.keymap.set("n", "<S-e>", api.node.open.vertical, opts("Open horizontal"))
+  vim.keymap.set("n", "i", api.node.open.horizontal, opts("Open vertical"))
 end
 
 return {
@@ -41,6 +41,7 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   keys = {
     { "<Leader>f", ":NvimTreeToggle<CR>", { silent = true, desc = "NvimTreeToggle" } },
+    { "<leader><C-1>", "<cmd>NvimTreeFocus<CR>",  { silent = true, desc = "Focus NvimTree buffer" } }
   },
 }
 

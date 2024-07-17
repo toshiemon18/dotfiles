@@ -2,11 +2,14 @@ local keymap = vim.keymap
 local vaultPath = "$HOME/Dropbox/toshiemon_obsidian/"
 local dailyDirName = "日記"
 
-local function todays_note_path()
-	local note_dir = vaultPath .. dailyDirName
-	local note_path = os.date("/%Y/%m/%Y-%m-%d")
+local function daily_path()
+  return vaultPath .. dailyDirName
+end
 
-	return note_dir .. note_path .. ".md"
+local function todays_note_path()
+	local note_filename = os.date("/%Y/%m/%Y-%m-%d") .. ".md"
+
+	return  daily_path() .. note_filename
 end
 
 function open_today_note()
@@ -21,6 +24,16 @@ vim.api.nvim_create_user_command(
 		open_today_note()
 	end,
 	{}
+)
+
+vim.api.nvim_create_user_command(
+  "OpenObisidianVault",
+  function()
+    local telescope = require("telescope.builtin")
+
+    telescope.find_files({ cwd = daily_path() })
+  end,
+  {}
 )
 
 keymap.set(

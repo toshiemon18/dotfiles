@@ -31,7 +31,7 @@ vim.api.nvim_create_user_command(
   function()
     local telescope = require("telescope.builtin")
 
-    telescope.find_files({ cwd = daily_path() })
+    telescope.find_files({ cwd = vaultPath })
   end,
   {}
 )

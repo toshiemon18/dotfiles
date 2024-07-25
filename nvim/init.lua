@@ -52,3 +52,6 @@ require("lazy").setup(plugins, {
   },
 })
 
+vim.opt.filetype = "plugin", "indent", "on"
+vim.opt.syntax = "on"
+

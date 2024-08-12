@@ -1,0 +1,179 @@
+" ===========================
+"  vimrc
+"  author: toshiemon18
+" ===========================
+
+" =================
+"  encoding
+" =================
+scriptencoding utf-8
+set encoding=utf-8
+filetype plugin indent on
+
+" =================
+"  全角スペース可視化
+" =================
+function! ZenkakuSpace()
+    highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
+endfunction
+
+if has('syntax')
+    augroup ZenkakuSpace
+        autocmd!
+        autocmd ColorScheme * call ZenkakuSpace()
+        autocmd VimEnter,WinEnter,BufRead * let w:m1=matchadd('ZenkakuSpace', '?@')
+    augroup END
+    call ZenkakuSpace()
+endif
+
+" =================
+"  エディタの設定
+" =================
+highlight Normal ctermbg=none
+set ruler
+set number " 行数表示
+set cursorline
+set cursorcolumn
+set tabstop=2 " タブの文字数
+set noexpandtab
+set cursorline
+set backspace=indent,eol,start
+set shiftwidth=2 " Vimで挿入するインデントの幅
+set textwidth=70
+set colorcolumn=80
+autocmd vimenter * NERDTree
+set nobackup
+set noswapfile
+set modifiable
+set write
+set undodir=$HOME/.vim/undodir
+set tw=0
+set wildmenu
+set wildmode=full
+autocmd BufWritePre * :%s/\s\+$//ge " 保存時行末spaceを自動削除
+
+" マウスの動作設定
+set mouse=h
+set mousehide
+
+" 自動保存で悲劇を自動生成しない
+set autowrite
+set updatetime=500
+
+autocmd CursorHold *  wall
+autocmd CursorHoldI *  wall
+
+" =================
+"  Font
+" =================
+set guifont=Ricty\ 14
+set guifontwide=Ricty\ 14
+
+" =================
+"  エディタの見た目
+" =================
+set t_Co=256
+syntax enable
+" https://github.com/crusoexia/vim-monokai
+colorscheme monokai
+" set background=dark
+set cmdheight=2
+set title " タイトル部分に開いてるファイルのフルパスを表示する
+set wildmenu " 自動補完でかっこ良くアレする
+set laststatus=2
+set clipboard=unnamed,autoselect
+set noswapfile
+set showmatch
+set showcmd
+
+" =================
+" key binds
+" =================
+" Ecs連打で検索結果のハイライトを消す
+nnoremap <ESC><ESC> :nohlsearch<CR>
+" 新規バッファを開く
+map vn :vnew<CR>
+" インサートモードでもhjkl
+
+"言語別の設定
+" =================
+"    Ruby
+" =================
+autocmd FileType ruby setl nocindent autoindent smartindent
+autocmd FileType ruby setl tabstop=2 expandtab shiftwidth=2 softtabstop=2
+autocmd FileType eruby setl nocindent autoindent smartindent
+autocmd FileType eruby setl tabstop=2 expandtab shiftwidth=2 softtabstop=2
+autocmd BufNewFile,BufRead *.jbuilder set filetype=ruby
+autocmd BufNewFile,BufRead Guardfile  set filetype=ruby
+autocmd BufNewFile,BufRead Rakefile   set filetype=ruby
+autocmd BufNewFile,BufRead Schemafile set filetype=ruby
+autocmd BufNewFile,BufRead .pryrc     set filetype=ruby
+augroup RSpec
+    autocmd!
+    autocmd BufWinEnter,BufNewFile *_spec.rb set filetype=ruby.rspec
+augroup END
+autocmd FileType yaml setl nocindent autoindent smartindent
+autocmd FileType yaml setl tabstop=2 expandtab shiftwidth=2 softtabstop=2
+autocmd FileType slim setl nocindent autoindent smartindent
+autocmd FileType slim setl tabstop=2 expandtab shiftwidth=2 softtabstop=2
+" RubyでBool値返すメソッドをちゃんと判断させる
+autocmd FileType ruby setl iskeyword+=?
+
+" =================
+"    Elixir
+" =================
+au bufread,bufnewfile *.ex set filetype=elixir
+au bufread,bufnewfile *.exs set filetype=elixir
+au bufread,bufnewfile *.eex set filetype=elixir
+autocmd FileType elixir setl nocindent autoindent smartindent
+autocmd FileType elixir setl tabstop=2 expandtab shiftwidth=2 softtabstop=2
+
+" =================
+"    JavaScript
+" =================
+autocmd filetype javascript setl nocindent autoindent smartindent
+autocmd filetype javascript setl shiftwidth=2 softtabstop=2 tabstop=2 expandtab
+
+" =================
+"    Coffee Script
+" =================
+au BufRead,BufNewFile,BufReadPre *.coffee   set filetype=coffee
+autocmd FileType coffee    setlocal sw=2 sts=2 ts=2 et
+
+" =================
+"    C Lang
+" =================
+autocmd FileType c setlocal cindent expandtab tabstop=4 softtabstop=4 shiftwidth=4
+
+" =================
+"    Plane Text
+" =================
+set autoindent smartindent expandtab tabstop=4 softtabstop=4 shiftwidth=4
+
+" =================
+"    Markdown
+" =================
+augroup markdown
+    au!
+    au BufNewFile, BufRead *.md, *.markdown setl filetype=gmarkdown
+augroup END
+autocmd FileType gmarkdown setl autoindent smartindent expandtab nocindent
+autocmd FileType gmarkdown setl tabstop=2 softtabstop=2 shiftwidth=2
+autocmd FileType markdown setl autoindent smartindent expandtab nocindent
+autocmd FileType markdown setl tabstop=2 softtabstop=2 shiftwidth=2
+let g:vim_markdown_folding_disabled=1
+
+" =================
+"    Python
+" =================
+autocmd FileType python setl nocindent autoindent smartindent
+autocmd FileType python setl shiftwidth=4 softtabstop=4 tabstop=4 expandtab
+autocmd FileType python setlocal completeopt-=preview
+" =================
+"    HTML/XML
+" =================
+" 閉じタグ(</)が入力されたら自動で保管する
+" :let g:closetag_html_style=1
+" source ~/.vim/bundle/closetag.vim
+
+

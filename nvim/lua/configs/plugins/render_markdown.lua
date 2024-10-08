@@ -4,5 +4,6 @@ return {
   dependencies = { 'nvim-treesitter/nvim-treesitter' },
   config = function()
     require('render-markdown').setup({})
+    vim.opt.conceallevel = 2
   end,
 }

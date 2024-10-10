@@ -1,4 +1,12 @@
+setlocal nocindent
+setlocal autoindent
+setlocal smartindent
+setlocal tabstop=2
+setlocal expandtab
 setlocal shiftwidth=2
+setlocal softtabstop=2
+
+setlocal conceallevel=2
 
 " 改行時に箇条書きを継続
 " setlocal comments=b:*,b:-,b:+,b:1.,nb:>

@@ -36,10 +36,6 @@ zle -N history-beginning-search-forward-end history-search-end
 bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end
 
-autoload -Uz edit-command-line
-zle -N edit-command-line
-bindkey '^xe' edit-command-line
-
 # ---------------------------
 # Alias setting
 # ---------------------------
@@ -132,6 +128,11 @@ zstyle ':autocomplete:history-search-backward:*' list-lines 30
 ## 履歴のキーバインドを上書きしない
 # bindkey '^R' .history-incremental-search-backward
 # bindkey '^S' .history-incremental-search-forward
+
+# コマンドラインをエディタで編集する
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^xe' edit-command-line
 
 # ---------------------------
 # Look and feel setting

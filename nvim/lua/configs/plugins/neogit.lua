@@ -5,7 +5,9 @@ return {
     "nvim-telescope/telescope.nvim" -- telescope で色々操作させたい
   },
   config = function()
-    require("neogit").setup({})
+    require("neogit").setup({
+      kind = "floating"
+    })
   end
 }
 

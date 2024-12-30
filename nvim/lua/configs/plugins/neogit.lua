@@ -6,7 +6,10 @@ return {
   },
   config = function()
     require("neogit").setup({
-      kind = "floating"
+      kind = "floating",
+			commit_editor = {
+				kind = "floating"
+			}
     })
   end
 }

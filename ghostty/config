@@ -1,1 +1,10 @@
-theme = gruvbox-material
+theme = "gruvbox-material"
+font-family = "JetBrains Mono"
+font-size = 
+
+shell-integration-features = "no-cursor"
+cursor-style = "block"
+cursor-click-to-move = false
+
+auto-update = "check"
+

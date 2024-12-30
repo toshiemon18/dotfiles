@@ -1,10 +1,14 @@
 theme = "gruvbox-material"
 font-family = "JetBrains Mono"
-font-size = 
+font-size = 12
 
 shell-integration-features = "no-cursor"
 cursor-style = "block"
 cursor-click-to-move = false
+selection-background = 4C485B
 
 auto-update = "check"
+
+background-opacity = 0.8
+background-blur-radius = 10
 

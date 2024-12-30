@@ -35,6 +35,17 @@ namespace :dotfiles do
       # NOTE: 社用PCでの authorr user が個人アドレスになってほしくないので、file copyで設定を書き込む
       install_component("git", distination_directory: home_directory, backup: !args[:backup].nil?, method: :copy)
     end
+
+    desc "setup ghostty"
+    task :ghostty, %i[backup] do |_task, args|
+      logger.info("==== start dotfiles:setup:ghostty")
+      install_component(
+        "ghostty",
+        distination_directory: "#{xdg_config_home}/ghostty",
+        backup: !args[:backup].nil?,
+        method: :symlink
+      )
+    end
   end
 end
 

@@ -9,17 +9,16 @@ local border = {
   { "▏", "FloatBorder" },
 }
 
-
 return {
   "neovim/nvim-lspconfig",
   dependencies = {
-		"hrsh7th/cmp-nvim-lua",
+    "hrsh7th/cmp-nvim-lua",
     "hrsh7th/cmp-nvim-lsp",
     { "hrsh7th/nvim-cmp" },
     { "hrsh7th/cmp-buffer" },
     { "hrsh7th/cmp-path" },
     { "hrsh7th/cmp-cmdline" },
-    { "L3MON4D3/LuaSnip", dependencies = { "afamadriz/friendly-snippets" } },
+    { "L3MON4D3/LuaSnip",                       dependencies = { "afamadriz/friendly-snippets" } },
     { "saadparwaiz1/cmp_luasnip" },
     { "roobert/tailwindcss-colorizer-cmp.nvim", config = true },
   },
@@ -54,7 +53,7 @@ return {
       sources = cmp.config.sources({
         { name = "nvim_lua" },
         { name = "nvim_lsp" },
-        { name = "buffer", keyword_length = 5, max_item_count = 5 },
+        { name = "buffer",  keyword_length = 5, max_item_count = 5 },
         { name = "path" },
         { name = "luasnip" },
       }),
@@ -72,8 +71,8 @@ return {
     require('lspconfig.ui.windows').default_options.border = 'single'
 
     -- local capabilities = require('cmp_nvim_lsp').default_capabilities()
-		local cmp_nvim_lsp = require("cmp_nvim_lsp")
-		local capabilities = vim.lsp.protocol.make_client_capabilities()
+    local cmp_nvim_lsp = require("cmp_nvim_lsp")
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities.textDocument.completion.completionItem.snippetSupport = true
 
     local function make_conf(...)
@@ -111,6 +110,7 @@ return {
             -- LuaJIT in the case of Neovim
             version = "LuaJIT",
             path = vim.split(package.path, ";"),
+            pathStrict = true
           },
           diagnostics = {
             -- Get the language server to recognize the `vim` global
@@ -120,6 +120,13 @@ return {
             library = vim.api.nvim_get_runtime_file("", true),
             checkThirdParty = false,
           },
+          format = {
+            enable = true,
+            defaultConfig = {
+              indent_style = 'space',
+              indent_size = '2'
+            }
+          }
         },
       },
     }))
@@ -128,19 +135,9 @@ return {
     -- ruby-lsp
     lspconfig.ruby_lsp.setup(make_conf({
       settings = {
-        formatter = "standardrb",
-        linter = "standardrb",
+        formatter = "standard",
+        linter = "standard",
       }
-    }))
-    -- standardrb
-    lspconfig.standardrb.setup(make_conf({
-      settings = {
-        filetypes = {
-          "ruby",
-        },
-        cmd = { "$HOME/.rbenv/shims/standardrb", "--lsp" },
-        root_dir = lsp_util.root_pattern('Gemfile', '.git'),
-      },
     }))
 
     -- CSS
@@ -180,6 +177,16 @@ return {
       },
     })
 
+    -- typescript/javascript/jsx/tsx
+    -- ref: https://github.com/neovim/nvim-lspconfig/blob/8b15a1a597a59f4f5306fad9adfe99454feab743/doc/configs.md#ts_ls
+    lspconfig.ts_ls.setup({
+      on_attach = function(client)
+        if not lspconfig.util.root_pattern("package.json")(vim.fn.getcwd()) then
+          client.stop(true)
+        end
+      end
+    })
+
     -- keybinds
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("UserLspConfig", {}),
@@ -189,7 +196,8 @@ return {
 
         local opts = { noremap = true, silent = true }
         local function lsp_show_diagnostics()
-          vim.diagnostic.open_float({ border = border })
+          -- vim.diagnostic.open_float({ border = border })
+          vim.diagnostic.open_float()
         end
         -- lsp diagnoticses
         vim.keymap.set("n", "<leader>aa", lsp_show_diagnostics, opts)
@@ -199,7 +207,10 @@ return {
         vim.keymap.set("n", "<leader>aq", vim.diagnostic.setloclist, opts)
 
         local bufopts = { noremap = true, silent = true, buffer = ev.buf }
-        vim.keymap.set("n", "gO", lsp_organize_imports, bufopts)
+        -- vim.keymap.set("n", "gO", lsp_organize_imports, bufopts)
+        vim.keymap.set("n", "gf", function()
+          vim.lsp.buf.format({ async = true })
+        end)
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
         vim.keymap.set("n", "gp", "<cmd>Lspsaga peek_definition<CR>", bufopts)
         vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
@@ -225,4 +236,3 @@ return {
     })
   end
 }
-

@@ -148,6 +148,9 @@ local function setup_lspconfig()
         },
         cmd = { "typescript-language-server", "--stdio" }
       }))
+    end,
+    ["tailwindcss"] = function()
+      lspconfig.tailwindcss.setup({})
     end
   })
 end

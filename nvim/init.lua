@@ -37,7 +37,9 @@ local plugins = {
 	require('configs.plugins.render_markdown'),
 	require('configs.plugins.surround'),
   require('configs.plugins.schamastore'),
-  require('configs.plugins.lualine')
+  require('configs.plugins.lualine'),
+  require('configs.plugins.language_server'),
+  require("configs.plugins.lsp_saga")
 }
 
 require("lazy").setup(plugins, {

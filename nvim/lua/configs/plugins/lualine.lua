@@ -16,9 +16,11 @@ return {
         modified = " ",
         readonly = "󰌾 ",
       },
+      path = 1
     }
 
 
+    -- ref: https://github.com/nvim-lualine/lualine.nvim?tab=readme-ov-file#component-options
     local config = {
       options = {
         -- theme = custom_theme,

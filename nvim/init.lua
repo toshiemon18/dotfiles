@@ -26,14 +26,12 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
   require('configs.plugins.emmet'),
-  require('configs.plugins.gitsigns'),
   require('configs.plugins.gruvbox'),
   require('configs.plugins.neogit'),
+  require('configs.plugins.gitsigns'),
   require('configs.plugins.nvim_tree'),
   require('configs.plugins.telescope'),
 	require('configs.plugins.completion'),
-	require('configs.plugins.lsp'),
-	require('configs.plugins.lspsaga'),
 	require('configs.plugins.snippets'),
 	require('configs.plugins.treesitter'),
 	require('configs.plugins.render_markdown'),
@@ -52,7 +50,10 @@ require("lazy").setup(plugins, {
   },
 })
 
-vim.opt.filetype = "plugin", "indent", "on"
+-- vim.opt.filetype = "plugin", "indent", "on"
+vim.opt.filetype = "on"
+vim.opt.filetype.indent = "on"
+vim.opt.filetype.plugin = "on"
 vim.opt.syntax = "on"
 
 -- vim help を開くと、パーサプロバイダがないとtreesitterがエラーになる

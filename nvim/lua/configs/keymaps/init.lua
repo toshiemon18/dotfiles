@@ -4,7 +4,7 @@ local keymap = vim.keymap
 --	noremap vn :vnew<CR> -> keymap.set('', 'vn', ':vnew<CR>', { noremap = true })
 -- nnoremap <silent> ,f :GFiles<CR> ->	keymap.set('n', ',f', ":GFiles<CR>", { silent = true })
 
-keymap.set('n', ';', ':',  { noremap = true })
+keymap.set('n', ';', ':', { noremap = true })
 
 keymap.set("n", "<C-j><C-j>", "<cmd>nohlsearch<CR>", { noremap = true, silent = true })
 

@@ -79,11 +79,11 @@ local function setup_lspconfig()
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
     -- definition/references
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+    vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", bufopts)
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
     vim.keymap.set("n", "go", vim.lsp.buf.type_definition, bufopts)
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+    vim.keymap.set('n', 'gr', "<cmd>Telescope lsp_references<CR>", bufopts)
     vim.keymap.set("n", "gy", vim.lsp.buf.type_definition, bufopts)
     vim.keymap.set("n", "<C-s>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", keymap_opts)
 
@@ -151,6 +151,11 @@ local function setup_lspconfig()
     end,
     ["tailwindcss"] = function()
       lspconfig.tailwindcss.setup({})
+    end,
+    ["gopls"] = function()
+      lspconfig.gopls.setup(make_conf({
+        on_attach = on_attach
+      }))
     end
   })
 end

@@ -39,7 +39,8 @@ local plugins = {
   require('configs.plugins.schamastore'),
   require('configs.plugins.lualine'),
   require('configs.plugins.language_server'),
-  require("configs.plugins.lsp_saga")
+  require("configs.plugins.lsp_saga"),
+  require("configs.plugins.vgit")
 }
 
 require("lazy").setup(plugins, {

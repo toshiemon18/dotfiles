@@ -40,7 +40,8 @@ local plugins = {
   require('configs.plugins.lualine'),
   require('configs.plugins.language_server'),
   require("configs.plugins.lsp_saga"),
-  require("configs.plugins.vgit")
+  require("configs.plugins.vgit"),
+  require("configs.plugins.flutter")
 }
 
 require("lazy").setup(plugins, {

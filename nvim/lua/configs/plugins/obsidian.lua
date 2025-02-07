@@ -6,12 +6,6 @@ local function daily_path()
   return vaultPath .. dailyDirName
 end
 
-function open_today_note()
-	local note_path = todays_note_path()
-
-	vim.cmd(':e' .. note_path)
-end
-
 vim.api.nvim_create_user_command(
 	"ObsidianDaily",
 	function()

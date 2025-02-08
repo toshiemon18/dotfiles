@@ -2,7 +2,7 @@
 # General setting
 # ---------------------------
 export AUTOFEATURE=true     # autotestでfeatureを動かす
-export EDITOR=vim
+export EDITOR=nvim
 export ZDOTDIR=$HOME
 source $HOME/.zprofile
 
@@ -132,7 +132,7 @@ zstyle ':autocomplete:history-search-backward:*' list-lines 30
 # コマンドラインをエディタで編集する
 autoload -Uz edit-command-line
 zle -N edit-command-line
-bindkey '^xe' edit-command-line
+bindkey "^xe" edit-command-line
 
 # ---------------------------
 # Look and feel setting

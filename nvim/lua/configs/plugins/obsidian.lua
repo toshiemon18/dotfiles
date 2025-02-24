@@ -1,5 +1,5 @@
 local keymap = vim.keymap
-local vaultPath = "$HOME/Dropbox/toshiemon_obsidian/"
+local vaultPath = "$HOME/Dropbox/アプリ/remotely-save/toshiemon_obsidian/"
 local dailyDirName = "日記"
 
 local function daily_path()

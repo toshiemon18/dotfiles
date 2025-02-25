@@ -8,6 +8,17 @@ return {
 	},
 	build = ":TSUpdate",
 	config = function()
+    -- NOTE: ruby でメソッド呼び出しの入力をするとインデントが下げられる問題への対応
+    vim.api.nvim_create_autocmd(
+      "FileType",
+      {
+        pattern = {"ruby"},
+        callback = function()
+          vim.opt_local.indentkeys:remove(".")
+        end
+      }
+    )
+
 		require("nvim-treesitter.configs").setup({
 			ensure_installed = {
 				"bash",
@@ -50,7 +61,7 @@ return {
 			},
 			indent = {
 				enable = true,
-				disable = {},
+				-- disable = { "ruby" },
 			},
 			matchup = {
 				enable = true,

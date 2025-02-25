@@ -44,7 +44,12 @@ local function setup_lspconfig()
   }
   capabilities.textDocument.completion.completionItem.snippetSupport = true
   capabilities.textDocument.completion.completionItem.resolveSupport = {
-    properties = { "documentation", "detail", "additionalTextEdits", "documentHighlight" },
+    properties = {
+      "documentation",
+      "detail",
+      "additionalTextEdits",
+      "documentHighlight"
+    },
   }
   capabilities.textDocument.colorProvider = { dynamicRegistration = false }
 
@@ -132,10 +137,14 @@ local function setup_lspconfig()
     ["ruby_lsp"] = function()
       lspconfig.ruby_lsp.setup(make_conf({
         on_attach = on_attach,
+        cmd = { "ruby-lsp" },
         settings = {
           formatter = "standard",
           linter = "standard"
-        }
+        },
+        filetypes = { "ruby" },
+        root_dir = lspconfig.util.root_pattern("Gemfile", ".git"),
+        single_file_support = true
       }))
     end,
     ["ts_ls"] = function()

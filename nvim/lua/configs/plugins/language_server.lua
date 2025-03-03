@@ -155,11 +155,19 @@ local function setup_lspconfig()
           "typescriptreact",
           "typescript.tsx"
         },
+        root_dir = function (...)
+          return lspconfig.util.root_pattern(".git")(...)
+        end,
         cmd = { "typescript-language-server", "--stdio" }
       }))
     end,
     ["tailwindcss"] = function()
-      lspconfig.tailwindcss.setup({})
+      lspconfig.tailwindcss.setup({
+        on_attach = on_attach,
+        root_dir = function (...)
+          return lspconfig.util.root_pattern(".git")(...)
+        end
+      })
     end,
     ["gopls"] = function()
       lspconfig.gopls.setup(make_conf({

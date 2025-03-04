@@ -12,6 +12,17 @@ vim.bo.expandtab = true
 -- conceallevel
 vim.opt.conceallevel = 2
 
+-- 箇条書きを開業したあと、同じシンボルで箇条書きを継続するための設定
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "markdown" },
+  callback = function()
+    vim.opt_local.comments = { "b:*", "b:-", "b:+", "b:1.", "nb:>" }
+    vim.opt_local.formatoptions:remove( "c")
+    vim.opt_local.formatoptions:append("jro")
+  end
+})
+
+
 -- Markdown チェックボックスの処理関数
 local function get_range(args)
   -- get target range from user command args

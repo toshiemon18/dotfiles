@@ -18,7 +18,7 @@ if not vim.loop.fs_stat(lazypath) then
     "clone",
     "--filter=blob:none",
     "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable",     -- latest stable release
+    "--branch=stable", -- latest stable release
     lazypath,
   })
 end
@@ -31,11 +31,11 @@ local plugins = {
   require('configs.plugins.gitsigns'),
   require('configs.plugins.nvim_tree'),
   require('configs.plugins.telescope'),
-	require('configs.plugins.completion'),
-	require('configs.plugins.snippets'),
-	require('configs.plugins.treesitter'),
-	require('configs.plugins.render_markdown'),
-	require('configs.plugins.surround'),
+  require('configs.plugins.completion'),
+  require('configs.plugins.snippets'),
+  require('configs.plugins.treesitter'),
+  require('configs.plugins.render_markdown'),
+  require('configs.plugins.surround'),
   require('configs.plugins.schamastore'),
   require('configs.plugins.lualine'),
   require('configs.plugins.language_server'),

@@ -13,15 +13,19 @@ vim.bo.expandtab = true
 vim.opt.conceallevel = 2
 
 -- 箇条書きを開業したあと、同じシンボルで箇条書きを継続するための設定
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "markdown" },
-  callback = function()
-    vim.opt_local.comments = { "b:*", "b:-", "b:+", "b:1.", "nb:>" }
-    vim.opt_local.formatoptions:remove( "c")
-    vim.opt_local.formatoptions:append("jro")
-  end
-})
-
+vim.opt_local.comments = {
+  "b:* [ ]",
+  "b:* [x]",
+  "b:- [ ]",
+  "b:- [x]",
+  "b:*",
+  "b:-",
+  "b:+",
+  "b:1.",
+  "nb:>",
+}
+vim.opt_local.formatoptions:remove("c")
+vim.opt_local.formatoptions:append("jro")
 
 -- Markdown チェックボックスの処理関数
 local function get_range(args)
@@ -82,4 +86,3 @@ end
 vim.api.nvim_create_user_command("ToggleCheckbox", toggle_checkbox, { range = true, force = true })
 local keymap_opts = { buffer = true }
 vim.keymap.set({ "n", "i", "x" }, '<leader>tt', ':ToggleCheckbox<CR>', keymap_opts)
-

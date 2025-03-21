@@ -20,7 +20,6 @@ vim.api.nvim_create_autocmd(
   {
     pattern = {"ruby"},
     callback = function()
-      print("hogehoge")
       vim.opt_local.indentkeys:remove(".")
     end
   }

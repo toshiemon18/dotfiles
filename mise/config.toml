@@ -5,7 +5,7 @@ python = "3.9.12"
 bun = "latest"
 ruby = "3.3.2"
 
-[plugins]
+[alias]
 python = "https://github.com/asdf-community/asdf-python"
 node = "https://github.com/asdf-vm/asdf-nodejs"
 

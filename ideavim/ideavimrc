@@ -6,6 +6,12 @@ set smartcase         " 検索時に大文字を含んでいたら大小区別
 set hlsearch          " 検索結果をハイライトする
 set scrolloff=10			" スクロール時に10行確保
 set clipboard=unnamed,unnamedplus
+set number            " 行番号を表示
+set relativenumber    " 相対行番号を表示
+set ignorecase        " 検索時に大文字小文字を区別しない
+set incsearch         " インクリメンタルサーチを有効化
+set showcmd           " コマンドをステータスラインに表示
+set timeoutlen=300    " キーマッピングのタイムアウト時間を設定
 
 " =====================================
 " =             Keymaps               =
@@ -16,6 +22,19 @@ vnoremap > >gv
 " vvで行末まで選択
 vnoremap v ^$h
 nnoremap <ESC><ESC> :nohlsearch<CR>
+
+" 検索結果のハイライトを消す
+nnoremap <silent> <C-j><C-j> :nohlsearch<CR><C-l>
+
+" ウィンドウ移動を簡単に
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" タブ移動
+nnoremap <C-n> :tabnext<CR>
+nnoremap <C-p> :tabprevious<CR>
 
 noremap [git] <Nop>
 nmap <Space>g [git]

@@ -3,9 +3,6 @@
 require_relative "settings"
 
 class ComponentInstaller
-  # インストール可能なディレクトリのリスト
-  DOTFILES_DIR = %w[git nvim zsh tmux sheldon ideavim vim ghostty mise].freeze
-
   def initialize(component_name, settings)
     @component_name = component_name
     @settings = settings
@@ -18,15 +15,15 @@ class ComponentInstaller
     check_dependencies
     install_component
     logger.info("Successfully installed #{@component_name}")
-  rescue StandardError => e
+  rescue => e
     logger.error("Failed to install #{@component_name}: #{e.message}")
-    raise
+    raise e
   end
 
   private
 
   def check_dependencies
-    @component["dependencies"].each do |dep|
+    @component.dependencies.each do |dep|
       next if @installed_components.include?(dep)
 
       logger.info("Installing dependency: #{dep}")
@@ -37,10 +34,10 @@ class ComponentInstaller
   end
 
   def install_component
-    source_dir = @component["source_dir"]
-    destination = expand_path(@component["destination"])
-    method = @component["method"].to_sym
-    backup = @component["backup"]
+    source_dir = @component.source_dir
+    destination = expand_path(@component.destination)
+    method = @component.method.to_sym
+    backup = @component.backup
 
     install_files(source_dir, destination, method, backup)
   end
@@ -62,9 +59,7 @@ class ComponentInstaller
   end
 
   def install_file(source, target, method, backup)
-    if should_backup?(target, source) && backup
-      backup_file(target)
-    end
+    backup_file(target) if should_backup?(target, source) && backup
 
     cmd = if method == :symlink
       "ln -nfs #{source} #{target}"

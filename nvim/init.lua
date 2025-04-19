@@ -1,6 +1,5 @@
 -- set mapleader
 vim.g.mapleader = ' '
-
 -- basic configs
 require("configs.options")
 
@@ -41,7 +40,7 @@ local plugins = {
   require('configs.plugins.language_server'),
   require("configs.plugins.lsp_saga"),
   require("configs.plugins.flutter"),
-  require("configs.plugins.note")
+  require("configs.plugins.daily_note")
 }
 
 require("lazy").setup(plugins, {
@@ -67,4 +66,3 @@ vim.treesitter.start = (function(wrapped)
     pcall(wrapped, bufnr, lang)
   end
 end)(vim.treesitter.start)
-

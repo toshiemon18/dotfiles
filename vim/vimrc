@@ -88,10 +88,16 @@ set showcmd
 " key binds
 " =================
 " Ecs連打で検索結果のハイライトを消す
-nnoremap <ESC><ESC> :nohlsearch<CR>
 " 新規バッファを開く
-map vn :vnew<CR>
-" インサートモードでもhjkl
+nnoremap ; :
+nnoremap <C-j><C-j> :nohlsearch<CR>
+nnoremap vn :vnew<CR>
+nnoremap <S-h> ^
+nnoremap <S-l> $
+
+" ビジュアルモードでのインデント操作
+vnoremap > >gv
+vnoremap < <gv
 
 "言語別の設定
 " =================

@@ -51,13 +51,6 @@ namespace :dotfiles do
       ComponentInstaller.new("tmux", settings).install
     end
 
-    desc "setup sheldon"
-    task :sheldon, %i[backup] do |_task, args|
-      logger.info("==== start dotfiles:setup:sheldon")
-      settings = SettingsLoader.new
-      ComponentInstaller.new("sheldon", settings).install
-    end
-
     desc "setup vim"
     task :vim, %i[backup] do |_task, args|
       logger.info("==== start dotfiles:setup:vim")

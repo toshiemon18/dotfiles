@@ -1,12 +1,11 @@
 components:
   git:
     source_dir: git
-    destination: ~
+    destination: "~"
     method: copy
     backup: true
     description: Git configuration files
     dependencies: []
-
   nvim:
     source_dir: nvim
     destination: ~/.config/nvim
@@ -14,23 +13,13 @@ components:
     backup: true
     description: Neovim configuration
     dependencies: []
-
   zsh:
     source_dir: zsh
-    destination: ~
+    destination: "~"
     method: symlink
     backup: true
     description: Zsh configuration
-    dependencies: [sheldon]
-
-  sheldon:
-    source_dir: sheldon
-    destination: ~/.config/sheldon
-    method: symlink
-    backup: true
-    description: Sheldon plugin manager
     dependencies: []
-
   tmux:
     source_dir: tmux
     destination: ~/.config/tmux
@@ -38,7 +27,6 @@ components:
     backup: true
     description: Tmux configuration
     dependencies: []
-
   vim:
     source_dir: vim
     destination: ~/.vim
@@ -46,7 +34,6 @@ components:
     backup: true
     description: Vim configuration
     dependencies: []
-
   ghostty:
     source_dir: ghostty
     destination: ~/.config/ghostty
@@ -54,7 +41,6 @@ components:
     backup: true
     description: Ghostty configuration
     dependencies: []
-
   mise:
     source_dir: mise
     destination: ~/.config/mise

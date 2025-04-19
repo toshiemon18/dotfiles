@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "yaml"
-require "pathname"
+require 'yaml'
+require 'pathname'
 
 class Setting < Struct.new(:source_dir, :destination_dir, :copy_method, :backup, :dependencies, :description)
   def method
@@ -14,12 +14,12 @@ class Setting < Struct.new(:source_dir, :destination_dir, :copy_method, :backup,
 
   def to_h
     {
-      "source_dir" => source_dir,
-      "destination" => destination,
-      "method" => copy_method,
-      "backup" => backup,
-      "dependencies" => dependencies,
-      "description" => description
+      'source_dir' => source_dir,
+      'destination' => destination,
+      'method' => copy_method,
+      'backup' => backup,
+      'dependencies' => dependencies,
+      'description' => description
     }
   end
 end
@@ -31,7 +31,7 @@ class SettingsLoader
   attr_reader :components
 
   def initialize(path = nil)
-    @path = path || ENV["DOTFILES_SETTINGS_PATH"] || "settings.yml"
+    @path = path || ENV['DOTFILES_SETTINGS_PATH'] || 'settings.yml'
     load_settings
   end
 
@@ -39,12 +39,12 @@ class SettingsLoader
     setting = @components[name.to_s]
 
     Setting.new(
-      source_dir: setting["source_dir"],
-      destination_dir: setting["destination"],
-      copy_method: setting["method"],
-      backup: setting["backup"],
-      dependencies: setting["dependencies"],
-      description: setting["description"]
+      source_dir: setting['source_dir'],
+      destination_dir: setting['destination'],
+      copy_method: setting['method'],
+      backup: setting['backup'],
+      dependencies: setting['dependencies'],
+      description: setting['description']
     )
   end
 
@@ -55,7 +55,7 @@ class SettingsLoader
   private
 
   def load_settings
-    @components = YAML.load_file(@path)["components"]
+    @components = YAML.load_file(@path)['components']
     validate_settings
   rescue Psych::SyntaxError => e
     raise SettingsError, "Invalid YAML syntax: #{e.message}"
@@ -79,18 +79,18 @@ class SettingsLoader
   end
 
   def validate_method(name, component)
-    return if VALID_METHODS.include?(component["method"])
+    return if VALID_METHODS.include?(component['method'])
 
     raise SettingsError, "Invalid method for component '#{name}': #{component["method"]}"
   end
 
   def validate_paths(name, component)
-    source_dir = component["source_dir"]
+    source_dir = component['source_dir']
     unless Dir.exist?(source_dir)
       raise SettingsError, "Source directory not found for component '#{name}': #{source_dir}"
     end
 
-    destination = expand_path(component["destination"])
+    destination = expand_path(component['destination'])
     parent_dir = File.dirname(destination)
     unless Dir.exist?(parent_dir)
       raise SettingsError, "Parent directory of destination not found for component '#{name}': #{parent_dir}"
@@ -98,7 +98,7 @@ class SettingsLoader
   end
 
   def expand_path(path)
-    path.gsub(/^~/, ENV["HOME"])
+    path.gsub(/^~/, ENV['HOME'])
   end
 end
 

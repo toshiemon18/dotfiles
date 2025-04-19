@@ -3,7 +3,7 @@
 require 'yaml'
 require 'pathname'
 
-class Setting < Struct.new(:source_dir, :destination_dir, :copy_method, :backup, :dependencies, :description)
+Setting = Struct.new(:source_dir, :destination_dir, :copy_method, :backup, :dependencies, :description) do
   def method
     copy_method
   end

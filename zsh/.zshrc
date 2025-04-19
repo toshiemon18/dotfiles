@@ -10,6 +10,10 @@ setopt auto_cd              # コマンド無くてディレクトリ名があ�
 setopt no_beep              # beep音を鳴らさない
 
 #### 補完系 ####
+zmodload zsh/complist
+autoload -Uz compinit && compinit -u
+zstyle ':completion:*' menu select search
+
 setopt auto_list            # 補完候補を一覧表示
 setopt auto_menu            # Tab連打で候補を順に表示
 setopt auto_pushd
@@ -26,15 +30,9 @@ setopt extended_history     # ヒストリに実行時間も保存する
 setopt hist_ignore_dups     # 直前と同じコマンドはヒストリに追加しない
 setopt share_history        # 他のシェルのヒストリをリアルタイムで共有する
 setopt hist_reduce_blanks   # 余分なスペースを削除してヒストリに保存する
-
-bindkey -e
-
-# マッチしたコマンドのヒストリを表示できるようにする
-autoload history-search-end
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-bindkey "^P" history-beginning-search-backward-end
-bindkey "^N" history-beginning-search-forward-end
+# setopt hist_ignore_space    # スペースで始まるコマンドは履歴に残さない
+# setopt hist_verify          # ヒストリを呼び出したときに編集可能にする
+# setopt hist_expand          # 履歴展開時に自動的に置換を行う
 
 # ---------------------------
 # Alias setting
@@ -86,6 +84,7 @@ function fcd() {
 	cd "$dir"
 }
 
+# fzf_ghq_look - cd to selected directory in fzf interface
 function fzf_ghq_look() {
 	if [ -z "$(which fzf)" ]; then
 		echo "Please install fzf -- fzf does not exist"
@@ -105,34 +104,33 @@ function fzf_ghq_look() {
 zle -N fzf_ghq_look
 bindkey "^]" fzf_ghq_look
 
+# fzf_cmd_history - search command history in fzf interface
+function fzf_cmd_history() {
+	if [ -z "$(which fzf)" ]; then
+			echo "Please install fzf -- fzf does not exist"
+			return -1
+	fi
+
+	local selected=$(history -n 1 | fzf --reverse --height 40% --query="$BUFFER")
+	if [ -n "$selected" ]; then
+			BUFFER="$selected"
+			CURSOR=$#BUFFER
+	fi
+	zle reset-prompt
+}
+zle -N fzf_cmd_history
+bindkey '^R' fzf_cmd_history
+
 # ---------------------------
 # Key binding
 # ---------------------------
 # fzf keybindinf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# zsh-autocomplete
-zstyle '*:compinit' arguments -D -i -u -C -w
-## Tabキーのバインドを再設定する
-### タブで保管を開く, 末尾から最初に戻る
-bindkey '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
-bindkey '\t' menu-select "$terminfo[kcbt]" menu-select
-bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
-## 補完候補の表示制限
-# Autocompletion
-zstyle -e ':autocomplete:list-choices:*' list-lines 'reply=( $(( LINES / 3 )) )'
-# Override history search.
-zstyle ':autocomplete:history-incremental-search-backward:*' list-lines 8
-# History menu.
-zstyle ':autocomplete:history-search-backward:*' list-lines 30
-## 履歴のキーバインドを上書きしない
-# bindkey '^R' .history-incremental-search-backward
-# bindkey '^S' .history-incremental-search-forward
-
 # コマンドラインをエディタで編集する
 autoload -Uz edit-command-line
 zle -N edit-command-line
-bindkey "^xe" edit-command-line
+bindkey '\C-x\C-e' edit-command-line
 
 # ---------------------------
 # Look and feel setting
@@ -164,7 +162,4 @@ autoload -U colors; colors
 source ~/.zsh_simple_prompt
 
 fpath=(/usr/local/share/zsh-completions $fpath)
-
-autoload -U compinit
-compinit -C
 

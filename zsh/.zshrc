@@ -34,6 +34,9 @@ setopt hist_reduce_blanks   # 余分なスペースを削除してヒストリ�
 # setopt hist_verify          # ヒストリを呼び出したときに編集可能にする
 # setopt hist_expand          # 履歴展開時に自動的に置換を行う
 
+# emacsモードを有効化（Ctrl+A等のキーバインドを使えるようにする）
+bindkey -e
+
 # ---------------------------
 # Alias setting
 # ---------------------------

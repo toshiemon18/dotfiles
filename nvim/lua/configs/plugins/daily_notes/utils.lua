@@ -20,12 +20,12 @@ vim.api.nvim_create_user_command(
 -- キーマッピングの設定
 local keymap = vim.keymap.set
 
-keymap("n", "<leader>dn", "<cmd>DailyNote<CR>", {
+keymap("n", "<C-d><C-n>", "<cmd>DailyNote<CR>", {
   silent = true,
   desc = "今日のデイリーノートを作成または開く",
 })
 
-keymap("n", "<leader>ds", "<cmd>SearchDailyNotes<CR>", {
+keymap("n", "<C-d><C-s>", "<cmd>SearchDailyNotes<CR>", {
   silent = true,
   desc = "デイリーノートを検索",
 }) 

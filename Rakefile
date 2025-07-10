@@ -10,6 +10,7 @@ namespace :dotfiles do
   task :setup do
     logger.info("start dotfiles:setup")
     install_homebrew
+    exec_cmd("brew bundle")
   end
 
   namespace :setup do

@@ -55,7 +55,7 @@ class SettingsLoader
   private
 
   def load_settings
-    @components = YAML.load_file(@path)['components']
+    @components = YAML.load_file(@path)[:components]
     validate_settings
   rescue Psych::SyntaxError => e
     raise SettingsError, "Invalid YAML syntax: #{e.message}"

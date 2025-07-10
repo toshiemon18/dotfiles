@@ -82,7 +82,7 @@ namespace :dotfiles do
 
   def install_homebrew
     exec_cmd("which brew")
-    return logger.info("brew is already installed.") if $CHILD_STATUS.success?
+    return logger.info("brew is already installed.") if $?.success?
 
     logger.info("brew command not found, installing homebrew!")
     exec_cmd(%{bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"})

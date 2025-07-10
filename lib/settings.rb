@@ -39,12 +39,12 @@ class SettingsLoader
     setting = @components[name.to_s]
 
     Setting.new(
-      source_dir: setting['source_dir'],
-      destination_dir: setting['destination'],
-      copy_method: setting['method'],
-      backup: setting['backup'],
-      dependencies: setting['dependencies'],
-      description: setting['description']
+      source_dir: setting[:source_dir],
+      destination_dir: setting[:destination],
+      copy_method: setting[:method],
+      backup: setting[:backup],
+      dependencies: setting[:dependencies],
+      description: setting[:description]
     )
   end
 

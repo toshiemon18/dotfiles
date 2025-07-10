@@ -110,7 +110,7 @@ local function setup_lspconfig()
   end
 
   local lspconfig = require("lspconfig")
-  mason_lspconfig.setup_handlers({
+  mason_lspconfig.setup({
     function(server_name)
       lspconfig[server_name].setup(make_conf({
         on_attach = on_attach
@@ -178,11 +178,11 @@ local function setup_lspconfig()
 end
 
 return {
-  "williamboman/mason.nvim",
+  "mason-org/mason.nvim",
   dependencies = {
     "neovim/nvim-lspconfig",
     {
-      "williamboman/mason-lspconfig.nvim",
+      "mason-org/mason-lspconfig.nvim",
       event = { "BufReadPre", "BufNewFile" }
     },
     'hrsh7th/cmp-nvim-lsp',

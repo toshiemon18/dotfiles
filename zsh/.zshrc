@@ -166,3 +166,8 @@ source ~/.zsh_simple_prompt
 
 fpath=(/usr/local/share/zsh-completions $fpath)
 
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/toshiaki.seino/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions

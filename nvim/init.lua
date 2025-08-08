@@ -2,6 +2,7 @@
 vim.g.mapleader = ' '
 -- basic configs
 require("configs.options")
+require("configs.options.functions")
 
 -- keybinds
 require("configs.keymaps")
@@ -41,6 +42,7 @@ local plugins = {
   require("configs.plugins.flutter"),
   require("configs.plugins.daily_note"),
   require('configs.plugins.colorscheme.catputtin'),
+  require('configs.plugins.cc_nvim')
 }
 
 require("lazy").setup(plugins, {

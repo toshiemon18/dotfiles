@@ -24,8 +24,22 @@ opts.updatetime = 500
 local augroup = vim.api.nvim_create_augroup -- Create/get autocommand group
 local autocmd = vim.api.nvim_create_autocmd -- Create autocommand
 
-autocmd("CursorHold",  { pattern="*", command="wall" })
-autocmd("CursorHoldI", { pattern="*", command="wall" })
+autocmd("CursorHold", {
+  pattern = "*",
+  callback = function()
+    if vim.fn.expand('%') ~= '' then
+      vim.cmd('silent! update')
+    end
+  end
+})
+autocmd("CursorHoldI", {
+  pattern = "*",
+  callback = function()
+    if vim.fn.expand('%') ~= '' then
+      vim.cmd('silent! update')
+    end
+  end
+})
 
 -- appearance
 opts.cmdheight = 2
@@ -45,4 +59,3 @@ opts.cursorcolumn = true
 -- 絵文字の幅確保を action があるか判定したあとに実行しているっぽい挙動だったので、
 -- 事前に signcolumn を有効にして number 左側のスペースを確保しておく
 vim.wo.signcolumn = "yes"
-

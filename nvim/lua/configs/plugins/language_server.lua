@@ -155,7 +155,7 @@ local function setup_lspconfig()
           "typescriptreact",
           "typescript.tsx"
         },
-        root_dir = function (...)
+        root_dir = function(...)
           return lspconfig.util.root_pattern(".git")(...)
         end,
         cmd = { "typescript-language-server", "--stdio" }
@@ -164,7 +164,7 @@ local function setup_lspconfig()
     ["tailwindcss"] = function()
       lspconfig.tailwindcss.setup({
         on_attach = on_attach,
-        root_dir = function (...)
+        root_dir = function(...)
           return lspconfig.util.root_pattern(".git")(...)
         end
       })

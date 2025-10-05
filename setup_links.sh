@@ -12,7 +12,7 @@ NC='\033[0m' # No Color
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 
 # Get script directory
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 echo "Setting up symbolic links..."
 echo "XDG_CONFIG_HOME: $XDG_CONFIG_HOME"
@@ -28,7 +28,7 @@ create_symlink() {
     local dest="$2"
 
     # Expand ~ to $HOME
-    dest="${dest/#\~/$HOME}"
+    dest="$(echo "$dest" | sed "s|^~|$HOME|")"
 
     # If destination exists
     if [ -e "$dest" ] || [ -L "$dest" ]; then
@@ -93,7 +93,7 @@ if [ -d "$SCRIPT_DIR/git" ]; then
             basename_file="$(basename "$file")"
             # Copy instead of symlink for git (as per settings.yml)
             dest="$HOME/$basename_file"
-            dest="${dest/#\~/$HOME}"
+            dest="$(echo "$dest" | sed "s|^~|$HOME|")"
             if [ -e "$dest" ]; then
                 backup="${dest}.backup.$(date +%Y%m%d_%H%M%S)"
                 echo -e "${YELLOW}!${NC} Backing up existing $dest to $backup"

@@ -42,7 +42,6 @@ local plugins = {
   require("configs.plugins.flutter"),
   require("configs.plugins.daily_note"),
   require('configs.plugins.colorscheme.catputtin'),
-  require('configs.plugins.cc_nvim')
 }
 
 require("lazy").setup(plugins, {

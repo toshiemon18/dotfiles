@@ -2,7 +2,6 @@
 # General setting
 # ---------------------------
 export AUTOFEATURE=true     # autotestでfeatureを動かす
-export EDITOR=nvim
 export ZDOTDIR=$HOME
 source $HOME/.zprofile
 
@@ -11,6 +10,8 @@ setopt no_beep              # beep音を鳴らさない
 
 #### 補完系 ####
 zmodload zsh/complist
+fpath=(/usr/local/share/zsh-completions $fpath)
+fpath=($HOME/.docker/completions $fpath)
 autoload -Uz compinit && compinit -u
 zstyle ':completion:*' menu select search
 
@@ -164,10 +165,10 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 autoload -U colors; colors
 source ~/.zsh_simple_prompt
 
-fpath=(/usr/local/share/zsh-completions $fpath)
 
-# The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=(/Users/toshiaki.seino/.docker/completions $fpath)
-autoload -Uz compinit
-compinit
-# End of Docker CLI completions
+source ~/.safe-chain/scripts/init-posix.sh # Safe-chain Zsh initialization script
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:$HOME/.lmstudio/bin"
+# End of LM Studio CLI section
+

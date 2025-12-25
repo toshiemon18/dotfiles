@@ -5,9 +5,3 @@ python = "latest"
 bun = "latest"
 ruby = "latest"
 
-[settings.ruby]
-default_packages_file = "{{ config_root }}/ruby_default_gems"
-
-[env]
-MISE_NODE_DEFAULT_PACKAGES_FILE = "{{ config_root }}/npm_default_packages"
-

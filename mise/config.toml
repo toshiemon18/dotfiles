@@ -1,17 +1,13 @@
 [tools]
 node = "20.16.0"
-go = ['1.21', '1.18']
-python = "3.9.12"
+go = "latest"
+python = "latest"
 bun = "latest"
 ruby = "latest"
 
-[alias]
-python = "https://github.com/asdf-community/asdf-python"
-node = "https://github.com/asdf-vm/asdf-nodejs"
-
 [settings.ruby]
-default_packages_file = "/Users/toshiaki.seino/.config/mise/ruby_default_gems"
+default_packages_file = "{{ config_root }}/ruby_default_gems"
 
 [env]
-MISE_NODE_DEFAULT_PACKAGES_FILE = "/Users/toshiaki.seino/.config/mise/npm_default_packages"
+MISE_NODE_DEFAULT_PACKAGES_FILE = "{{ config_root }}/npm_default_packages"
 

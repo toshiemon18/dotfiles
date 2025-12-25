@@ -29,7 +29,10 @@ return {
       "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
-      { "L3MON4D3/LuaSnip",                       dependencies = { "afamadriz/friendly-snippets" } },
+      {
+        "L3MON4D3/LuaSnip",
+        dependencies = { "afamadriz/friendly-snippets" }
+      },
       "saadparwaiz1/cmp_luasnip",
       { "roobert/tailwindcss-colorizer-cmp.nvim", config = true },
     },
@@ -39,7 +42,6 @@ return {
       vim.o.completeopt = "menu,menuone,noselect"
 
       cmp.setup({
-        ghost_text = { enabled = true },
         snippet = {
           expand = function(args)
             require('luasnip').lsp_expand(args.body)

@@ -28,4 +28,5 @@ keymap("n", "<C-d><C-n>", "<cmd>DailyNote<CR>", {
 keymap("n", "<C-d><C-s>", "<cmd>SearchDailyNotes<CR>", {
   silent = true,
   desc = "デイリーノートを検索",
-}) 
+})
+

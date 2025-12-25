@@ -12,13 +12,14 @@ opts.backup = false
 opts.swapfile = false
 opts.modifiable = true
 opts.write = true
+opts.undofile = true
 opts.undodir = os.getenv('XDG_CONFIG_HOME') .. '/nvim/undodir'
 opts.tw = 0
 opts.conceallevel = 0
 opts.mouse = 'h'
 opts.mousehide = true
 opts.autowrite = true
-opts.updatetime = 500
+opts.updatetime = 300
 
 -- autocmds
 local augroup = vim.api.nvim_create_augroup -- Create/get autocommand group

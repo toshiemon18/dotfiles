@@ -23,12 +23,12 @@ local function format_date(format)
     ["HH"] = string.format("%02d", date.hour),
     ["mm"] = string.format("%02d", date.min),
   }
-  
+
   local result = format
   for key, value in pairs(formats) do
     result = result:gsub(key, value)
   end
-  
+
   return result
 end
 
@@ -51,11 +51,11 @@ function M.replace_template_variables(template)
   template = template:gsub("{{date:([^}]+)}}", function(format)
     return format_date(format)
   end)
-  
+
   template = template:gsub("{{time:([^}]+)}}", function(format)
     return format_date(format)
   end)
-  
+
   return template
 end
 
@@ -63,17 +63,17 @@ end
 function M.create_daily_note()
   local template = M.load_template()
   if not template then return end
-  
+
   local processed_template = M.replace_template_variables(template)
-  
+
   local year = os.date("%Y")
   local month = os.date("%m")
   local filename = os.date("%Y-%m-%d") .. ".md"
   local filepath = vim.fn.expand(config.vault_path .. config.daily_dir .. "/" .. year .. "/" .. month .. "/" .. filename)
-  
+
   -- ディレクトリが存在しない場合は作成
   vim.fn.mkdir(vim.fn.fnamemodify(filepath, ":h"), "p")
-  
+
   -- ファイルが存在しない場合は作成
   local file = io.open(filepath, "r")
   if not file then
@@ -85,7 +85,7 @@ function M.create_daily_note()
   else
     file:close()
   end
-  
+
   -- ファイルを開く
   vim.cmd("e " .. filepath)
 end
@@ -99,4 +99,4 @@ function M.search_notes()
   })
 end
 
-return M 
+return M

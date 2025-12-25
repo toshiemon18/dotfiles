@@ -71,7 +71,6 @@ local function setup_lspconfig()
       buffer = bufnr
     }
 
-
     -- LSP Keymap configs
     -- * Diagnostic keymaps
     -- 診断をフロートウィンドウで表示する
@@ -121,7 +120,7 @@ local function setup_lspconfig()
         on_attach = on_attach,
         settings = {
           Lua = {
-            runtime = { version = "LaJIT" },
+            runtime = { version = "LuaJIT" },
             diagnostics = {
               globals = { "vim" }
             },
@@ -148,7 +147,7 @@ local function setup_lspconfig()
       }))
     end,
     ["ts_ls"] = function()
-      lspconfig.tsserver.setup(make_conf({
+      lspconfig.ts_ls.setup(make_conf({
         on_attach = on_attach,
         filetypes = {
           "typescript",
@@ -200,3 +199,4 @@ return {
     setup_lspconfig()
   end
 }
+

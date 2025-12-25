@@ -54,11 +54,6 @@ require("lazy").setup(plugins, {
   },
 })
 
-vim.opt.filetype = "on"
-vim.opt.filetype.indent = "on"
-vim.opt.filetype.plugin = "on"
-vim.opt.syntax = "on"
-
 -- vim help を開くと、パーサプロバイダがないとtreesitterがエラーになる
 -- ref: https://zenn.dev/kawarimidoll/articles/18ee967072def7
 vim.treesitter.start = (function(wrapped)

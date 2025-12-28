@@ -13,3 +13,4 @@ export PATH="/usr/local/sbin:$PATH"
 # LD_LIBRARY_PATH
 export LD_LIBRARY_PATH="/usr/local/lib"
 
+alias nvchad="NVIM_APPNAME=nvim-nvchad nvim"

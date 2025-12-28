@@ -2,7 +2,6 @@
 vim.g.mapleader = ' '
 -- basic configs
 require("configs.options")
-require("configs.options.functions")
 
 -- keybinds
 require("configs.keymaps")

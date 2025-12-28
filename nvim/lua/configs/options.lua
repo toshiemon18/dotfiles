@@ -60,3 +60,16 @@ opts.cursorcolumn = true
 -- 絵文字の幅確保を action があるか判定したあとに実行しているっぽい挙動だったので、
 -- 事前に signcolumn を有効にして number 左側のスペースを確保しておく
 vim.wo.signcolumn = "yes"
+
+local function format_json_buffer()
+  vim.cmd([[%!jq .]])
+end
+
+function format_json_visual()
+  vim.cmd([['<,'>!jq .]])
+end
+
+vim.api.nvim_create_user_command('Jqf', format_json_buffer, {})
+vim.api.nvim_create_user_command('Jqfv', format_json_visual, { range = true })
+
+

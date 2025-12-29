@@ -24,6 +24,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
+  require('configs.plugins.which_key'),
   require('configs.plugins.emmet'),
   require('configs.plugins.neogit'),
   require('configs.plugins.gitsigns'),
@@ -38,7 +39,6 @@ local plugins = {
   require('configs.plugins.lualine'),
   require('configs.plugins.language_server'),
   require("configs.plugins.lsp_saga"),
-  require("configs.plugins.flutter"),
   require("configs.plugins.daily_note"),
   require('configs.plugins.colorscheme.catputtin'),
 }

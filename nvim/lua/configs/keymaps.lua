@@ -17,3 +17,7 @@ keymap.set('', '<S-l>', '$', { noremap = true })
 keymap.set('v', ">", ">gv", { noremap = true })
 keymap.set('v', "<", "<gv", { noremap = true })
 
+-- タブ移動
+keymap.set('n', '<leader>[', ':tabprevious<CR>', { noremap = true, silent = true })
+keymap.set('n', '<leader>]', ':tabnext<CR>', { noremap = true, silent = true })
+

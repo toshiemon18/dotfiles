@@ -16,6 +16,10 @@ return {
       -- Diagnostics
       { "<leader>d", desc = "Diagnostics" },
 
+      -- タブ移動
+      { "<leader>[", desc = "Previous Tab" },
+      { "<leader>]", desc = "Next Tab" },
+
       -- LSP グループ
       { "<leader>a", group = "LSP Actions" },
       { "<leader>aa", desc = "Show Diagnostics" },

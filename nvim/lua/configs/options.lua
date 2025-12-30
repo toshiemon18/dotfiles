@@ -25,10 +25,18 @@ opts.updatetime = 300
 local augroup = vim.api.nvim_create_augroup -- Create/get autocommand group
 local autocmd = vim.api.nvim_create_autocmd -- Create autocommand
 
+-- 通常のファイルバッファのみ自動保存
+local function is_normal_buffer()
+  return vim.fn.expand('%') ~= ''
+    and vim.bo.modifiable
+    and not vim.bo.readonly
+    and vim.bo.buftype == ''
+end
+
 autocmd("CursorHold", {
   pattern = "*",
   callback = function()
-    if vim.fn.expand('%') ~= '' then
+    if is_normal_buffer() then
       vim.cmd('silent! update')
     end
   end
@@ -36,7 +44,7 @@ autocmd("CursorHold", {
 autocmd("CursorHoldI", {
   pattern = "*",
   callback = function()
-    if vim.fn.expand('%') ~= '' then
+    if is_normal_buffer() then
       vim.cmd('silent! update')
     end
   end

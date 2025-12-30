@@ -106,11 +106,11 @@ return {
           ["<TAB>"] = cmp.mapping.confirm({ select = true }),
         },
         sources = cmp.config.sources({
-          { name = "path" },
-          { name = "nvim_lua" },
-          { name = "nvim_lsp", priority = 100 },
-          { name = "luasnip" },
-          -- { name = "buffer", priority = 999, keyword_length = 3, max_item_count = 5 },
+          { name = "nvim_lsp" },                -- LSP を最優先（priority なし = 0 = 最高優先度）
+          { name = "path" },                    -- ファイルパス
+          { name = "luasnip" },                 -- スニペット
+          { name = "nvim_lua" },                -- Neovim Lua API
+          -- { name = "buffer", keyword_length = 3, max_item_count = 5 },  -- バッファ内テキスト
         }),
         formatting = {
           -- fields = {

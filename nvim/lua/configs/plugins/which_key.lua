@@ -1,6 +1,6 @@
 return {
   "folke/which-key.nvim",
-  event = "VeryLazy",
+  -- event = "VeryLazy",
   opts = {
     preset = "modern",
     spec = {
@@ -20,27 +20,41 @@ return {
       { "<leader>[", desc = "Previous Tab" },
       { "<leader>]", desc = "Next Tab" },
 
-      -- LSP グループ
+      -- LSP Actions
       { "<leader>a", group = "LSP Actions" },
       { "<leader>aa", desc = "Show Diagnostics" },
+      { "<leader>ca", desc = "Code Action" },
+      { "<leader>o", desc = "Outline" },
 
-      -- LSP 基本操作
+      -- LSP Go to
       { "g", group = "Go to" },
       { "gd", desc = "Go to Definition" },
       { "gD", desc = "Go to Declaration" },
       { "gi", desc = "Go to Implementation" },
-      { "go", desc = "Go to Type Definition" },
       { "gr", desc = "Go to References" },
       { "gy", desc = "Go to Type Definition" },
+      { "gh", desc = "Finder (def/ref/impl)" },
+      { "gp", desc = "Peek Definition" },
 
-      -- その他
+      -- Diagnostics
+      { "[d", desc = "Previous Diagnostic" },
+      { "]d", desc = "Next Diagnostic" },
+      { "dl", desc = "Set Diagnostics to Loclist" },
+
+      -- Other LSP
       { "K", desc = "Hover Documentation" },
       { "<C-s>", desc = "Signature Help", mode = "n" },
       { "<space>gf", desc = "Format Document" },
-      { "dl", desc = "Set Diagnostics to Loclist" },
     },
   },
   keys = {
+    { "<c-w>" },
+    { "<leader>" },
+    { "]" },
+    { "[" },
+    { "g" },
+    { "<c-g>" },
+    { "<c-d>" },
     {
       "<leader>?",
       function()

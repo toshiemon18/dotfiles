@@ -65,34 +65,29 @@ local function setup_lspconfig()
   }
 
   local function on_attach(_, bufnr)
-    local keymap_opts = {
-      noremap = true,
-      silent = true,
-      buffer = bufnr
-    }
+    local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
     -- LSP Keymap configs
     -- * Diagnostic keymaps
-    -- 診断をフロートウィンドウで表示する
-    local function lsp_show_diagnostics()
-      vim.diagnostic.open_float()
-    end
-    vim.keymap.set("n", "<leader>aa", lsp_show_diagnostics, keymap_opts)
-    vim.keymap.set("n", "dl", vim.diagnostic.setloclist, keymap_opts)
+    vim.keymap.set("n", "<leader>aa", vim.diagnostic.open_float, bufopts)
+    vim.keymap.set("n", "dl", vim.diagnostic.setloclist, bufopts)
 
-    local bufopts = { noremap = true, silent = true, buffer = bufnr }
-    -- definition/references
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+    -- definition/references (Telescope)
     vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", bufopts)
-    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+    vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", bufopts)
+    vim.keymap.set('n', 'gi', "<cmd>Telescope lsp_implementations<CR>", bufopts)
+
+    -- type definition & declaration
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
-    vim.keymap.set("n", "go", vim.lsp.buf.type_definition, bufopts)
-    vim.keymap.set('n', 'gr', "<cmd>Telescope lsp_references<CR>", bufopts)
     vim.keymap.set("n", "gy", vim.lsp.buf.type_definition, bufopts)
-    vim.keymap.set("n", "<C-s>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", keymap_opts)
+
+    -- signature help
+    vim.keymap.set("n", "<C-s>", vim.lsp.buf.signature_help, bufopts)
 
     -- formatting
     vim.keymap.set('n', '<space>gf', vim.lsp.buf.format, bufopts)
+
+    -- Note: K (hover), gh (finder), gp (peek), [d/]d (diagnostics) は lsp_saga で定義
   end
 
   local function make_conf(...)
@@ -100,9 +95,10 @@ local function setup_lspconfig()
       handlers = {
         ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
         ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
-        ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-          virtual_text = true,
-        }),
+        ["textDocument/publishDiagnostics"] = vim.lsp.with(
+          vim.lsp.handlers["textDocument/publishDiagnostics"],
+          { virtual_text = true }
+        ),
       },
       capabilities = capabilities
     }, ...)
@@ -133,6 +129,7 @@ local function setup_lspconfig()
         }
       }))
     end,
+
     ["ruby_lsp"] = function()
       lspconfig.ruby_lsp.setup(make_conf({
         on_attach = on_attach,
@@ -146,6 +143,7 @@ local function setup_lspconfig()
         single_file_support = true
       }))
     end,
+
     ["ts_ls"] = function()
       lspconfig.ts_ls.setup(make_conf({
         on_attach = on_attach,
@@ -160,6 +158,7 @@ local function setup_lspconfig()
         cmd = { "typescript-language-server", "--stdio" }
       }))
     end,
+
     ["tailwindcss"] = function()
       lspconfig.tailwindcss.setup({
         on_attach = on_attach,
@@ -168,9 +167,39 @@ local function setup_lspconfig()
         end
       })
     end,
+
     ["gopls"] = function()
       lspconfig.gopls.setup(make_conf({
         on_attach = on_attach
+      }))
+    end,
+
+    ["jsonls"] = function() 
+      lspconfig.jsonls.setup(make_conf({
+        settings = {
+          json = {
+            schemas = require('schemastore').json.schemas(),
+            validate = { enable = true },
+          },
+        },
+      }))
+    end,
+
+
+    ["yamlls"] = function()
+      lspconfig.yamlls.setup(make_conf({
+        settings = {
+          yaml = {
+            schemaStore = {
+              -- You must disable built-in schemaStore support if you want to use
+              -- this plugin and its advanced options like `ignore`.
+              enable = false,
+              -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+              url = "",
+            },
+            schemas = require('schemastore').yaml.schemas(),
+          },
+        },
       }))
     end
   })
@@ -178,25 +207,33 @@ end
 
 return {
   "mason-org/mason.nvim",
+  event = { "BufReadPre", "BufNewFile" },
+  cmd = { "Mason", "MasonUpdate", "MasonInstall" },
   dependencies = {
     "neovim/nvim-lspconfig",
+    "hrsh7th/cmp-nvim-lsp",
     {
       "mason-org/mason-lspconfig.nvim",
-      event = { "BufReadPre", "BufNewFile" }
+      lazy = true,
     },
-    'hrsh7th/cmp-nvim-lsp',
     {
       "zapling/mason-lock.nvim",
-      init = function()
-        require("mason-lock").setup({
-          lockfile_path = vim.fn.stdpath("config") .. "/mason-lock.json"
-        })
-      end
+      lazy = true,
+      cmd = { "MasonLock", "MasonLockRestore" },
+    },
+    {
+      "b0o/schemastore.nvim",
+      ft = { "javascript", "typescript", "json", "yaml" }
     }
   },
   config = function()
     setup_mason()
     setup_lspconfig()
+
+    -- mason-lock を遅延ロード
+    require("mason-lock").setup({
+      lockfile_path = vim.fn.stdpath("config") .. "/mason-lock.json"
+    })
   end
 }
 

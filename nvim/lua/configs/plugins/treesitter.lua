@@ -1,5 +1,15 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
+  event = {
+    "BufReadPost",
+    "BufNewFile",
+  },
+  cmd = {
+    "TSInstall",
+    "TsBufEnable",
+    "TSBufDisable",
+    "TSModuleInfo",
+  },
 	dependencies = {
 		"HiPhish/rainbow-delimiters.nvim",
 		"andymass/vim-matchup",

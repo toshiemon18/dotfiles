@@ -39,8 +39,10 @@ return {
     })
   end,
   dependencies = { "nvim-tree/nvim-web-devicons" },
+  cmd = { "NvimTreeToggle", "NvimTreeFocus" },
   keys = {
     { "<Leader>f", ":NvimTreeToggle<CR>", { silent = true, desc = "NvimTreeToggle" } },
+    { "<C-n>", ":NvimTreeToggle<CR>", {silent = true, desc = "NvimTreeToogle"} },
     { "<leader><C-1>", "<cmd>NvimTreeFocus<CR>",  { silent = true, desc = "Focus NvimTree buffer" } }
   },
 }

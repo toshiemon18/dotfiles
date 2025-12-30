@@ -1,5 +1,7 @@
 return {
   "mattn/emmet-vim",
+  event = "InsertEnter",
+  ft = { "html", "jsx", "mdx", "markdown", "css", "erb" },
 }
 
 -- vim.g["user_emmet_mode"] = "a"

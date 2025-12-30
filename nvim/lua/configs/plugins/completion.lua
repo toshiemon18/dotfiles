@@ -9,7 +9,7 @@ local function completion_candidates_formatter(entry, vim_item)
   local label = vim_item.abbr
   local truncated_label = vim.fn.strcharpart(label, 0, MAX_LABEL_WIDTH)
 
-  vim_item.menu = ""
+  -- vim_item.menu = ""
 
   if truncated_label ~= label then
     vim_item.abbr = truncated_label .. ELLIPSIS_CHAR
@@ -21,9 +21,39 @@ local function completion_candidates_formatter(entry, vim_item)
   return vim_item
 end
 
+local kind_icons = {
+  Text = "",
+  Method = "󰆧",
+  Function = "󰊕",
+  Constructor = "",
+  Field = "󰇽",
+  Variable = "󰂡",
+  Class = "󰠱",
+  Interface = "",
+  Module = "",
+  Property = "󰜢",
+  Unit = "",
+  Value = "󰎠",
+  Enum = "",
+  Keyword = "󰌋",
+  Snippet = "",
+  Color = "󰏘",
+  File = "󰈙",
+  Reference = "",
+  Folder = "󰉋",
+  EnumMember = "",
+  Constant = "󰏿",
+  Struct = "",
+  Event = "",
+  Operator = "󰆕",
+  TypeParameter = "󰅲",
+}
+
 return {
   {
     "hrsh7th/nvim-cmp",
+    lazy = true,
+    event = "InsertEnter",
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-nvim-lua",
@@ -31,10 +61,28 @@ return {
       "hrsh7th/cmp-path",
       {
         "L3MON4D3/LuaSnip",
-        dependencies = { "afamadriz/friendly-snippets" }
+        build = vim.fn.has "win32" ~= 0 and "make install_jsregexp" or nil,
+        dependencies = {
+          "rafamadriz/friendly-snippets",
+          "benfowler/telescope-luasnip.nvim",
+        },
+        config = function(_, opts)
+          if opts then require("luasnip").config.setup(opts) end
+          vim.tbl_map(
+            function(type) require("luasnip.loaders.from_" .. type).lazy_load() end,
+            { "vscode", "snipmate", "lua" }
+          )
+          -- friendly-snippets - enable standardized comments snippets
+          require("luasnip").filetype_extend("typescript", { "tsdoc" })
+          require("luasnip").filetype_extend("javascript", { "jsdoc" })
+          require("luasnip").filetype_extend("lua", { "luadoc" })
+          require("luasnip").filetype_extend("python", { "pydoc" })
+          require("luasnip").filetype_extend("ruby", { "rdoc" })
+          require("luasnip").filetype_extend("ruby", { "rails" })
+          require("luasnip").filetype_extend("sh", { "shelldoc" })
+        end,
       },
-      "saadparwaiz1/cmp_luasnip",
-      { "roobert/tailwindcss-colorizer-cmp.nvim", config = true },
+      "saadparwaiz1/cmp_luasnip"
     },
     config = function()
       local cmp = require("cmp")
@@ -54,15 +102,15 @@ return {
           ["<C-f>"] = cmp.mapping.scroll_docs(4),
           ["<C-Space>"] = cmp.mapping.complete(),
           ["<C-e>"] = cmp.mapping.close(),
-          ["<CR>"] = cmp.mapping.confirm({ select = true }),
+          ["<CR>"] = cmp.mapping.confirm({ select = false }),
           ["<TAB>"] = cmp.mapping.confirm({ select = true }),
         },
         sources = cmp.config.sources({
+          { name = "path" },
           { name = "nvim_lua" },
           { name = "nvim_lsp", priority = 100 },
-          { name = "buffer",   keyword_length = 5, max_item_count = 5 },
-          { name = "path" },
           { name = "luasnip" },
+          -- { name = "buffer", priority = 999, keyword_length = 3, max_item_count = 5 },
         }),
         formatting = {
           -- fields = {
@@ -70,7 +118,19 @@ return {
           --   cmp.ItemField.Abbr,
           --   cmp.ItemField.Kind
           -- },
-          format = completion_candidates_formatter
+          -- format = completion_candidates_formatter
+          format = function(entry, vim_item)
+            -- Kind icons
+            vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatenates the icons with the name of the item kind
+            -- Source
+            vim_item.menu = ({
+              buffer = "[Buffer]",
+              nvim_lsp = "[LSP]",
+              luasnip = "[LuaSnip]",
+              nvim_lua = "[Lua]",
+            })[entry.source.name]
+            return vim_item
+          end
         },
         experimental = { native_menu = false, ghost_text = { enabled = true } },
       })

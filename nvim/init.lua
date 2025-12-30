@@ -31,7 +31,6 @@ local plugins = {
   require('configs.plugins.nvim_tree'),
   require('configs.plugins.telescope'),
   require('configs.plugins.completion'),
-  require('configs.plugins.snippets'),
   require('configs.plugins.treesitter'),
   require('configs.plugins.render_markdown'),
   require('configs.plugins.surround'),

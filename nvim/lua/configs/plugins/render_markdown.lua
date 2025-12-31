@@ -8,6 +8,7 @@ return {
       heading = {
         width = "block",
         icons = {},
+        sign = false,
       },
       -- ref: https://eiji.page/blog/neovim-render-markdown-nvim/
       checkbox = {
@@ -19,6 +20,7 @@ return {
             raw = "[-]",
             rendered = "󱘹",
             scope_highlight = "@markup.strikethrough",
+            highlight = "@markup.strikethrough"
           },
         },
       },
@@ -26,6 +28,5 @@ return {
         width = "block",
       },
     })
-    vim.opt.conceallevel = 2
   end,
 }

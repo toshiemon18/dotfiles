@@ -1,5 +1,6 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
+  branch = "master",
   event = {
     "BufReadPost",
     "BufNewFile",
@@ -14,7 +15,10 @@ return {
 		"HiPhish/rainbow-delimiters.nvim",
 		"andymass/vim-matchup",
 		"RRethy/nvim-treesitter-endwise",
-		"nvim-treesitter/nvim-treesitter-textobjects",
+		{
+      "nvim-treesitter/nvim-treesitter-textobjects",
+      branch = "master"
+    },
 	},
 	build = ":TSUpdate",
 	config = function()

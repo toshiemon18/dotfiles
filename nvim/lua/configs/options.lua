@@ -15,7 +15,7 @@ opts.write = true
 opts.undofile = true
 opts.undodir = os.getenv('XDG_CONFIG_HOME') .. '/nvim/undodir'
 opts.tw = 0
-opts.conceallevel = 0
+opts.conceallevel = 2
 opts.mouse = 'h'
 opts.mousehide = true
 opts.autowrite = true
@@ -51,7 +51,7 @@ autocmd("CursorHoldI", {
 })
 
 -- appearance
-opts.cmdheight = 2
+opts.cmdheight = 1
 opts.title = true
 opts.wildmenu = true
 opts.wildmode = 'full'

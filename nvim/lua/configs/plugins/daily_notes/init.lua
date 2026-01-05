@@ -81,6 +81,9 @@ function M.create_daily_note()
     if file then
       file:write(processed_template)
       file:close()
+    else
+      vim.notify("ファイルの作成に失敗しました: " .. filepath, vim.log.levels.ERROR)
+      return
     end
   else
     file:close()

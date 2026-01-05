@@ -24,10 +24,23 @@ local function setup_mason()
     hi DiagnosticDefaultHint ctermfg=blue guifg=#7AA6DA
     hi DiagnosticVirtualTextHint ctermfg=blue guifg=#7AA6DA
   ]])
-  -- remove diagnostic signs and only color numbers vim.fn.sign_define('DiagnosticSignError', { text = '', numhl = 'DiagnosticDefaultError' })
-  vim.fn.sign_define('DiagnosticSignWarn', { text = '', numhl = 'DiagnosticDefaultWarn' })
-  vim.fn.sign_define('DiagnosticSignInfo', { text = '', numhl = 'DiagnosticDefaultInfo' })
-  vim.fn.sign_define('DiagnosticSignHint', { text = '', numhl = 'DiagnosticDefaultHint' })
+  -- remove diagnostic signs and only color numbers
+  vim.diagnostic.config({
+    signs = {
+      text = {
+        [vim.diagnostic.severity.ERROR] = '',
+        [vim.diagnostic.severity.WARN] = '',
+        [vim.diagnostic.severity.INFO] = '',
+        [vim.diagnostic.severity.HINT] = '',
+      },
+      numhl = {
+        [vim.diagnostic.severity.ERROR] = 'DiagnosticDefaultError',
+        [vim.diagnostic.severity.WARN] = 'DiagnosticDefaultWarn',
+        [vim.diagnostic.severity.INFO] = 'DiagnosticDefaultInfo',
+        [vim.diagnostic.severity.HINT] = 'DiagnosticDefaultHint',
+      },
+    },
+  })
 end
 
 local function setup_lspconfig()

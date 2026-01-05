@@ -10,9 +10,11 @@ local function keymaps()
     })
   end, { desc = "Telescope: List Files" })
   -- live grep
-  keymap.set("n", "<leader>tr", function()
-    builtin.live_grep()
-  end, { desc = "Telescope: Live Grep" })
+  keymap.set("n", "<leader>tr",
+    function()
+      builtin.live_grep()
+    end, 
+    { desc = "Telescope: Live Grep" })
   keymap.set("n", "<Leader>tb", builtin.buffers, { desc = "Telescope: Lists open buffers in current neovim instance" })
 
   -- キーマップ検索
@@ -45,16 +47,22 @@ local function setup()
 
   require("telescope").setup({
     defaults = {
+      prompt_title = false,
       mappings = {
         n = {
           -- Telescope を閉じる
           ["<ECS>"] = actions.close,
           ["q"] = actions.close
+        },
+        i = {
+          ["<ECS>"] = actions.close,
+          ["<C-u>"] = false
         }
       },
       layout_strategy = "vertical",
       layout_config = {
-        prompt_position = "top"
+        prompt_position = "top",
+        mirror = true,
       },
       sorting_strategy = "ascending"
     },

@@ -166,9 +166,10 @@ autoload -U colors; colors
 source ~/.zsh_simple_prompt
 
 
-source ~/.safe-chain/scripts/init-posix.sh # Safe-chain Zsh initialization script
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:$HOME/.lmstudio/bin"
 # End of LM Studio CLI section
 
+
+source ~/.safe-chain/scripts/init-posix.sh # Safe-chain Zsh initialization script

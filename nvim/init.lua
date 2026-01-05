@@ -6,9 +6,6 @@ require("configs.options")
 -- keybinds
 require("configs.keymaps")
 
--- obsidian settings
-require('configs.plugins.obsidian')
-
 -- bootstrap for lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -38,8 +35,11 @@ local plugins = {
   require('configs.plugins.lualine'),
   require('configs.plugins.language_server'),
   require("configs.plugins.lsp_saga"),
-  require("configs.plugins.daily_note"),
-  require('configs.plugins.colorscheme.catputtin'),
+  -- Color Scheme
+  ---- Catputtin
+  -- require('configs.plugins.colorscheme.catputtin'),
+  ---- Kanagawa
+  require('configs.plugins.colorscheme.kanagawa'),
 }
 
 require("lazy").setup(plugins, {
@@ -51,6 +51,10 @@ require("lazy").setup(plugins, {
     },
   },
 })
+
+-- obsidian settings
+require("configs.plugins.daily_notes.utils")
+
 
 -- vim help を開くと、パーサプロバイダがないとtreesitterがエラーになる
 -- ref: https://zenn.dev/kawarimidoll/articles/18ee967072def7

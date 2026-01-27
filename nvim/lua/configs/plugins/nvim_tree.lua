@@ -22,7 +22,7 @@ return {
       },
       on_attach = tree_keys,
       view = {
-        width = 30,
+        width = 45,
       },
       renderer = {
         group_empty = true,

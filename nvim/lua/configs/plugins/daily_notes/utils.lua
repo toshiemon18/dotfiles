@@ -30,3 +30,4 @@ keymap("n", "<C-d><C-s>", "<cmd>SearchDailyNotes<CR>", {
   desc = "デイリーノートを検索",
 })
 
+

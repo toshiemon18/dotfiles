@@ -15,5 +15,5 @@ export LD_LIBRARY_PATH="/usr/local/lib"
 
 alias nvchad="NVIM_APPNAME=nvim-nvchad nvim"
 
-alias cd_obsvault="cd $HOME/Dropbox/toshiemon_obsidian/"
+alias cd_obsvault="cd $HOME/Dropbox/アプリ/remotely-save/toshiemon_obsidian/"
 

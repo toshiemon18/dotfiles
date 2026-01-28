@@ -13,6 +13,16 @@ local function tree_keys(bufnr)
   vim.keymap.set("n", "i", api.node.open.horizontal, opts("Open horizontal"))
 end
 
+
+vim.api.nvim_create_autocmd(
+  { "VimEnter" },
+  {
+    callback = function()
+      require("nvim-tree.api").tree.toggle({ focus = false })
+    end
+  }
+)
+
 return {
   "nvim-tree/nvim-tree.lua",
   config = function ()
@@ -43,7 +53,7 @@ return {
   keys = {
     { "<Leader>f", ":NvimTreeToggle<CR>", { silent = true, desc = "NvimTreeToggle" } },
     { "<C-n>", ":NvimTreeToggle<CR>", {silent = true, desc = "NvimTreeToogle"} },
-    { "<leader><C-1>", "<cmd>NvimTreeFocus<CR>",  { silent = true, desc = "Focus NvimTree buffer" } }
+    { "<C-1>", "<cmd>NvimTreeFocus<CR>",  { silent = true, desc = "Focus NvimTree buffer" } }
   },
 }
 

@@ -20,6 +20,7 @@ opts.mouse = 'h'
 opts.mousehide = true
 opts.autowrite = true
 opts.updatetime = 300
+opts.ambiwidth = 'single'
 
 -- autocmds
 local augroup = vim.api.nvim_create_augroup -- Create/get autocommand group

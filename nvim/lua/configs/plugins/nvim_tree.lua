@@ -32,7 +32,7 @@ return {
       },
       on_attach = tree_keys,
       view = {
-        width = 45,
+        width = 40,
       },
       renderer = {
         group_empty = true,
@@ -51,8 +51,8 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   cmd = { "NvimTreeToggle", "NvimTreeFocus" },
   keys = {
-    { "<Leader>f", ":NvimTreeToggle<CR>", { silent = true, desc = "NvimTreeToggle" } },
-    { "<C-n>", ":NvimTreeToggle<CR>", {silent = true, desc = "NvimTreeToogle"} },
+    { "<Leader>f", "<cmd>NvimTreeToggle<CR>", { silent = true, desc = "NvimTreeToggle" } },
+    { "<C-n>", "<cmd>NvimTreeToggle<CR>", {silent = true, desc = "NvimTreeToogle"} },
     { "<C-1>", "<cmd>NvimTreeFocus<CR>",  { silent = true, desc = "Focus NvimTree buffer" } }
   },
 }

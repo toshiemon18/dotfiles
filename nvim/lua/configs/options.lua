@@ -82,3 +82,11 @@ vim.api.nvim_create_user_command('Jqf', format_json_buffer, {})
 vim.api.nvim_create_user_command('Jqfv', format_json_visual, { range = true })
 
 
+-- Float Window を表示したり閉じたり、内部で移動した際にテキストが残る不具合の応急処置
+-- winclosed, winleave に合わせて常にredrawを実行する
+vim.api.nvim_create_autocmd({ "WinClosed", "WinLeave" }, {
+  callback = function()
+    vim.cmd("redraw!")
+  end,
+})
+

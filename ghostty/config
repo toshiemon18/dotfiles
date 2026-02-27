@@ -1,6 +1,15 @@
-theme = "Gruvbox Material"
-font-family = "JetBrains Mono"
-font-size = 12
+theme = "Kanagawa Wave"
+
+font-family = JetBrainsMonoNL Nerd Font Mono
+font-feature = -dlig
+font-size = 13
+
+font-style-bold = false
+font-style-italic = false
+font-style-bold-italic = false
+
+font-thicken = true
+font-thicken-strength = 1
 
 shell-integration-features = "no-cursor"
 cursor-style = "block"
@@ -9,6 +18,8 @@ selection-background = 4C485B
 
 auto-update = "check"
 
-background-opacity = 0.9
+background-opacity = 1.0
 background-blur-radius = 10
+
+window-inherit-working-directory = true
 

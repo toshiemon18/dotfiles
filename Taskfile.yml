@@ -1,0 +1,22 @@
+version: "3"
+
+tasks:
+  brewfile:update:
+    desc: "Force update all dependencies to Brewfile.{formula, mas, cask}"
+    cmds:
+      - task brewfile:update:formula
+      - task brewfile:update:cask
+      - task brewfile:update:mas
+  brewfile:update:formula:
+    desc: "Force update only formula dependencies to Brewfile.formula"
+    cmds:
+      - brew bundle dump --force --formula --file=./Brewfile.formula
+  brewfile:update:mas:
+    desc: "Force update only mas dependencies to Brewfile.mas"
+    cmds:
+      - brew bundle dump --force --mas --file=./Brewfile.mas
+  brewfile:update:cask:
+    desc: "Forve update only casks dependencies to Brewfile.cask"
+    cmds:
+      - brew bundle dump --force --casks --file=./Brewfile.cask
+

@@ -1,5 +1,5 @@
 [tools]
-node = "20.16.0"
+node = "latest"
 go = "latest"
 python = "latest"
 bun = "latest"

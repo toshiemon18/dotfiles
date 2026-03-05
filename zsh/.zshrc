@@ -163,7 +163,7 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 #### Prompt ####
 # プロンプトに色を設定
 autoload -U colors; colors
-source ~/.zsh_simple_prompt
+source $HOME/.zsh_simple_prompt
 
 
 

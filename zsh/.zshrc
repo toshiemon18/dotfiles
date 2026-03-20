@@ -3,16 +3,24 @@
 # ---------------------------
 export AUTOFEATURE=true     # autotestでfeatureを動かす
 export ZDOTDIR=$HOME
-source $HOME/.zprofile
 
 setopt auto_cd              # コマンド無くてディレクトリ名があればcd
 setopt no_beep              # beep音を鳴らさない
 
 #### 補完系 ####
 zmodload zsh/complist
-fpath=(/usr/local/share/zsh-completions $fpath)
+if [[ -d /opt/homebrew/share/zsh-completions ]]; then
+    fpath=(/opt/homebrew/share/zsh-completions $fpath)
+elif [[ -d /usr/local/share/zsh-completions ]]; then
+    fpath=(/usr/local/share/zsh-completions $fpath)
+fi
 fpath=($HOME/.docker/completions $fpath)
-autoload -Uz compinit && compinit -u
+autoload -Uz compinit
+if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C
+fi
 zstyle ':completion:*' menu select search
 
 setopt auto_list            # 補完候補を一覧表示
@@ -156,7 +164,7 @@ zstyle ':completion:*' list-colors 'di=36' 'ln=35' 'ex=32'
 # ZLS_COLORS
 export ZLS_COLORS=$LS_COLORS
 # lsで自動で色をつける
-export CLICOLRS=true
+export CLICOLOR=true
 # 補完候補に色を付ける
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
@@ -167,9 +175,4 @@ source $HOME/.zsh_simple_prompt
 
 
 
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:$HOME/.lmstudio/bin"
-# End of LM Studio CLI section
-
-
-source ~/.safe-chain/scripts/init-posix.sh # Safe-chain Zsh initialization script
+[ -f ~/.safe-chain/scripts/init-posix.sh ] && source ~/.safe-chain/scripts/init-posix.sh

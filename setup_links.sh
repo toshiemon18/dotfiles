@@ -84,6 +84,13 @@ if [ -d "$SCRIPT_DIR/zsh" ]; then
             create_symlink "$file" "$HOME/$basename_file"
         fi
     done
+    # Create machine-specific local profile if it doesn't exist
+    if [ ! -f "$HOME/.zprofile.local" ]; then
+        touch "$HOME/.zprofile.local"
+        echo -e "${GREEN}✓${NC} Created: $HOME/.zprofile.local (machine-specific overrides)"
+    else
+        echo -e "${GREEN}✓${NC} Already exists: $HOME/.zprofile.local"
+    fi
 fi
 
 # git (goes to HOME directory, not XDG_CONFIG_HOME)

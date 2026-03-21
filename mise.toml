@@ -1,3 +1,10 @@
+[tools]
+node = "latest"
+go = "latest"
+python = "latest"
+bun = "latest"
+ruby = "latest"
+
 [tasks."setup:zsh"]
 description = "Setup zsh dotfiles (symlinks to ~/)"
 run = """

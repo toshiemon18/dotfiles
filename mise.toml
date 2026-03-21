@@ -1,0 +1,116 @@
+[tasks."setup:zsh"]
+description = "Setup zsh dotfiles (symlinks to ~/)"
+run = """
+#!/usr/bin/env bash
+set -euo pipefail
+source "$MISE_PROJECT_ROOT/scripts/setup_helper.sh"
+
+for f in "$MISE_PROJECT_ROOT/zsh"/.z*; do
+    [ -f "$f" ] && link_file "$f" "$HOME/$(basename "$f")"
+done
+
+if [ ! -f "$HOME/.zprofile.local" ]; then
+    touch "$HOME/.zprofile.local"
+    echo -e "\\033[0;32m✓\\033[0m Created: ~/.zprofile.local"
+else
+    echo -e "\\033[0;32m✓\\033[0m Already exists: ~/.zprofile.local"
+fi
+"""
+
+[tasks."setup:tmux"]
+description = "Setup tmux config (~/.config/tmux)"
+run = """
+#!/usr/bin/env bash
+set -euo pipefail
+source "$MISE_PROJECT_ROOT/scripts/setup_helper.sh"
+
+link_dir "$MISE_PROJECT_ROOT/tmux" "${XDG_CONFIG_HOME:-$HOME/.config}/tmux"
+"""
+
+[tasks."setup:nvim"]
+description = "Setup neovim config (~/.config/nvim)"
+run = """
+#!/usr/bin/env bash
+set -euo pipefail
+source "$MISE_PROJECT_ROOT/scripts/setup_helper.sh"
+
+link_dir "$MISE_PROJECT_ROOT/nvim" "${XDG_CONFIG_HOME:-$HOME/.config}/nvim"
+"""
+
+[tasks."setup:ghostty"]
+description = "Setup ghostty config (~/.config/ghostty)"
+run = """
+#!/usr/bin/env bash
+set -euo pipefail
+source "$MISE_PROJECT_ROOT/scripts/setup_helper.sh"
+
+link_dir "$MISE_PROJECT_ROOT/ghostty" "${XDG_CONFIG_HOME:-$HOME/.config}/ghostty"
+"""
+
+[tasks."setup:mise-config"]
+description = "Setup mise config (~/.config/mise)"
+run = """
+#!/usr/bin/env bash
+set -euo pipefail
+source "$MISE_PROJECT_ROOT/scripts/setup_helper.sh"
+
+link_dir "$MISE_PROJECT_ROOT/mise" "${XDG_CONFIG_HOME:-$HOME/.config}/mise"
+"""
+
+[tasks."setup:git"]
+description = "Setup git config (copy to ~/)"
+run = """
+#!/usr/bin/env bash
+set -euo pipefail
+source "$MISE_PROJECT_ROOT/scripts/setup_helper.sh"
+
+for f in "$MISE_PROJECT_ROOT/git"/.git*; do
+    [ -f "$f" ] && copy_file "$f" "$HOME/$(basename "$f")"
+done
+"""
+
+[tasks."setup:vim"]
+description = "Setup vim config (~/.vim)"
+run = """
+#!/usr/bin/env bash
+set -euo pipefail
+source "$MISE_PROJECT_ROOT/scripts/setup_helper.sh"
+
+link_dir "$MISE_PROJECT_ROOT/vim" "$HOME/.vim"
+"""
+
+[tasks."setup:hammerspoon"]
+description = "Setup hammerspoon config (~/.hammerspoon)"
+run = """
+#!/usr/bin/env bash
+set -euo pipefail
+source "$MISE_PROJECT_ROOT/scripts/setup_helper.sh"
+
+link_dir "$MISE_PROJECT_ROOT/hammerspoon" "$HOME/.hammerspoon"
+"""
+
+[tasks."setup:ideavim"]
+description = "Setup ideavim config (symlinks to ~/)"
+run = """
+#!/usr/bin/env bash
+set -euo pipefail
+source "$MISE_PROJECT_ROOT/scripts/setup_helper.sh"
+
+for f in "$MISE_PROJECT_ROOT/ideavim"/.ideavim*; do
+    [ -f "$f" ] && link_file "$f" "$HOME/$(basename "$f")"
+done
+"""
+
+[tasks."setup:all"]
+description = "Setup all dotfiles"
+depends = [
+    "setup:zsh",
+    "setup:tmux",
+    "setup:nvim",
+    "setup:ghostty",
+    "setup:mise-config",
+    "setup:git",
+    "setup:vim",
+    "setup:hammerspoon",
+    "setup:ideavim",
+]

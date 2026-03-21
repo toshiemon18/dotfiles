@@ -11,7 +11,7 @@ font-style-bold-italic = false
 font-thicken = true
 font-thicken-strength = 1
 
-shell-integration-features = "no-cursor"
+shell-integration-features = "no-cursor,no-title"
 cursor-style = "block"
 cursor-click-to-move = false
 selection-background = 4C485B

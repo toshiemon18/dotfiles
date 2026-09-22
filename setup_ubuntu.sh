@@ -42,7 +42,7 @@ sudo apt-get install -y \
 
 print_section "基本CLIツール"
 sudo apt-get install -y \
-    git curl wget unzip zsh tmux neovim \
+    git curl wget unzip zsh zsh-completions tmux neovim \
     ripgrep fzf silversearcher-ag jq \
     cmake ninja-build universal-ctags \
     gnupg watch pandoc imagemagick

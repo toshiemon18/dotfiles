@@ -10,8 +10,10 @@ export XDG_CONFIG_HOME=$HOME/.config
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 
-# LD_LIBRARY_PATH
-export LD_LIBRARY_PATH="/usr/local/lib"
+# LD_LIBRARY_PATH (macOS Intel Homebrew: /usr/local配下のライブラリを優先させるため)
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    export LD_LIBRARY_PATH="/usr/local/lib"
+fi
 
 alias cd_obsvault="cd $HOME/Dropbox/アプリ/remotely-save/toshiemon_obsidian/"
 

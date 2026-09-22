@@ -3,7 +3,9 @@
 # ---------------------------
 
 # macOS system path
-eval "$(/usr/libexec/path_helper)"
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    eval "$(/usr/libexec/path_helper)"
+fi
 
 # Homebrew (Apple Silicon: /opt/homebrew, Intel: /usr/local)
 if [[ -x /opt/homebrew/bin/brew ]]; then

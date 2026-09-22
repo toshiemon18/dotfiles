@@ -4,4 +4,5 @@ go = "latest"
 python = "latest"
 bun = "latest"
 ruby = "latest"
+rust = "latest"
 

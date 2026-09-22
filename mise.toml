@@ -123,14 +123,12 @@ depends = [
 ]
 
 [tasks."setup:all-linux"]
-description = "Setup all dotfiles (Linux/WSL, excludes macOS-only hammerspoon)"
+description = "Setup all dotfiles (Linux/WSL, excludes macOS-only hammerspoon, ghostty, and vim)"
 depends = [
     "setup:zsh",
     "setup:tmux",
     "setup:nvim",
-    "setup:ghostty",
     "setup:mise-config",
     "setup:git",
-    "setup:vim",
     "setup:ideavim",
 ]

@@ -47,6 +47,25 @@ sudo apt-get install -y \
     cmake ninja-build universal-ctags \
     gnupg watch pandoc imagemagick
 
+print_section "クリップボード連携ツールの導入"
+# nvim/vim の clipboard=unnamedplus や tmux-yank が動作するために必要
+sudo apt-get install -y xclip wl-clipboard
+
+if grep -qi microsoft /proc/version 2>/dev/null; then
+    echo -e "${BLUE}i${NC} WSL環境を検出しました。Windows側クリップボードと連携する win32yank を導入します"
+    if ! command -v win32yank.exe &> /dev/null; then
+        tmp_dir=$(mktemp -d)
+        curl -fsSL -o "$tmp_dir/win32yank.zip" \
+            https://github.com/equalsraf/win32yank/releases/latest/download/win32yank-x64.zip
+        unzip -oq "$tmp_dir/win32yank.zip" -d "$tmp_dir"
+        sudo install -m 755 "$tmp_dir/win32yank.exe" /usr/local/bin/win32yank.exe
+        rm -rf "$tmp_dir"
+        echo -e "${GREEN}✓${NC} win32yank.exe を /usr/local/bin/ に導入しました"
+    else
+        echo -e "${GREEN}✓${NC} win32yank.exe はインストール済み"
+    fi
+fi
+
 print_section "GitHub CLI (gh) の導入"
 if ! command -v gh &> /dev/null; then
     curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg \

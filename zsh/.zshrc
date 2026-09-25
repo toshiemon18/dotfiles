@@ -13,6 +13,8 @@ if [[ -d /opt/homebrew/share/zsh-completions ]]; then
     fpath=(/opt/homebrew/share/zsh-completions $fpath)
 elif [[ -d /usr/local/share/zsh-completions ]]; then
     fpath=(/usr/local/share/zsh-completions $fpath)
+elif [[ -d /usr/share/zsh-completions ]]; then
+    fpath=(/usr/share/zsh-completions $fpath)
 fi
 fpath=($HOME/.docker/completions $fpath)
 autoload -Uz compinit

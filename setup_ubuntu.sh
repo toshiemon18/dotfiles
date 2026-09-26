@@ -5,7 +5,16 @@
 #
 # 方針: Homebrewは使わない (macOS専用として残す)。
 #       Linux側はaptで完結させ、go/ruby/rustはdotfilesのmiseに任せる。
+#
+# 実行方法: ./setup_ubuntu.sh (または bash setup_ubuntu.sh)
+#           sudo は付けない (apt-get 等が必要な箇所は内部で個別に sudo する)
+#           `sh setup_ubuntu.sh` で実行するとシバンが無視され dash 等で
+#           実行されて [[ や &> が壊れるため、その場合は自動で bash に切り替える
 # =============================================================
+if [ -z "${BASH_VERSION:-}" ]; then
+    exec bash "$0" "$@"
+fi
+
 set -euo pipefail
 
 RED='\033[0;31m'
